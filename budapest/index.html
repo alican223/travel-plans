@@ -1,1 +1,2446 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Budapeşte 17-20 Nisan 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0b10;--card:#13151d;--card2:#1a1d28;--card-hover:#1f2232;
+  --fri:#f59e0b;--sat:#3b82f6;--sun:#a855f7;
+  --text:#e8e8ed;--dim:#8b8fa3;--dimmer:#5c5f72;
+  --border:#1e2030;--border2:#2a2d40;
+  --green:#34d399;--red:#f87171;--pink:#f472b6;--teal:#2dd4bf;
+  --radius:14px;--radius-sm:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:100vw;overflow-x:hidden;padding-bottom:90px}
 
+/* HEADER */
+.hdr{padding:32px 20px 18px;text-align:center;background:linear-gradient(180deg,#141628 0%,var(--bg) 100%)}
+.hdr h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--fri),var(--sat),var(--sun));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hdr p{color:var(--dim);font-size:13px;margin-top:4px}
+.hdr .badge{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:5px 14px;margin-top:10px;font-size:11px;color:var(--dim)}
+
+/* MAIN TABS */
+.main-tabs{display:flex;position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border)}
+.main-tab{flex:1;padding:12px 4px;text-align:center;font-size:11px;font-weight:700;cursor:pointer;border-bottom:3px solid transparent;color:var(--dimmer);transition:.2s;letter-spacing:.3px}
+.main-tab.on{color:var(--text);border-color:var(--fri)}
+.main-tab[data-t="fri"].on{border-color:var(--fri);color:var(--fri)}
+.main-tab[data-t="sat"].on{border-color:var(--sat);color:var(--sat)}
+.main-tab[data-t="sun"].on{border-color:var(--sun);color:var(--sun)}
+.main-tab[data-t="food"].on{border-color:var(--green);color:var(--green)}
+.main-tab[data-t="gift"].on{border-color:var(--teal);color:var(--teal)}
+.main-tab[data-t="night"].on{border-color:var(--pink);color:var(--pink)}
+.main-tab[data-t="info"].on{border-color:#f59e0b;color:#f59e0b}
+.main-tab[data-t="alt"].on{border-color:#60a5fa;color:#60a5fa}
+.main-tab small{display:block;font-size:9px;font-weight:500;margin-top:2px;opacity:.7}
+
+/* PAGE CONTENT */
+.page{display:none;padding:14px 14px 30px}.page.on{display:block}
+
+/* ROUTE BTN */
+.route-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:var(--radius);border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:6px;text-decoration:none;transition:transform .12s;color:#000}
+.route-btn:active{transform:scale(.97)}
+.route-btn.fri{background:linear-gradient(135deg,#f59e0b,#fbbf24)}
+.route-btn.sat{background:linear-gradient(135deg,#3b82f6,#60a5fa);color:#fff}
+.route-btn.sun{background:linear-gradient(135deg,#a855f7,#c084fc);color:#fff}
+.route-row{display:flex;gap:6px;margin-bottom:14px}
+.route-row .route-btn{flex:1;font-size:12px;padding:12px 8px}
+
+/* SECTION HEADER */
+.sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;padding:14px 0 6px;display:flex;align-items:center;gap:8px}
+.sec::after{content:'';flex:1;height:1px;background:var(--border)}
+.sec.fri{color:var(--fri)}.sec.sat{color:var(--sat)}.sec.sun{color:var(--sun)}
+.sec.food{color:var(--green)}.sec.night{color:var(--pink)}.sec.special{color:var(--red)}
+
+/* STOP CARD */
+.stop{display:flex;gap:11px;padding:12px;background:var(--card);border-radius:var(--radius-sm);margin-bottom:6px;border:1px solid var(--border);text-decoration:none;color:inherit;cursor:pointer;transition:background .15s}
+.stop:active{background:var(--card-hover)}
+.stop .num{min-width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.num.g{background:rgba(59,130,246,.12);color:#60a5fa}
+.num.y{background:rgba(52,211,153,.12);color:var(--green)}
+.num.n{background:rgba(244,114,182,.12);color:var(--pink)}
+.num.s{background:rgba(248,113,113,.12);color:var(--red)}
+.num.t{background:rgba(45,212,191,.12);color:var(--teal)}
+.stop .inf{flex:1;min-width:0}
+.stop .tm{font-size:10px;color:var(--dim);font-weight:600}
+.stop .nm{font-size:13px;font-weight:700;margin:2px 0;line-height:1.3}
+.stop .ds{font-size:11px;color:var(--dim);line-height:1.4}
+.stop .warn{color:var(--red);font-weight:700}
+.stop .arr{display:flex;align-items:center;color:var(--dimmer);font-size:14px;transition:transform .2s}
+.stop.open .arr{transform:rotate(90deg)}
+
+/* DETAIL PANEL */
+.detail{display:none;padding:10px 14px 14px;margin:-6px 0 6px;background:var(--card2);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm);font-size:12px;line-height:1.65;color:var(--dim)}
+.detail.open{display:block}
+.detail strong{color:var(--text)}
+.detail .tip{margin-top:8px;padding:8px 10px;background:rgba(59,130,246,.06);border-left:3px solid rgba(59,130,246,.3);border-radius:0 8px 8px 0;font-size:11px}
+.detail .eat{margin-top:8px;padding:8px 10px;background:rgba(52,211,153,.06);border-left:3px solid rgba(52,211,153,.3);border-radius:0 8px 8px 0;font-size:11px}
+.detail a{color:#60a5fa;text-decoration:none}
+
+/* CONNECTOR */
+.conn{display:flex;align-items:center;justify-content:center;padding:1px 0;color:var(--dimmer);font-size:11px;opacity:.5}
+
+/* INFO BOX */
+.info{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15);border-radius:var(--radius-sm);padding:12px;margin:10px 0;font-size:11px;line-height:1.5;color:var(--dim)}
+.info strong{color:var(--text)}
+.info.warn{background:rgba(248,113,113,.06);border-color:rgba(248,113,113,.15)}
+
+/* CHOICE */
+.choice-row{display:flex;gap:8px;margin:10px 0}
+.choice{flex:1;padding:14px 10px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);text-align:center;font-size:11px;font-weight:700;text-decoration:none;color:var(--text);cursor:pointer;transition:.15s}
+.choice:active{transform:scale(.97)}
+.choice.a{border-color:rgba(52,211,153,.25)}.choice.b{border-color:rgba(244,114,182,.25)}
+.choice .icon{font-size:22px;margin-bottom:4px}
+
+/* PLACEHOLDER */
+.placeholder{padding:60px 20px;text-align:center;color:var(--dimmer)}
+.placeholder .icon{font-size:48px;margin-bottom:12px}
+.placeholder p{font-size:13px;line-height:1.6}
+
+/* MAP LINK IN STOP */
+.stop .map-link{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:#60a5fa;margin-top:4px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>BUDAPEŞTE</h1>
+  <p>17 – 20 Nisan 2026</p>
+  <a class="badge" href="https://www.google.com/maps/search/?api=1&query=Csengery+u.+54,+Budapest+1067" target="_blank" style="text-decoration:none;color:var(--dim)">📍 Csengery u. 54, 1067</a>
+  <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap">
+    <div class="badge">🚪 Ana kapı: <strong style="color:var(--fri)">23🔑0502</strong></div>
+    <div class="badge">🔑 Anahtar kutusu: <strong style="color:var(--fri)">8791</strong></div>
+  </div>
+</div>
+
+<div class="main-tabs">
+  <div class="main-tab on" data-t="fri" onclick="tab('fri')">CMA<small>17 Nis</small></div>
+  <div class="main-tab" data-t="sat" onclick="tab('sat')">CMT<small>18 Nis</small></div>
+  <div class="main-tab" data-t="sun" onclick="tab('sun')">PAZ<small>19 Nis</small></div>
+  <div class="main-tab" data-t="food" onclick="tab('food')">🍽️<small>Lezzet</small></div>
+  <div class="main-tab" data-t="gift" onclick="tab('gift')">🎁<small>Hediye</small></div>
+  <div class="main-tab" data-t="night" onclick="tab('night')">🌙<small>Gece</small></div>
+  <div class="main-tab" data-t="alt" onclick="tab('alt')">🔄<small>Alter.</small></div>
+  <div class="main-tab" data-t="info" onclick="tab('info')">ℹ️<small>Bilgi</small></div>
+</div>
+
+<!-- ============ CUMA ============ -->
+<div id="fri" class="page on">
+
+  <div class="sec fri">☀️ Sabah — Yahudi Mahallesi + Opera + Shooting</div>
+  <div class="route-row">
+    <a class="route-btn fri" href="https://www.google.com/maps/dir/Csengery+u.+54,+Budapest+1067/Kaptafa,+Ak%C3%A1cfa+u.+37,+Budapest/Hungarian+State+Opera,+Andr%C3%A1ssy+%C3%BAt+22,+Budapest/Budapest+Shooting,+Nagymez%C5%91+u.+37-39,+Budapest/Gozsdu+Udvar,+Budapest/" target="_blank">🗺️ Sabah</a>
+    <a class="route-btn fri" href="https://www.google.com/maps/dir/Csengery+u.+54,+Budapest+1067/Hungarian+State+Opera,+Budapest,+Andr%C3%A1ssy+%C3%BAt+22/Retro+L%C3%A1ngos+Budapest,+Bajcsy-Zsilinszky/St.+Stephen's+Basilica,+Budapest,+Szent+Istv%C3%A1n/Hungarian+Parliament+Building,+Budapest/Shoes+on+the+Danube+Bank,+Budapest,+1056/Little+Princess+Statue,+Budapest,+Belgr%C3%A1d/Anker+k%C3%B6z,+Budapest+1061/Paprika+Revue+House,+Budapest,+S%C3%ADp+u.+27/" target="_blank">🗺️ Öğleden sonra</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">01</div>
+    <div class="inf">
+      <div class="tm">10:00</div>
+      <div class="nm">☕ Kaptafa — Kahvaltı</div>
+      <div class="ds">Akácfa u. 37 · Evden 8dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Eski bir ayakkabı tamircisinden (kaptafa = ayakkabı kalıbı) dönüştürülmüş hipster kahvaltıcı. Yahudi Mahallesi'nin kalbinde, evden 8dk yürüme, shooting'e 3dk.
+    <div class="eat">🍽️ <strong>"Defibrilatör/CPR"</strong> — pastırmalı, erimiş peynirli tuzlu French toast. Akşamın ilacı olarak ünlü! <strong>Turşu kızartması</strong> (breaded fried pickles) da harika başlangıç.</div>
+    <div class="tip">⏱️ 45dk yeter — hızlı ye, çık!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kaptafa+Ak%C3%A1cfa+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Kaptafa → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk batıya</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">02</div>
+    <div class="inf">
+      <div class="tm">10:50</div>
+      <div class="nm">🕍 Budapest Jewish Walk</div>
+      <div class="ds">Yahudi Mahallesi turu · Ücretsiz</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Kaptafa'dan hemen devam — zaten mahallenin içindesin. Sinagog çevresi, tarihi binalar, <strong>Gozsdu Udvar</strong> (1901, Manó Gozsdu, 7 avlulu pasaj), sokak sanatı (Alice in Wonderland, 6:3 futbol duvar resmi), <strong>Kolodko mini heykeller</strong> — sokaklara gizlenmiş bronz figürler, Pokémon Go gibi ama gerçek sanat!
+    <div class="tip">📱 Google'da "Kolodko Budapest map" ara. ~60dk yürüyüş.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Doh%C3%A1ny+Street+Synagogue+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Yahudi Mah. başlangıç → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk Andrássy'ye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">03</div>
+    <div class="inf">
+      <div class="tm">11:50</div>
+      <div class="nm">🎭 Hungarian State Opera</div>
+      <div class="ds">Andrássy út 22 · Dışarıdan bak</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1884'te tamamlanan <strong>Neo-Rönesans</strong> opera binası. Mimarı <strong>Miklós Ybl</strong>, Budapeşte'nin en ünlü mimarı. Efsaneye göre İmparator Franz Joseph binanın Viyana Operası'ndan güzel olmamasını şart koşmuş — ama Ybl <em>"dışarıdan küçük ama içeriden daha güzel"</em> yaparak hem sözü tutmuş hem de onu geçmiş! Akustiği dünyaca ünlü. <strong>Andrássy Caddesi UNESCO Dünya Mirası.</strong>
+    <div class="tip">📸 Dışarıdan fotoğraf çek. 10dk yeter.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hungarian+State+Opera+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Opera → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 3dk güneye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">04</div>
+    <div class="inf">
+      <div class="tm">12:00</div>
+      <div class="nm">🔫 Budapest Shooting Range</div>
+      <div class="ds">Nagymező u. 37-39 · <span class="warn">REZERVASYON VAR!</span></div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Opera'nın hemen yanında. Tematik paketler: <strong>WW2, Gamer, Commando</strong>. Max 12 kişi grup. ~60dk.
+    <div class="tip">⚠️ <strong>+5.400 Ft eğitmen ücreti ayrı (nakit!).</strong> Kimlik getir. Alkollü gelme! Önceden online paket seçimi yapılmış olmalı.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Budapest+Shooting+Nagymez%C5%91+utca" target="_blank" onclick="event.stopPropagation()">📍 Budapest Shooting → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 8dk doğuya</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">05</div>
+    <div class="inf">
+      <div class="tm">13:15</div>
+      <div class="nm">🏛️ Gozsdu Udvar + Sokak Sanatı</div>
+      <div class="ds">Király u. / Dob u. arası · Ücretsiz</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1901'de <strong>Manó Gozsdu</strong> tarafından yaptırılan, <strong>7 avlunun birbirine bağlandığı</strong> tarihi pasaj. Dob utca ile Király utca arasını bağlıyor. Komünist dönemde bakımsız kaldı, 2000'lerde restore edildi. Gündüz sakin kafeler, butikler ve sokak sanatı; gece Budapeşte'nin en canlı eğlence koridoru.
+    <div class="tip">🎨 Yahudi Mahallesi duvar resimleri: Kertész Cad. Alice in Wonderland, 6:3 futbol efsanesi. Kolodko mini heykelleri aramaya devam!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gozsdu+Udvar+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Gozsdu Udvar → Haritada aç</a>
+  </div>
+
+  <div class="sec fri">🌆 Öğleden sonra — Opera → Basilica → Tuna → Revue House</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">06</div>
+    <div class="inf">
+      <div class="tm">16:00</div>
+      <div class="nm">🎭 Opera Binası</div>
+      <div class="ds">Andrássy út 22 · Evden 5dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Neo-Rönesans opera binası, <strong>Andrássy Caddesi UNESCO Dünya Mirası</strong> üzerinde. Dışarıdan fotoğraf, 5dk dur devam et.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hungarian+State+Opera+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Opera → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 8dk güneybatıya</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">07</div>
+    <div class="inf">
+      <div class="tm">16:15</div>
+      <div class="nm">🍕 Retro Lángos</div>
+      <div class="ds">Bajcsy-Zsilinszky út 25</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Lángos</strong> — Macaristan'ın milli sokak yemeği. Derin yağda kızartılmış hamur, kökeni Osmanlı dönemine dayanıyor. Budapeşte'de her köşede bulursun ama Retro Lángos kalite/fiyat oranında en iyilerden.
+    <div class="eat">🍽️ <strong>Klasik:</strong> ekşi krema + rendelenmiş peynir. <strong>Cesur:</strong> BBQ Pulled Pork lángos. 2.000-4.000 Ft.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Retro+L%C3%A1ngos+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Retro Lángos → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 2dk</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">08</div>
+    <div class="inf">
+      <div class="tm">16:45</div>
+      <div class="nm">⛪ St. Stephen's Basilica</div>
+      <div class="ds">Szent István tér 1 · Kubbe terası!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1905'te tamamlanan neoklasik bazilika. İnşası <strong>54 yıl</strong> sürdü — bir noktada kubbe çöktü ve sıfırdan yapılması gerekti! Kubbesi <strong>96 metre</strong> — Parlamento ile kasıtlı olarak aynı yükseklikte: <em>ruhani ve dünyevi güç eşit olmalı</em> mesajı. İçeride <strong>Aziz İstván'ın mumyalanmış sağ eli</strong> (Szent Jobb) sergileniyor — Macaristan'ın en kutsal kalıntısı.
+    <div class="tip">🔭 Kubbe terasına mutlaka çıkın (asansör var) — 360° manzara. Bilet ~2.500 Ft. 40dk.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=St+Stephen+Basilica+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Basilica → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 10dk batıya Tuna'ya</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">09</div>
+    <div class="inf">
+      <div class="tm">17:35</div>
+      <div class="nm">🏛️ Parlamento</div>
+      <div class="ds">Kossuth Lajos tér</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1885-1902 arası inşa edilen <strong>Neo-Gotik</strong> başyapıt. <strong>691 oda, 20 km merdiven, 40 kg altın!</strong> Dünyanın en büyük 3. parlamento binası. Mimar <strong>Imre Steindl</strong> binanın tamamlanışını göremedi — o sırada kör olmuştu.
+    <div class="tip">📸 Dışarıdan görmek yeterli. Gece aydınlatması efsane — Cumartesi Batthyány tér'den karşıdan da göreceksiniz!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hungarian+Parliament+Building+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Parlamento → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk güneye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">10</div>
+    <div class="inf">
+      <div class="tm">18:00</div>
+      <div class="nm">🕯️ Shoes on the Danube</div>
+      <div class="ds">Gün batımı! · Ücretsiz</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    2005'te <strong>Can Togay</strong> (Türk kökenli film yönetmeni!) ve Macar heykeltıraş <strong>Gyula Pauer</strong> tarafından yapılan anıt. 2. Dünya Savaşı'nda Macar faşist <strong>Nyilaslar</strong> (Ok-Haç Partisi) 1944-45 kışında binlerce Yahudi, Çingene ve muhalifi Tuna kıyısında sıraladı, ayakkabılarını çıkarmaya zorladı ve nehre doğru vurdu. <strong>60 çift demir ayakkabı</strong> — kadın topuklusu, erkek ayakkabısı, çocuk patiği.
+    <div class="tip">🌅 Gün batımında çok etkileyici. Sessizce saygı göster.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Shoes+on+the+Danube+Bank+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Shoes on the Danube → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk güneye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">11</div>
+    <div class="inf">
+      <div class="tm">18:15</div>
+      <div class="nm">👑 Little Princess Statue</div>
+      <div class="ds">Vigadó tér · Ücretsiz · 🆕</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1972'de heykeltıraş <strong>László Marton</strong> kızı <strong>Évike</strong>'den ilham aldı — 6 yaşındaki Évike bahçede bornozunu pelerin, gazeteden tacını taç olarak takıp prenses oynuyordu. Orijinal heykel sadece 50 cm. 1990'da büyük kopyası tramvay korkuluğuna yerleştirildi. Aynı heykelin bir kopyası <strong>Japonya Tokyo'da</strong> da var!
+    <div class="tip">🍀 Dizlerini ov — şans getiriyor! Çocuksu bir kalple dilek tut.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Little+Princess+Statue+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Little Princess → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 8dk doğuya</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">12</div>
+    <div class="inf">
+      <div class="tm">18:30</div>
+      <div class="nm">📸 Anker köz</div>
+      <div class="ds">Gizli atmosferik sokak · Ücretsiz</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Andrássy Caddesi'nin hemen yanında gizli, dar, atmosferik sokak. Little Princess'ten doğuya Revue House'a giderken yolüstü.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Anker+k%C3%B6z+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Anker köz → Haritada aç</a>
+    <div class="tip">📸 Fotoğraf çek, 5dk dur devam et.</div>
+  </div>
+
+  <div class="info">🚶 <strong>18:45 — Anker köz'den</strong> Yahudi Mahallesi'ne yürüyüş. Revue House'a ~15dk.<br><br>💡 <strong>Tram 2 ipucu:</strong> Yorulursan Tuna kıyısı boyunca çalışan <strong>Tram 2</strong>'ye bin! National Geographic dünyanın en güzel 10 tramvay hattından biri seçti. Parlamento, Kale, köprüler — 350 Ft'ye 20dk şehir turu. Gece versiyonu da muhteşem!</div>
+
+  <div class="sec special">🎪 Akşam — Macar dans şovu + yemek</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">13</div>
+    <div class="inf">
+      <div class="tm">19:30</div>
+      <div class="nm">🎪 Paprika Revue House</div>
+      <div class="ds">Síp u. 27 · <span class="warn">BİLETİNİZ VAR!</span></div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Geleneksel <strong>Macar folk dansları</strong>, canlı <strong>Çingene müziği</strong> ve büfe yemek bir arada. Profesyonel dansçılar Macar tarihini ve kültürünü enerjik koreografiyle anlatıyor. ~23:00'e kadar sürüyor.
+    <div class="eat">🍽️ <strong>Açık büfe:</strong> gulyáš, paprikás csirke (tavuk paprikaş), ızgara etler, turşular, bol tatlı. Her şeyi dene!</div>
+    <div class="tip">🎫 Biletiniz var! Erken gidin, dolabiliyor.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Paprika+Revue+House+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Revue House → Haritada aç</a>
+  </div>
+
+  <div class="sec night">🌙 Gece — Yahudi Mahallesi</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">14</div>
+    <div class="inf">
+      <div class="tm">23:00</div>
+      <div class="nm">🍺 Szimpla Kert</div>
+      <div class="ds">Kazinczy u. 14 · Revue House'dan 3dk!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    2002'de açılan <strong>ruin bar hareketinin doğum yeri</strong>. Eski fabrikadan dönüşmüş — küvet koltuklar, tavandan sarkan bisikletler, grafiti duvarlar, eski <strong>Trabant</strong> arabası masa olarak. 3 kat, 9 bar. Lonely Planet <strong>dünyanın 3. en iyi barı</strong> seçmişti.
+    <div class="eat">🍺 Dreher veya Soproni bira (~1.500 Ft). Fröccs (şarap+soda) dene.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Szimpla+Kert+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Szimpla Kert → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">15</div>
+    <div class="inf">
+      <div class="tm">01:30+</div>
+      <div class="nm">💃 P2 Club / Marilyn</div>
+      <div class="ds">P2: Sas u. 9 · Marilyn: Baross u. 4</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>P2:</strong> Sas u. 9, 1993'ten beri güvenilir gentleman's club. Net fiyat, dolandırıcılık yok. 05:00'e kadar.<br>
+    <strong>Marilyn:</strong> Baross u. 4, 30+ yıllık mekan, giriş ücretsiz. 04:00'e kadar.
+    <div class="tip">💰 Nakit taşı, fiyatı önceden öğren. Kredi kartı kullanma.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=P2+Club+Budapest+Sas" target="_blank" onclick="event.stopPropagation()">📍 P2 Club → Haritada aç</a>
+  </div>
+
+</div>
+
+<!-- ============ CUMARTESİ ============ -->
+<div id="sat" class="page">
+
+  <div class="sec sat">☀️ Sabah — Liberty Bridge → Gellért → Kale</div>
+  <div class="route-row">
+    <a class="route-btn sat" href="https://www.google.com/maps/dir/Centr%C3%A1l+Grand+Cafe,+Budapest/Liberty+Bridge,+Budapest/Gell%C3%A9rt+Hill+Cave,+Budapest/Citadella,+Budapest/V%C3%A1rkert+Baz%C3%A1r,+Budapest/Buda+Castle,+Budapest/" target="_blank">🗺️ Sabah</a>
+    <a class="route-btn sat" href="https://www.google.com/maps/dir/Buda+Castle,+Budapest/Hospital+in+the+Rock,+Budapest/Labyrinth,+%C3%9Ari+u.+9,+Budapest/Fisherman's+Bastion,+Budapest/Matthias+Church,+Budapest/Parliament+Viewpoint,+Batthy%C3%A1ny+t%C3%A9r,+Budapest/Manyi,+Margit+k%C3%B6r%C3%BAt+16,+Budapest/Sz%C3%A9chenyi+Chain+Bridge,+Budapest/" target="_blank">🗺️ Öğleden sonra</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">01</div>
+    <div class="inf">
+      <div class="tm">10:00</div>
+      <div class="nm">☕ Centrál Grand Café</div>
+      <div class="ds">Károlyi u. 9 · Metro/Bolt ile 10dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1887'den beri</strong> açık, Budapeşte'nin altın çağından kalma son kahvehanelerden biri. Yüksek tavanlar, canlı piyano müziği, gazete okuyan yerliler — Viyana kafesi havası. 1. Dünya Savaşı öncesi entelektüeller burada saatlerce oturup çalışırdı.
+    <div class="eat">🍽️ <strong>Eggs Benedict</strong> veya <strong>shakshuka</strong>. Kahve mutlaka dene.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Centr%C3%A1l+Kaveh%C3%A1z+Budapest+K%C3%A1rolyi" target="_blank" onclick="event.stopPropagation()">📍 Centrál Grand Café → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 10dk güneye yürü</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">02</div>
+    <div class="inf">
+      <div class="tm">11:00</div>
+      <div class="nm">🌉 Liberty Bridge</div>
+      <div class="ds">Szabadság híd · Yürüyerek Buda'ya geç</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1896'da Macaristan'ın kuruluşunun <strong>1000. yılı</strong> kutlamaları için açıldı. <strong>Art Nouveau</strong> tarzı, tepesindeki mitolojik <strong>Turul kuşları</strong> (kabilelere yol gösteren kutsal kuş) dikkat çekici. Orijinal adı İmparator Franz Joseph Köprüsü — açılışta imparator bizzat <strong>son perçini çakmıştı</strong>. 2. DS'da Almanlar yıktı, 1946'da yeniden inşa. Yazın gençler köprüde oturup bira içiyor — yerel gelenek!
+    <div class="tip">📸 En iyi açı Gellért tarafından. Yürüyerek Buda'ya geç!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Liberty+Bridge+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Liberty Bridge → Haritada aç</a>
+  </div>
+  <div class="conn">↓ hemen sağda</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">03</div>
+    <div class="inf">
+      <div class="tm">11:20</div>
+      <div class="nm">⛪ Gellért Hill Cave</div>
+      <div class="ds">Szent Gellért rkp. 1 · ~500 Ft</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Adını 1046'da putperestler tarafından tepenin üstünden <strong>Tuna'ya fıçıda yuvarlanarak öldürülen Piskopos Gellért</strong>'ten alıyor. 9. yy'da keşiş İstván termal suyla hastaları iyileştirmiş. 1920'lerde Fransa <strong>Lourdes</strong>'tan ilham alan <strong>Pauline keşişleri</strong> mağarayı kiliseye dönüştürdü. <strong>1951'de komünist gizli polis bastı</strong>, baş keşiş <strong>Ferenc Vezér idam edildi</strong>, giriş kalın <strong>beton duvarla kapatıldı</strong>. 1989'da beton yıkılıp yeniden açıldı — duvarın parçası hâlâ girişte görülebiliyor. İçeride Polonya <strong>Kara Meryem</strong> replikası var.
+    <div class="tip">⚠️ <strong>Pazar kapalı!</strong> Bugün ideal. Mütevazi giyinin. Ses rehberi alın. ~30dk.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gell%C3%A9rt+Hill+Cave+Church+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Gellért Cave → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 15dk patika yukarı</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">04</div>
+    <div class="inf">
+      <div class="tm">12:00</div>
+      <div class="nm">🏔️ Gellért Hill + Citadel + Lookout</div>
+      <div class="ds">Citadella · 270° panorama</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Gellért Hill (235m):</strong> Cave'den tepeye orman patikası. Piskopos Gellért'in heykeli yolda.<br><br>
+    <strong>Citadel (1854):</strong> Habsburglar 1848 Macar devriminden sonra şehri kontrol için inşa etti — Macarlar için <strong>baskı sembolüydü</strong>. Tepedeki <strong>Özgürlük Heykeli</strong> 1947'de Sovyetler dikildi ama Macarlar sahiplendi.<br><br>
+    <strong>Citadel Lookout:</strong> <strong>270° panorama</strong> — Parlamento, köprüler, Margaret Adası, tüm şehir ayağınızın altında.
+    <div class="tip">🔨 Renovasyon var ama manzara açık. 20dk.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Citadella+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Citadel → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 20dk iniş kuzeye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">05</div>
+    <div class="inf">
+      <div class="tm">12:50</div>
+      <div class="nm">🏛️ Várkert Bazár</div>
+      <div class="ds">Ücretsiz · Neo-Rönesans bahçeler</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Miklós Ybl</strong> (Opera'nın da mimarı) tasarımı <strong>Neo-Rönesans</strong> bahçeler. 2014'te <strong>8 yıllık</strong> restorasyonun ardından yeniden açıldı. Kaleden aşağıya inerken zaten geçeceksiniz — Tuna kıyısından kaleye zarif geçiş.
+    <div class="tip">📸 Ücretsiz, harika fotoğraf noktası.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=V%C3%A1rkert+Baz%C3%A1r+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Várkert Bazár → Haritada aç</a>
+  </div>
+  <div class="conn">↓ asansör/yürüyerek yukarı</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">06</div>
+    <div class="inf">
+      <div class="tm">13:15</div>
+      <div class="nm">🏰 Buda Castle</div>
+      <div class="ds">Szent György tér · UNESCO</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>13. yüzyıldan beri</strong> kraliyet sarayı. Moğol istilası, Osmanlı kuşatması, Habsburg dönemi ve 2. DS'da neredeyse tamamen yıkılma — defalarca yıkılıp yeniden inşa edildi. Şimdi <strong>Macar Ulusal Galerisi</strong> ve <strong>Budapeşte Tarih Müzesi</strong>. <strong>UNESCO Dünya Mirası.</strong> Avluda <strong>Kral Matthias Çeşmesi</strong> (av sahnesi) ve <strong>Aslan Avlusu</strong> (Oroszlános udvar).
+    <div class="tip">💡 Ücretsiz asansörle veya Várkert'ten yürüyerek çıkın. Avlu ve manzara ücretsiz. 30dk.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Buda+Castle+Palace+Szent+Gy%C3%B6rgy+t%C3%A9r+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Buda Castle → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk batıya</div>
+
+  <div class="sec sat">🏰 Öğleden sonra — Kale + Manzara + Manyi</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">07</div>
+    <div class="inf">
+      <div class="tm">13:50</div>
+      <div class="nm">🏥 Hospital in the Rock</div>
+      <div class="ds">Lovas út 4/c · DIŞARIDAN</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    2. Dünya Savaşı sırasında Buda Kalesi'nin altındaki doğal mağara sisteminde kurulan <strong>gizli askeri hastane</strong>. 1944-45 kuşatmasında binlerce yaralı tedavi edildi. Soğuk Savaş'ta <strong>nükleer sığınağa</strong> dönüştürüldü. İçeri girmiyoruz ama binayı/girişini görün.
+    <div class="tip">👀 Dışarıdan bak, fotoğraf çek. 5dk. İlgi çekerse ayrıca geri gelin (~16$, rehberli tur).</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hospital+in+the+Rock+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Hospital in the Rock → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 3dk kuzeye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">08</div>
+    <div class="inf">
+      <div class="tm">14:00</div>
+      <div class="nm">🌀 Labyrinth</div>
+      <div class="ds">Úri u. 9 · DIŞARIDAN</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Buda Kalesi altındaki doğal mağara sistemi. Efsaneye göre <strong>Vlad Tepeş (Drakula) 1462'de</strong> burada hapsedilmiş. Zifiri karanlık bölümler var. İçeri girmiyoruz ama girişini görün.
+    <div class="tip">👀 Dışarıdan, 5dk. Merak edersen giriş ~14$, sadece nakit.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Labyrinth+%C3%9Ari+u.+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Labyrinth → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 3dk kuzeye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">09</div>
+    <div class="inf">
+      <div class="tm">14:10</div>
+      <div class="nm">🐟 Fisherman's Bastion</div>
+      <div class="ds">Szentháromság tér · EN İYİ MANZARA!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1895-1902 arası mimar <strong>Frigyes Schulek</strong>. <strong>7 kulesi</strong>, 896'da Macaristan'ı kuran <strong>7 Macar kabilesini</strong> temsil ediyor. Adı, Orta Çağ'da bu bölgeyi koruyan <strong>balıkçı loncasından</strong> — balıkçılar burayı düşmana karşı savunuyordu. Tartışmasız <strong>EN İYİ manzara noktası</strong>: Parlamento, Tuna, tüm Pest karşınızda.
+    <div class="tip">💡 Alt teras ücretsiz ve manzara için yeterli! Üst teras 1.200 Ft. 30dk.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Fisherman+Bastion+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Fisherman's Bastion → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 1dk yanında</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">10</div>
+    <div class="inf">
+      <div class="tm">14:45</div>
+      <div class="nm">⛪ Matthias Church</div>
+      <div class="ds">Szentháromság tér 2 · ~3.000 Ft</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1255</strong>'te inşa edildi. İnanılmaz geçmişi var: <strong>1541-1686 arası 145 yıl cami olarak kullanıldı!</strong> (Buda Büyük Camisi) Minareler eklenmiş, Hristiyan freskolar silinmişti. Osmanlılar kovulduktan sonra kiliseye dönüştürüldü. 19. yy'da eklenen renkli <strong>Zsolnay çatı karoları</strong> bugün en ikonik özelliği. İki Macar kralının taç giyme töreni burada yapılmıştır.
+    <div class="tip">📸 Dışarıdan renkli çatı fotoğrafı ücretsiz ve zaten muhteşem. 20dk.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Matthias+Church+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Matthias Church → Haritada aç</a>
+  </div>
+  <div class="conn">↓</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">11</div>
+    <div class="inf">
+      <div class="tm">15:10</div>
+      <div class="nm">🏘️ Kale Sokakları Keşfi</div>
+      <div class="ds">Úri u., Fortuna u. · Ücretsiz</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Úri, Fortuna, Országház, Táncsics Mihály</strong> sokakları — Orta Çağ atmosferli dar arnavut kaldırımlı sokaklar, gizli avlular, renkli barok cepheler. Táncsics Mihály sokağında <strong>Ortaçağ Yahudi mezarlığı</strong> kalıntıları var.
+    <div class="tip">🚶 30dk keyifli yürüyüş. Turist kalabalığından uzak, sessiz ve büyüleyici.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%9Ari+utca+Buda+Castle+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Kale Mahallesi → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 10dk iniş</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">12</div>
+    <div class="inf">
+      <div class="tm">15:45</div>
+      <div class="nm">🏛️ Parliament Viewpoint</div>
+      <div class="ds">Batthyány tér · En iyi fotoğraf noktası</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Parlamento'nun <strong>tam karşısı</strong>, Buda tarafında. Binanın cepheden en iyi fotoğrafının çekildiği nokta. M2 metro Batthyány tér durağının hemen çıkışı.
+    <div class="tip">📸 Gündüz de gece de muhteşem. Ücretsiz, 24 saat açık.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Parliament+Viewpoint+Batthy%C3%A1ny+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Parliament Viewpoint → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 8dk kuzeye</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">13</div>
+    <div class="inf">
+      <div class="tm">16:00</div>
+      <div class="nm">🍺 Manyi — İçecek Molası</div>
+      <div class="ds">Margit körút 16 · Buda'nın ruin bar'ı</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>2020'de</strong> açılan Buda tarafının en otantik ruin barı. Buda'da olması sayesinde bekârlık partisi turistlerinden uzakta, <strong>özgür ruhlu yerel kalabalığını</strong> korumayı başarmış. Savaş öncesi yıkık binanın içinde <strong>labirent gibi içki mekanı</strong> ve konser alanı. Batthyány'den kuzeye 8dk.
+    <div class="eat">🍺 Macar craft bira veya doğal şarap. Kale gezisinden sonra harika mola!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Manyi+Margit+k%C3%B6r%C3%BAt+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Manyi → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 10dk güneye geri</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">14</div>
+    <div class="inf">
+      <div class="tm">16:45</div>
+      <div class="nm">🌉 Széchenyi Chain Bridge</div>
+      <div class="ds">Yürüyerek Pest'e geç → eve dön</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1849</strong>'da açılan, Buda-Pest'i birleştiren <strong>ilk kalıcı köprü</strong>. Kont <strong>István Széchenyi</strong> finanse etti ("En büyük Macar"). İskoç mühendis <strong>Adam Clark</strong> tasarladı. Aslan efsanesi: <em>"dili yok"</em> diye mimar intihar etmiş — gerçekte dilleri var (aşağıdan bakınca görünmüyor!) ve Clark 1866'da doğal sebeplerle öldü. 2023'te restorasyon bitti.
+    <div class="tip">🚶 Ortada durup iki yöne fotoğraf! Pest'e geçip eve yürü.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sz%C3%A9chenyi+Chain+Bridge+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Chain Bridge → Haritada aç</a>
+  </div>
+
+  <div class="sec sat">🍽️ Akşam + Gece</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">15</div>
+    <div class="inf">
+      <div class="tm">19:00</div>
+      <div class="nm">🍽️ Menza — Akşam Yemeği</div>
+      <div class="ds">Liszt Ferenc tér 2 · Evden 8dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>20 yıldır</strong> Budapeşte'nin en tutarlı restoranı. "Menza" Macarca <strong>"kantin/yemekhane"</strong> demek. Sosyalist dönem kantinlerinden esinlenen retro dekor ama yemek büyükanne kalitesinde. Gece ilerledikçe müzik yükselir, ışıklar kısılır.
+    <div class="eat">🍽️ <strong>Başlangıç:</strong> Sarımsak kremalı çorba + mini lángos (imza yemek!) veya húsleves (et suyu).<br><strong>Ana:</strong> Dana paprikás + nokedli, domuz şnitzel veya ördek burger.<br><strong>Tatlı:</strong> Mákos guba (haşhaş ekmek pudingi) veya somlói galuska.<br><strong>Mutlaka:</strong> Foie gras çok ucuz, dene! 12-18€/kişi.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Menza → Haritada aç</a>
+  </div>
+  <div class="conn">↓</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">16</div>
+    <div class="inf">
+      <div class="tm">23:00</div>
+      <div class="nm">🎶 Instant-Fogas</div>
+      <div class="ds">Akácfa u. 51 · 06:00'a kadar! · Evinize 8dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    İki efsane mekanın (Instant + Fogas) birleşmesiyle oluşmuş <strong>dev gece makinesi</strong>. <strong>7 farklı oda</strong>, her birinde farklı müzik: tekno, retro, rock, pop. Çok katlı, bahçeli. 06:00'a kadar açık.
+    <div class="eat">🥃 <strong>Pálinka shot</strong> — Macar meyve rakısı (elma, armut, erik). %35-70 alkol, DİKKAT!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Instant-Fogas+Ak%C3%A1cfa+utca+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Instant-Fogas → Haritada aç</a>
+  </div>
+
+</div>
+
+<!-- ============ PAZAR ============ -->
+<div id="sun" class="page">
+
+  <div class="sec sun">☀️ Sabah — Yahudi Mahallesi</div>
+  <div class="route-row">
+    <a class="route-btn sun" href="https://www.google.com/maps/dir/Csengery+u.+54,+Budapest+1067/Twentysix+Budapest,+Kir%C3%A1ly+u.+26,+Budapest/Doh%C3%A1ny+Street+Synagogue,+Budapest/Moon+Budapest,+Piarista+k%C3%B6z,+Budapest/Central+Market+Hall,+Budapest/" target="_blank">🗺️ Sabah</a>
+    <a class="route-btn sun" href="https://www.google.com/maps/dir/Central+Market+Hall,+Budapest/Heroes'+Square,+Budapest/Vajdahunyad+Castle,+Budapest/Margaret+Island,+Budapest/" target="_blank">🗺️ Öğleden sonra</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">01</div>
+    <div class="inf">
+      <div class="tm">10:00</div>
+      <div class="nm">☕ Twentysix — Brunch</div>
+      <div class="ds">Király u. 26 · Evden 5dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Botanik bahçe</strong> temalı, Akdeniz esintili restoran. İsmin sebebi: mekanın bitkileri için ideal <strong>26°C</strong> sıcaklık. Bir içecek alırsan senin adına bir ağaç dikiyorlar!
+    <div class="eat">🍽️ <strong>English Breakfast</strong> (büyük porsiyon!) veya <strong>Mango Bellini + shakshuka</strong>. Avokado tost da çok iyi.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Twentysix+Budapest+Kir%C3%A1ly+utca" target="_blank" onclick="event.stopPropagation()">📍 Twentysix → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">02</div>
+    <div class="inf">
+      <div class="tm">11:15</div>
+      <div class="nm">🕍 Jewish Walk</div>
+      <div class="ds">Yahudi Mahallesi · Hızlı tur</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Sinagog çevresi, tarihi binalar, Gozsdu Udvar, sokak sanatı, Kolodko heykeller. ~30dk hızlı tur.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gozsdu+Udvar+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Jewish Walk başlangıç → Haritada aç</a>
+  </div>
+  <div class="conn">↓ devam</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">03</div>
+    <div class="inf">
+      <div class="tm">11:45</div>
+      <div class="nm">🕍 Dohány Sinagogu</div>
+      <div class="ds">Dohány u. 2 · 14.500 Ft · Pazar açık!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1859</strong>, Avrupa'nın en büyük ve dünyanın 2. en büyük sinagogu. Mimar <strong>Ludwig Förster</strong>, <strong>Moorish Revival</strong> (Endülüs) tarzı — sinagog ama camiye benzer elementler. <strong>3.000 kişi</strong> kapasiteli. Arka bahçede <strong>Emanuel Ağacı</strong> — metal söğüt, her yaprağında bir Holokost kurbanının adı. <strong>Raoul Wallenberg</strong> Parkı — binlerce Macar Yahudi'sini kurtaran İsveçli diplomat anısına.
+    <div class="tip">🎫 14.500 Ft (~37€), İngilizce rehberli tur dahil. Online al! <span class="warn">Perşembe+Cumartesi kapalı.</span></div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Doh%C3%A1ny+Street+Synagogue+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Dohány Sinagogu → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 10dk güneybatı</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">04</div>
+    <div class="inf">
+      <div class="tm">12:45</div>
+      <div class="nm">🌙 Moon Budapest</div>
+      <div class="ds">Piarista köz 1 · Ücretsiz · 🆕</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte'nin kalbinde, <strong>Váci utca</strong> yanında dar bir geçitte <strong>3,5m yükseklikte asılı dev Ay replikası</strong>. Kraterleri ve yüzey dokusu gerçeğe yakın detayda. <strong>Lumiere Hall</strong> sanat mekanının önünde. Gündüz etkileyici ama gece iç aydınlatmayla büyüleyici.
+    <div class="tip">📸 Ücretsiz, 7/24. Market Hall'a giderken yolüstü. 10dk.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Moon+Budapest+Piarista" target="_blank" onclick="event.stopPropagation()">📍 Moon Budapest → Haritada aç</a>
+  </div>
+
+  <div class="sec sun">🛒 Öğle — Güneye iniş</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">05</div>
+    <div class="inf">
+      <div class="tm">13:00</div>
+      <div class="nm">🛒 Central Market Hall</div>
+      <div class="ds">Fővám tér · <span class="warn">PAZAR 10-16!</span></div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1897</strong>'de açılan Budapeşte'nin en büyük kapalı çarşısı. Eiffel'in öğrencisi <strong>Samu Pecz</strong> tasarımı çelik çatı, renkli <strong>Zsolnay seramik</strong> karolar. Alt kat taze ürünler, üst kat yemek + hediyelik.
+    <div class="eat">
+      🍽️ <strong>Dene:</strong><br>
+      • <strong>Lángos</strong> (üst kat) — klasik<br>
+      • <strong>Kolbász</strong> — Macar sucuğu<br>
+      • <strong>Körözött</strong> — zemin kat kasap/şarküteri tezgahlarından ekmekle al. Baharatlı süzme peynir ezmesi. Taze, ucuz, yerinde ye.<br>
+      • <strong>Zsíros kenyér</strong> — zsír ("jir") = domuz iç yağı, Türkiye'de "don yağı". Ekmek+tuz+soğan+paprika. Basit ama inanılmaz doyurucu.<br>
+      • <strong>Töpörtyű</strong> — zsír yapılırken kalan çıtır domuz deri/et parçaları. Çiğdem gibi ama daha yoğun. Turistik kafelerde bulamazsın — <strong>kasap tezgahlarında sor!</strong><br>
+      • <strong>Hediyelik:</strong> Paprika, Pick szalámi. Pazarlık yap!
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Market Hall → Haritada aç</a>
+    </div>
+  </div>
+
+  <div class="sec sun">🗿 Öğleden sonra — City Park + Margaret Island</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">06</div>
+    <div class="inf">
+      <div class="tm">14:15</div>
+      <div class="nm">🗿 Heroes' Square</div>
+      <div class="ds">Hősök tere · M4+M1 metro ~20dk · UNESCO</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1896'da <strong>Milenyum Anıtı</strong> — Macaristan'ın kuruluşunun 1000. yılı. Merkez sütunda <strong>Cebrail meleği</strong>, etrafında <strong>7 kabile reisi</strong>, kolonatlarda <strong>14 tarihi figür</strong>. İki yanda Güzel Sanatlar Müzesi ve Mücsarnok. <strong>UNESCO Dünya Mirası.</strong>
+    <div class="tip">🚇 M1 metro — dünyanın Londra'dan sonra en eski metrosu! Ücretsiz, 20dk yeter.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Heroes+Square+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Heroes' Square → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 5dk</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">07</div>
+    <div class="inf">
+      <div class="tm">14:45</div>
+      <div class="nm">🏰 Vajdahunyad + Anonymous + Göl</div>
+      <div class="ds">Városliget · Ücretsiz · 🆕</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1896</strong>'da geçici ahşaptan yapıldı, sevilince <strong>1908'de kalıcı</strong> taştan yeniden inşa. <strong>Romanesk+Gotik+Rönesans+Barok</strong> kolaj — "tarih boyunca bunları yaptık" mesajı. Ana bölüm Transilvanya <strong>Hunyad Kalesi</strong> kopyası.<br><br>
+    <strong>Anonymous heykeli:</strong> 12. yy tarihçisi, yüzü kapüşonla gizli. Kalemini ov — şans gelsin!<br><br>
+    <strong>Lake of the City Park:</strong> 1866, kışın buz pateni (1870'ten beri!), yazın sandal (~2.500 Ft/30dk). Köprüden kalenin göle yansıması = <strong>Budapeşte'nin en romantik karesi!</strong>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Vajdahunyad+Castle+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Vajdahunyad Castle → Haritada aç</a>
+  </div>
+  <div class="conn">↓ 26 otobüs 15dk</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">08</div>
+    <div class="inf">
+      <div class="tm">15:30</div>
+      <div class="nm">🌿 Margaret Island</div>
+      <div class="ds">Margitsziget · Bisiklet kirala! · ~90dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>2,5 km</strong> ada, arabasız. Orta Çağ'da kraliyet av alanı. Adını <strong>IV. Béla</strong>'nın kızı <strong>Aziz Margit</strong>'ten alıyor — kral Moğol istilasından kurtulursa kızını Tanrı'ya adayacağına söz vermiş ve sözünü tutarak Margit'i adadaki Dominiken manastırına göndermiş. Japon bahçesi, müzikli fıskiye, yüzme havuzu.
+    <div class="tip">🚲 Bisiklet kirala (~2.000 Ft/saat). 🎵 Müzikli fıskiye 19:00'da ışık şovu!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Margaret+Island+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Margaret Island → Haritada aç</a>
+  </div>
+
+  <div class="sec food">🌙 Veda gecesi — Sakin kapanış</div>
+
+  <a class="route-btn sun" href="https://www.google.com/maps/dir/Margaret+Island,+Budapest/Paprika+Vend%C3%A9gl%C5%91,+Budapest/%C3%89leszt%C5%91,+Budapest/Mazel+Tov,+Budapest/Csengery+u.+54,+Budapest+1067/" target="_blank">🗺️ Veda gecesi rotası</a>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">09</div>
+    <div class="inf">
+      <div class="tm">18:00</div>
+      <div class="nm">🍽️ Paprika Vendéglő</div>
+      <div class="ds">Dózsa György út 72 · Margaret dönüşü yolüstü</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Ortaçağ taverna atmosferi, yerli favorisi. City Park yakını.
+    <div class="eat">🍽️ <strong>Kaz budu (libacomb)</strong> — Budapeşte'nin en iyisi! <strong>Gulyásleves</strong> başlangıç. <strong>Kaz ciğeri (libamáj)</strong> Macaristan'ın gururu. <strong>Mangalica domuz eti</strong> de harika.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Paprika+Vend%C3%A9gl%C5%91+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Paprika Vendéglő → Haritada aç</a>
+  </div>
+  <div class="conn">↓</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">10</div>
+    <div class="inf">
+      <div class="tm">20:00</div>
+      <div class="nm">🍺 Élesztőház</div>
+      <div class="ds">Tűzoltó u. 22 · Son craft biralar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Eski cam fabrikasından dönüşmüş <strong>craft bira cenneti</strong>. 20+ musluk, Macar+uluslararası.
+    <div class="eat">🍺 Macar IPA veya elma cider + pulled pork sandviç.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%89leszt%C5%91h%C3%A1z+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Élesztőház → Haritada aç</a>
+  </div>
+  <div class="conn">↓</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">11</div>
+    <div class="inf">
+      <div class="tm">21:30</div>
+      <div class="nm">🌿 Mazel Tov — Son kokteyl</div>
+      <div class="ds">Akácfa u. 47 · Bahçeli restoran-bar · 🆕</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Yahudi Mahallesi'nin en güzel bahçeli mekanı. Akdeniz yemekleri + kokteyller. Açık avluda ağaçlar altında son geceye yakışır bir atmosfer. Élesztőház'dan 10dk, evinize 5dk.
+    <div class="eat">🍸 Kokteyl + hummus tabağı. Son gece vibes!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Mazel+Tov+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Mazel Tov → Haritada aç</a>
+  </div>
+
+  <div class="info"><strong>23:00 — Otel,</strong> bavul topla → 03:30 havaalanı</div>
+
+  <div class="info warn">
+    <strong>✈️ PAZARTESİ 06:00 UÇAK!</strong><br>
+    23:00 otel → bavul topla → 03:30 havaalanı<br>
+    <strong>Bolt taksi ~40dk, ~9.000 HUF</strong>
+  </div>
+
+  <div class="stop" onclick="window.open('https://www.google.com/maps/dir/Csengery+u.+54,+Budapest+1067/Budapest+Airport/','_blank')">
+    <div class="num s">✈️</div>
+    <div class="inf">
+      <div class="tm">03:30</div>
+      <div class="nm">✈️ Havaalanı Transfer</div>
+      <div class="ds">Bolt taksi ~40dk · UÇAK 06:00!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+
+</div>
+
+<!-- ============ LEZZET ============ -->
+<div id="food" class="page">
+
+  <div class="info">
+    <strong>🧓 Yaşlı Macar diyor ki:</strong> <em>"Macar yemeği ağırdır çünkü biz soğuk kışlarda çalışan bir halkız. Ama her kaşık sevgiyle yapılır."</em><br><br>
+    <strong>🧑 Genç Macar diyor ki:</strong> <em>"Her öğün gulaş yeme — araya lángos, kürtős ve craft bira koy. Ve mutlaka Túró Rudi dene, marketten!"</em>
+  </div>
+
+  <div class="sec food">🥘 Ana yemekler — "ağır ama efsane"</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🥇</div>
+    <div class="inf">
+      <div class="nm">🥘 Gulyásleves (Gulaş Çorbası)</div>
+      <div class="ds">Macaristan'ın milli yemeği · Aslında çorba!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Dikkat:</strong> Gulaş Macaristan'da bir <strong>çorbadır</strong>, yahni değil! Et + patates + paprika + havuç, bogrács'ta (kazan) ateşte pişer. Turistik yerlerde hafif yapılır — <strong>iyisini bulmak önemli.</strong><br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Gerçek gulyás açık ateşte kazanda pişer. Restoranda o tadı bulamazsın ama Gettó Gulyás yaklaşıyor."</em><br>
+    <strong>🧑 Genç Macar:</strong> <em>"İlk yemeğin bu olsun — karnın aç olsun çünkü ağır."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Gettó Gulyás (Yahudi Mah.) · Menza (Liszt Ferenc tér) · Paprika Vendéglő (City Park)<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gett%C3%B3+Guly%C3%A1s+Budapest" target="_blank">📍 Gettó Gulyás → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank">📍 Menza → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🥈</div>
+    <div class="inf">
+      <div class="nm">🍖 Pörkölt + Nokedli</div>
+      <div class="ds">Gulaşın daha koyu, yoğun versiyonu</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Yerellerin <strong>gerçek favorisi</strong> — turislerin bildiği gulaştan daha popüler! Bol soğan ve kaliteli paprikayla yavaş pişen yoğun et yemeği. Yanında mutlaka <strong>nokedli</strong> (Macar usulü küçük hamur topları) ve <strong>ekşi turşu</strong> ile gelir.<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Gulyás turistler içindir. Biz pörkölt yeriz."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Menza · Paprika Vendéglő · Herhangi bir "vendéglő"<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank">📍 Menza → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Paprika+Vend%C3%A9gl%C5%91+Budapest" target="_blank">📍 Paprika Vendéglő → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🥉</div>
+    <div class="inf">
+      <div class="nm">🍗 Paprikás Csirke (Tavuk Paprikaş)</div>
+      <div class="ds">Kremalı paprika soslu tavuk · En garanti lezzet</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Tavuk etinin kremsi <strong>tejföl</strong> (ekşi krema) sosu ve bolca paprikayla harmanlandığı Macar evlerinin vazgeçilmezi. Sosu o kadar lezzetli ki tabağı <strong>ekmekle sıyırmak</strong> isteyeceksin. Gulaştan daha hafif, daha "garanti" bir seçim.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Anneannemin en iyi yaptığı yemek. Restoranda da denemeye değer."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Menza · Paprika Revue House · M Restaurant<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank">📍 Menza → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=M+Restaurant+Budapest+Kert%C3%A9sz" target="_blank">📍 M Restaurant → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍽️</div>
+    <div class="inf">
+      <div class="nm">🥟 Hortobágyi Palacsinta</div>
+      <div class="ds">Etli krep — tatlı değil! · Tuzlu başlangıç</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Bu bildiğin tatlı krep <strong>değil</strong> — içi kıyma etle doldurulmuş, fırınlanmış ve üzerine <strong>paprika sosu</strong> dökülmüş tuzlu bir başlangıç. Menüde "palacsinta" görünce tatlı sanma!<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Hortobágy bölgesinin gururu. Bir yerel restoranda görürsen kaçırma."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Menza · Paprika Vendéglő<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank">📍 Menza → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍽️</div>
+    <div class="inf">
+      <div class="nm">🥬 Töltött Káposzta (Lahana Dolması)</div>
+      <div class="ds">Bizim sarmaya benzer · Tejföl ile</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Bizim <strong>lahana sarmasına</strong> çok benzer ama içinde <strong>tütsülenmiş etler</strong> var ve üzerine devasa bir kaşık <strong>tejföl</strong> (ekşi krema) ekleniyor. Kış aylarının ve bayramların kralı.<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Noel sofrasının olmazsa olmazı. Ama iyi restoranda yıl boyu bulursun."</em>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍽️</div>
+    <div class="inf">
+      <div class="nm">🦆 Foie Gras (Libamáj)</div>
+      <div class="ds">Macaristan dünya lideri · Çok ucuz!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Macaristan, Fransa'dan sonra <strong>dünyanın 2. büyük foie gras üreticisi</strong>. Fransa'da €40 olan foie gras burada <strong>€8-12</strong>! Bu fırsatı kaçırma.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Menza'da foie gras dene — o fiyata o kaliteyi başka yerde bulamazsın."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Menza (başlangıç) · M Restaurant (kremalı karamelli, imza yemek!)<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank">📍 Menza → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=M+Restaurant+Budapest+Kert%C3%A9sz" target="_blank">📍 M Restaurant → Haritada aç</a></div>
+  </div>
+
+  <div class="sec food">🫓 Sokak lezzetleri — gece kurtarıcı</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">⭐</div>
+    <div class="inf">
+      <div class="nm">🫓 Lángos</div>
+      <div class="ds">Macaristan'ın milli sokak yemeği · Osmanlı mirası</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Kızarmış hamur — adı "alev" anlamına gelen <strong>"láng"</strong>dan geliyor, çünkü orijinali tuğla fırında alevle pişirilirdi. Kökeni <strong>Osmanlı dönemi</strong>ne dayanıyor. Yerellerin yaptığı gibi önce <strong>sarımsak suyu</strong> sürdür, sonra ekşi krema + kaşar peyniri (Trappista). Alkol sonrası = mükemmel!<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Gece çıkışı lángos yemeden eve dönmek günah!"</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Retro Lángos Budapest (en iyi!) · Central Market Hall üst kat<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Retro+L%C3%A1ngos+Budapest" target="_blank">📍 Retro Lángos → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Market Hall → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">⭐</div>
+    <div class="inf">
+      <div class="nm">🌭 Kolbász (Macar Sucuğu)</div>
+      <div class="ds">Baharatlı, yoğun · Bira yanında mükemmel</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Dumanlı, baharatlı, paprika aromalı Macar sucuğu. Sokakta da restoranlarda da bulursun. <strong>Mangalica</strong> (tüylü domuz) versiyonu özellikle aranır.
+    <div class="eat">📍 <strong>Nerede:</strong> Central Market Hall zemin kat kasaplar · Sokak tezgahları<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Market Hall → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">⭐</div>
+    <div class="inf">
+      <div class="nm">🧈 Zsíros Kenyér + Töpörtyű</div>
+      <div class="ds">Don yağlı ekmek · Market Hall'da dene!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Zsír</strong> (okunuşu: "jir") = domuz iç yağı, Türkiye'de <strong>"don yağı"</strong> diye bilirsin. Ekmek üzerine sürülüp tuz + çiğ soğan halkası + paprika. Kulağa basit ama <strong>inanılmaz doyurucu</strong>.<br><br>
+    <strong>Töpörtyű:</strong> Zsír yapılırken kalan çıtır çıtır domuz deri/et parçaları. Bizim çiğdem gibi ama daha yoğun. Zsíros kenyér üstüne de konuyor.<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Bu yemeği turistik kafelerde bulamazsın. Kasap tezgahlarına git, 'zsír kérek' de."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Central Market Hall zemin kat kasap tezgahları — başka yerde bulamazsın!<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Market Hall → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">⭐</div>
+    <div class="inf">
+      <div class="nm">🧀 Körözött</div>
+      <div class="ds">Baharatlı peynir ezmesi · Ekmekle</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Fűszeres túró denen <strong>baharatlı süzme peynir ezmesi</strong>, paprika ve soğanla karıştırılmış. Market Hall'da kasap/şarküteri tezgahlarından <strong>ekmekle birlikte</strong> al — taze yapılmış, çok ucuz, yerinde ye.
+    <div class="eat">📍 <strong>Nerede:</strong> Central Market Hall zemin kat · Herhangi bir şarküteri<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Market Hall → Haritada aç</a></div>
+  </div>
+
+  <div class="sec food">🍰 Tatlılar — "her kaşığına değer"</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🏆</div>
+    <div class="inf">
+      <div class="nm">🍰 Somlói Galuska</div>
+      <div class="ds">"Macaristan'ın en sevilen tatlısı" · Kalori bombası!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <em>"Macaristan'ın en sevilen tatlısı nedir?"</em> diye sorarsan <strong>%90 bu cevabı alırsın</strong>. Pandispanya katları + ceviz + çikolata sosu + bol krem şanti. Biraz <strong>trifle</strong> gibi, tam bir kalori bombası ama her kaşığına değer.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Menza'nın somlóija efsane — başka tatlı sipariş etme."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Menza · Gerbeaud Café · Hemen hemen her restoran<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank">📍 Menza → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gerbeaud+Cafe+Budapest" target="_blank">📍 Gerbeaud → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🎂</div>
+    <div class="inf">
+      <div class="nm">🎂 Dobos Torte</div>
+      <div class="ds">19. yy klasiği · Karamel kaplı katmerli pasta</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1885'ten beri</strong> asaletini koruyan klasik. Beş kat ince pandispanya + çikolata kreması, en üstte <strong>sert karamel tabakası</strong>. Adını mucidi <strong>József Dobos</strong>'tan alıyor. 19. yy Budapeşte'nin lüks kafelerinin simgesi.
+    <div class="eat">📍 <strong>Nerede:</strong> Gerbeaud Café (en ünlüsü) · Ruszwurm · Centrál Grand Café<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gerbeaud+Cafe+Budapest" target="_blank">📍 Gerbeaud → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ruszwurm+Cukr%C3%A1szda+Budapest" target="_blank">📍 Ruszwurm → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍫</div>
+    <div class="inf">
+      <div class="nm">🍫 Kürtőskalács (Baca Keki)</div>
+      <div class="ds">Sokakta sıcak sıcak · Tarçınlı veya cevizli</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Şekerli, tarçınlı silindir kek — odun ateşinde dönerek pişiyor, sokakta mis gibi <strong>karamel kokusu</strong> duyarsan o budur! Tarçınlı veya cevizli olanı yereller arasında en popüler.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Gece yürürken alınır — tatlı + sokak vibes!"</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Molnár's Kürtőskalács (en iyi) · Váci utca · Her yerde<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Moln%C3%A1r+K%C3%BCrt%C5%91skal%C3%A1cs+Budapest" target="_blank">📍 Molnár's → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍮</div>
+    <div class="inf">
+      <div class="nm">🍮 Mákos Guba</div>
+      <div class="ds">Haşhaşlı ekmek pudingi · Sıra dışı tatlı</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Bayat ekmek parçaları + süt + haşhaş tohumu + pudra şekeri. Kulağa garip gelebilir ama <strong>inanılmaz comfort food</strong>. Macar çocukluk tatlısı, evlerin ve okul kantinlerinin ("menza"!) klasiği.
+    <div class="eat">📍 <strong>Nerede:</strong> Menza (çok uygun!) · Paprika Vendéglő<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+Budapest" target="_blank">📍 Menza → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍫</div>
+    <div class="inf">
+      <div class="nm">🍫 Túró Rudi</div>
+      <div class="ds">Marketten al! · Macarların çocukluk aşkı</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Bu bir yemek değil, bir <strong>fenomen</strong>! Dışı çikolata kaplı, içi lor peyniri (túró) dolgulu atıştırmalık çubuk. <strong>"Pöttyös"</strong> markası en ünlüsü — kırmızı benekli paketi her markette bulursun. Ahududu, limon gibi aromalı çeşitleri de var. <strong>~300 Ft (€0.75)!</strong><br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Çocukluğumun tadı. Marketten mutlaka al, denemeden dönme!"</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Herhangi bir süpermarket (SPAR, CBA, Tesco) soğuk dolap · ~300 Ft<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=SPAR+Budapest+center" target="_blank">📍 En yakın SPAR → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍰</div>
+    <div class="inf">
+      <div class="nm">🍰 Krémes</div>
+      <div class="ds">Kremşnit benzeri · Puf böreği + muhallebi</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Katmerli puf böreği arasında zengin <strong>muhallebi kreması</strong>. Bizim kremşnite çok benzer. Macar pastane kültürünün temel taşı.
+    <div class="eat">📍 <strong>Nerede:</strong> Ruszwurm Cukrászda (Kale, 1827'den beri!) · Gerbeaud Café<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ruszwurm+Cukr%C3%A1szda+Budapest" target="_blank">📍 Ruszwurm → Haritada aç</a></div>
+  </div>
+
+  <div class="sec food">🍷 İçmeden dönülmez</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍷</div>
+    <div class="inf">
+      <div class="nm">🍷 Tokaji Aszú</div>
+      <div class="ds">"Kralların şarabı" · Tatlı ama güçlü</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Dünyanın en eski tatlı şaraplarından biri. XIV. Louis <strong>"Kralların şarabı, şarapların kralı"</strong> demiş. Özellikle <strong>Tokaji Aszú</strong> yerellerin gurur kaynağı. Altın renkli, bal + kayısı aromalı.<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Tokaji'yi yemekten sonra, tatlı yerine iç. Her yudumu hisset."</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Bortársaság (Basilica yanı, tadım var) · Herhangi bir restoran<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bort%C3%A1rsas%C3%A1g+Budapest" target="_blank">📍 Bortársaság → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍷</div>
+    <div class="inf">
+      <div class="nm">🍷 Egri Bikavér ("Boğa Kanı")</div>
+      <div class="ds">Kırmızı şarap · Kuvvetli, gövdeli</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Eger bölgesinden gelen güçlü kırmızı şarap. Efsaneye göre Osmanlı kuşatmasında Macar askerleri <strong>kırmızı şarap içerek</strong> savaştı — Osmanlılar kırmızı lekeleri görüp <strong>"boğa kanı içiyorlar!"</strong> diye korktu ve geri çekildi. Et yemeklerinin yanında mükemmel.
+    <div class="eat">📍 <strong>Nerede:</strong> Bortársaság · Menza · Herhangi bir restoran<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bort%C3%A1rsas%C3%A1g+Budapest" target="_blank">📍 Bortársaság → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🥃</div>
+    <div class="inf">
+      <div class="nm">🥃 Pálinka</div>
+      <div class="ds">%40-70 alkol · "Yavaş içeyim" dersen hata!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Erik, kayısı veya armut gibi meyvelerden yapılan çok sert brendy. <strong>"İlaç niyetine"</strong> denilerek içilir. Bir yerelle yemeğe oturduğunda muhtemelen önce bir shot Pálinka ile başlarsınız.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Shot olarak iç, 'yavaş içeyim' dersen hata yaparsın!"</em>
+    <div class="eat">📍 <strong>Nerede:</strong> Pálinka Múzeum (tadım!) · Lámpás Pub · Her bar<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=P%C3%A1linka+M%C3%BAzeum+Budapest" target="_blank">📍 Pálinka Múzeum → Haritada aç</a> · <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=L%C3%A1mp%C3%A1s+Pub+Budapest" target="_blank">📍 Lámpás Pub → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🥃</div>
+    <div class="inf">
+      <div class="nm">🥃 Unicum</div>
+      <div class="ds">40+ bitkili likör · İkonik yuvarlak şişe</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    40'tan fazla bitkiden yapılan, <strong>mideyi rahatlattığına inanılan</strong> acımsı likör. Şişesinin tasarımı bile ikoniktir. Jägermeister benzeri ama daha otantik ve bitkisel.
+    <div class="eat">📍 <strong>Nerede:</strong> Lámpás Pub'da shot · Süpermarketten şişe al<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=L%C3%A1mp%C3%A1s+Pub+Budapest" target="_blank">📍 Lámpás Pub → Haritada aç</a></div>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍺</div>
+    <div class="inf">
+      <div class="nm">🍺 Fröccs + Yerel Biralar</div>
+      <div class="ds">Şarap+soda = yazın kralı · Dreher, Soproni</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Fröccs:</strong> Şarap + soda karışımı, yazın en popüler içecek! Çeşitleri var: <strong>kisfröccs</strong> (1:1), <strong>nagyfröccs</strong> (2:1 şarap ağırlıklı), <strong>házmester</strong> (1:3 soda ağırlıklı, hafif).<br><br>
+    <strong>Yerel biralar:</strong> Dreher, Soproni — ucuz ve iyi. Craft bira sahnesi de güçlü (Élesztőház 20+ musluk!).<br><br>
+    <span style="color:var(--red)">⚠️ ÖNEMLİ GELENEK:</span> Macarlar bira kadehlerini <strong>tokuşturmaz!</strong> 1849'da Avusturyalılar Macar generallerini idam ettikten sonra birayla kutladı — o günden beri Macarlar bira ile "şerefe" yapmıyor. Gençler artık umursamıyor ama <strong>saygı göstermek güzel</strong>.
+    <div class="eat">📍 <strong>Nerede:</strong> Herhangi bir restoran veya bar · Élesztőház (craft bira cenneti)<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%89leszt%C5%91h%C3%A1z+Budapest" target="_blank">📍 Élesztőház → Haritada aç</a></div>
+  </div>
+
+  <div class="info">
+    <strong>💡 Genel ipucu:</strong> Macar yemekleri ağırdır — her öğün et+paprika yeme! Araya hafif yemekler (salata, çorba, lángos) serpişt. Ve restoranda <strong>"szervízdíj"</strong> (servis ücreti) kontrol et — zaten %10-15 eklemişlerse üstüne bahşiş verme!
+  </div>
+
+</div>
+
+<!-- ============ HEDİYELİK ============ -->
+<div id="gift" class="page">
+
+  <div class="sec" style="color:var(--teal)">👶 Çocuklara — 2 yaş</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🪆 Macar nakışlı bez bebek / peluş</div>
+      <div class="ds">~€10-15 · Nagy Vásárcsarnok üst kat</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Renkli, yumuşak, 2 yaş için ideal. Ucuz turistik versiyonlar değil, <strong>gerçek el işi olanları</strong> tercih et — yerel zanaatkârların tezgâhlarında farkı hemen anlarsın.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🎨 Ahşap Macar oyuncak</div>
+      <div class="ds">~€10-15 · Nagy Vásárcsarnok / Gozsdu</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Geleneksel el yapımı küçük ahşap oyuncaklar — itme arabası, küçük hayvan figürleri. Hem estetik hem dayanıklı. <strong>Boğulma riski olmayan büyük parçalı ürün seç!</strong>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gozsdu+Udvar+Budapest" target="_blank">📍 Gozsdu Udvar butik dükkanlar → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🎵 Ahşap Macar enstrüman seti</div>
+      <div class="ds">~€20-30 · Memories of Hungary</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Minik davul, çıngırak, küçük ksilofon — hepsi bir arada, el yapımı ahşap. 2 yaş için hem oyuncak hem müzik eğitimi.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Memories+of+Hungary+Budapest+Basilica" target="_blank">📍 Memories of Hungary (Basilica yanı) → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:var(--teal)">👶 Çocuklara — 4 yaş</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">👸 Kalocsa nakışlı kostümlü bebek</div>
+      <div class="ds">~€15-20 · Nagy Vásárcsarnok</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Renkli <strong>Kalocsa nakışlı</strong> elbiseli bebekler. Kız çocukları bayılıyor. Budapeşte'ye özgü, gerçek hatıra değeri.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=V%C3%A1ci+utca+Budapest" target="_blank">📍 Váci utca hediyelik dükkanları → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">👸 Kaliteli porselene bebek</div>
+      <div class="ds">~€25-35 · Herend mağazası</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Herend veya Zsolnay etkili, gerçekten <strong>koleksiyon değeri</strong> taşıyan bebekler. Hem hatıra hem oyuncak.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Herend+Porcel%C3%A1n+Budapest" target="_blank">📍 Herend Porselen Mağazası (József nádor tér) → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Zsolnay+Budapest+shop" target="_blank">📍 Zsolnay Mağazası → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🧵 Kalocsa nakışlı mini kıyafet seti</div>
+      <div class="ds">~€25-35 · Nagy Vásárcsarnok</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    4 yaşa uygun, gerçek Macar nakışıyla yapılmış küçük elbise veya önlük. Giydiğinde çok şirin, anneler de bayılıyor. Fotoğraf çekmelik! 📸
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🧩 Macar motifli yapboz / Rubik</div>
+      <div class="ds">~€15-20 · Memories of Hungary</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Rubik küpü</strong> Macar mucit Ernő Rubik'in eseri! <strong>Renkli büyük parçalı çocuk versiyonları</strong> ve şekil eşleştirme oyunları var. Macar motifli yapbozlar da güzel.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Memories+of+Hungary+Budapest+Basilica" target="_blank">📍 Memories of Hungary (Basilica yanı) → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rubik+Budapest+shop" target="_blank">📍 Rubik Stúdió / hediyelik dükkanları → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🎨 Halk sanatı temalı boyama seti</div>
+      <div class="ds">~€25-35 · Gozsdu Udvar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Kalocsa çiçek motifleri içeren ahşap boyama seti — yaşa uygun, hem eğlenceli hem yaratıcı.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gozsdu+Udvar+Budapest" target="_blank">📍 Gozsdu Udvar butik dükkanlar → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🗿 Little Princess minyatür figür</div>
+      <div class="ds">~€10-15 · Váci utca / Market Hall</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte'nin simgesi <strong>Küçük Prenses heykeli</strong>nin minyatür figürü, kar küresi veya magnetli oyuncak versiyonu. Kız çocukları için çok tatlı ve "anlamlı" bir hatıra.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=V%C3%A1ci+utca+Budapest" target="_blank">📍 Váci utca hediyelik dükkanları → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:var(--teal)">💍 Eşe — Takı & Tekstil (~€30-50)</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">💍 Macar el yapımı gümüş takı</div>
+      <div class="ds">~€15-25 · Falk Miksa u. / Gozsdu</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Geleneksel <strong>Kalocsa çiçekleri</strong> ve halk sanatı desenleri kullanan küçük atölyeler. Kolyeler, bilezikler, küpeler. <strong>Turistik dükkanlardan değil, atölyelerden al</strong> — fiyat aynı ama kalite çok farklı.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Falk+Miksa+utca+Budapest+antique" target="_blank">📍 Falk Miksa utca (antika/takı atölyeleri) → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gozsdu+Udvar+Budapest" target="_blank">📍 Gozsdu Udvar butik atölyeler → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🧣 Kalocsa nakışlı ipek fular / şal</div>
+      <div class="ds">~€20-25 · Nagy Vásárcsarnok üst kat</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>€30-50 bütçenin gözdesi!</strong> Gerçek ipek üzerine el nakışı — hem şık hem Budapeşte'ye özel.
+    <div class="tip">💡 <strong>Kombine al:</strong> Küçük gümüş küpe (~€15-20) + Kalocsa fular (~€20-25) = €35-45'e ikisi birden. Çok daha etkileyici!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=V%C3%A1ci+utca+Budapest" target="_blank">📍 Váci utca kaliteli dükkanlar → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">👗 El işlemeli keten bluz / aksesuar</div>
+      <div class="ds">~€25-40 · Nagy Vásárcsarnok</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Macar tekstil geleneğinin en güzel ürünü. Günlük kullanıma uygun, zarif. <strong>Kehribar veya Tokaj motifli aksesuarlar</strong> da şık — eşin "bu nereden?" sorusuna güzel hikâye çıkar!
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:var(--teal)">🏢 İş Arkadaşlarına — Gastronomi</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">⭐</div>
+    <div class="inf">
+      <div class="nm">🍫 Rózsavölgyi Csokoládé</div>
+      <div class="ds">~€10-20 · Kendi dükkanı var!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte'nin en prestijli el yapımı çikolata markası. <strong>Paprika aromalı, Tokaj şaraplı, lavantalı</strong> tatlar. Kutusu bile hediye. <strong>"Wow" etkisi</strong> garantili.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=R%C3%B3zsav%C3%B6lgyi+Csokol%C3%A1d%C3%A9+Budapest" target="_blank">📍 Rózsavölgyi dükkanı (Kossuth Lajos u.) → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🍫 Szerencsi / Stühmer çikolata</div>
+      <div class="ds">~€5-10 · Süpermarket / Market Hall</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Daha uygun fiyatlı Macar klasik çikolata markaları. Süpermarketten alınabilir ama orijinal Macar ürünü. Çok kişiye hediye için ideal.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=SPAR+Budapest+center" target="_blank">📍 SPAR / CBA süpermarket (şehir merkezi) → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🍬 Pálinka bonbonu</div>
+      <div class="ds">~€5-8 · Nagy Vásárcsarnok</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Çikolata içinde <strong>pálinka</strong> dolgulu şekerlemeler. Farklı, konuşulan bir hediye!
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:var(--teal)">🌶️ Genel Hediyelik — Herkes İçin</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🌶️ Paprika seti</div>
+      <div class="ds">~€5-8 · Nagy Vásárcsarnok alt kat</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Macaristan'ın simgesi. Farklı acılık seviyelerinde: <strong>"Édes"</strong> = tatlı, <strong>"Csípős"</strong> = acı. Toz, kurutulmuş veya salça. En geniş seçenek Market Hall alt katta.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok alt kat → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🍷 Tokaji Aszú şarabı</div>
+      <div class="ds">~€15-40 · Bortársaság / Market Hall</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>"Kralların şarabı"</strong> — dünyaca ünlü tatlı beyaz şarap. Şarap severler için mükemmel hediye.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bort%C3%A1rsas%C3%A1g+Budapest+wine" target="_blank">📍 Bortársaság şarap dükkanı (Basilica yanı) → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🥃 Pálinka</div>
+      <div class="ds">~€10-25 · Pálinka Múzeum / Market Hall</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Erik, kayısı veya armut gibi meyvelerden. <strong>%35-70 alkol!</strong> Küçük şişeler hediye için ideal. En iyi seçenek için Pálinka Múzeum'a git — tadım da yapabilirsin!
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=P%C3%A1linka+M%C3%BAzeum+Budapest" target="_blank">📍 Pálinka Múzeum (Fővám tér, Market Hall yanı) → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🥃 Unicum</div>
+      <div class="ds">~€8-15 · Zwack Múzeum / süpermarket</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    40+ bitkili Macar likörü. <strong>İkonik yuvarlak şişe</strong> başlı başına hediyelik. Süpermarketten ucuza alınır ama Zwack Müzesi'nde özel şişeler var.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Zwack+Unicum+M%C3%BAzeum+Budapest" target="_blank">📍 Zwack Unicum Müzesi → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=SPAR+Budapest+center" target="_blank">📍 Herhangi bir süpermarket (SPAR/CBA) → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🥩 Pick Szalámi (kış salamı)</div>
+      <div class="ds">~€5-10 · Nagy Vásárcsarnok alt kat</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>"Téliszalámi" (kış salamı)</strong> meşhur. <strong>Mangalica</strong> (tüylü domuz) versiyonu Macaristan'a özgü. Vakumlu paketlerde, uçağa alınabilir.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok alt kat kasaplar → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🏺 Herend / Zsolnay porselen</div>
+      <div class="ds">~€20-200 · Kendi mağazaları</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Dünyanın en kaliteli porselen markaları. <strong>El boyaması figürler</strong> veya fincan takımları. Küçük parçalar (~€20-40) hediye için uygun.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Herend+Porcel%C3%A1n+Budapest" target="_blank">📍 Herend Mağazası (József nádor tér) → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Zsolnay+Budapest+shop" target="_blank">📍 Zsolnay Mağazası → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🧊 Gizli kutular (Secret Boxes)</div>
+      <div class="ds">~€10-20 · Gozsdu / Váci utca</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Belirli mekanizmayla açılan ahşap <strong>el yapımı bulmaca kutular</strong>. Hem eğlenceli hem dekoratif.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gozsdu+Udvar+Budapest" target="_blank">📍 Gozsdu Udvar butik dükkanlar → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=V%C3%A1ci+utca+Budapest" target="_blank">📍 Váci utca hediyelik dükkanları → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰💰</div>
+    <div class="inf">
+      <div class="nm">🧴 Termal su bakım ürünleri</div>
+      <div class="ds">~€15-40 · Omorovicza mağazası</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte'nin şifalı termal sularından elde edilen sabun, krem, maske. <strong>Omorovicza</strong> markası çok kaliteli. Kadınlara harika hediye.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Omorovicza+Budapest+shop" target="_blank">📍 Omorovicza mağazası → Haritada aç</a><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Memories+of+Hungary+Budapest+Basilica" target="_blank">📍 Memories of Hungary → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num t">💰</div>
+    <div class="inf">
+      <div class="nm">🥚 Boyalı yumurtalar</div>
+      <div class="ds">~€5-15 · Nagy Vásárcsarnok üst kat</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    El boyaması, oyma detaylı <strong>dekoratif yumurtalar</strong>. Güzel bir ev dekorasyonu hatırası. Yıl boyu bulunur.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank">📍 Nagy Vásárcsarnok üst kat → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:var(--teal)">📍 Nereden Alınır? — Özet</div>
+
+  <div class="info">
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Market+Hall+Budapest" target="_blank"><strong>🛒 Nagy Vásárcsarnok</strong> → Haritada aç</a><br>
+    En geniş seçenek, en uygun fiyat. Pazar'da zaten planında var! Alt kat yerel zanaatkârlar, üst kat hediyelik.<br><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=V%C3%A1ci+utca+Budapest" target="_blank"><strong>🛍️ Váci utca</strong> → Haritada aç</a><br>
+    Turistik cadde ama hediyelik eşya dükkanları bol. Cuma sabah zaten geçeceksin.<br><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gozsdu+Udvar+Budapest" target="_blank"><strong>🏘️ Gozsdu Udvar</strong> → Haritada aç</a><br>
+    Küçük atölyeler ve butik dükkanlar. Takı için en iyi adres.<br><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Memories+of+Hungary+Budapest+Basilica" target="_blank"><strong>⛪ Memories of Hungary</strong> → Haritada aç</a><br>
+    Basilica yakınında. Modern, kaliteli tasarım ürünleri.<br><br>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Falk+Miksa+utca+Budapest" target="_blank"><strong>🏪 Falk Miksa utca</strong> → Haritada aç</a><br>
+    Antika ve el yapımı takı atölyeleri. Eşe özel hediye için.<br><br>
+    <strong>💡 İpucu:</strong> Pazar günü Market Hall'da hem çocukların hem eşinin hediyelerini tek seferde halledebilirsin!
+  </div>
+
+</div>
+
+<!-- ============ GECE HAYATI ============ -->
+<div id="night" class="page">
+
+  <div class="info">
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Bizim içkimiz gösteriş değil, karakterdir. Pálinka'yı yavaş iç, Unicum'u saygıyla."</em><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Turistik yere gitme, vibe'a bak. En iyi mekanlar küçük ve tabelasızdır."</em><br>
+    <strong>🗺️ Rehber:</strong> <em>"Budapeşte'yi anlamak için üç şey iç: pálinka, şarap, bira. Ama doğru yerde."</em>
+  </div>
+
+  <div class="sec night">🍺 Ruin Barlar — "BU ŞART"</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">⭐</div>
+    <div class="inf">
+      <div class="nm">🍺 Szimpla Kert — Efsane</div>
+      <div class="ds">Kazinczy u. 14 · 2002'den beri · Dünyanın 3. en iyi barı</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Ruin bar hareketinin doğum yeri</strong> (2002). Eski fabrikadan dönüşmüş — küvet koltuklar, tavandan bisikletler, Trabant masa, grafiti duvarlar. 3 kat, 9 bar. Lonely Planet dünyanın 3. en iyi barı seçti. Turistik ama hâlâ önemli — gitmeden dönme!<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Tek mekanda kalma! Szimpla → Instant → başka bar. Bar hopping yapacaksın."</em>
+    <div class="eat">🍺 Dreher/Soproni (~1.500 Ft), fröccs (şarap+soda). 21:00'dan sonra kalabalık.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Szimpla+Kert+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Szimpla Kert → Haritada aç</a>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Szimpla+Kert+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🔥</div>
+    <div class="inf">
+      <div class="nm">🎶 Instant-Fogas + Lärm</div>
+      <div class="ds">Akácfa u. 51 · 7 oda + techno katı · 06:00'a kadar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    İki efsane mekanın birleşimi — <strong>7 farklı oda</strong>, her birinde farklı müzik (tekno, retro, rock, pop). 1. katta <strong>Lärm</strong> — Berlin tarzı pitch-black techno kulübü, Martin Audio ses sistemi, dB limiti yok! 2014'ten beri Budapeşte'nin underground techno kalesi.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Instant turist+yerel karışık ama Lärm'e çık — orada gerçek müzik var."</em><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Benim oraya girecek halim yok ama gençler bayılıyor."</em>
+    <div class="eat">🥃 Pálinka shot! Giriş genelde ücretsiz veya ~2.000 Ft.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Instant+Fogas+Complex+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍺</div>
+    <div class="inf">
+      <div class="nm">🎨 Csendes Létterem</div>
+      <div class="ds">Ferenczy István u. 5 · "Gerçek" ruin bar · Salaş+sanatsal</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Dışarıdan kafe gibi, içerisi tamamen <strong>dağınık sanat evi</strong>! Sticker kaplı duvarlar, tavandan sarkan objeler. Szimpla'nın "daha salaş ve gerçek" hali. Masalar arası iletişim çok normal.<br><br>
+    <strong>🗺️ Rehber:</strong> <em>"Eski bir kütüphaneyi andırıyor, Budapeşte'nin entelektüel yüzü."</em>
+    <div class="eat">🍸 Vintage kokteyl + patlıcan dip tortilla cipsi.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Csendes+L%C3%A9tterem+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Csendes → Haritada aç</a>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Csendes+L%C3%A9tterem+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍺</div>
+    <div class="inf">
+      <div class="nm">🍺 Ellátó Kert</div>
+      <div class="ds">Kazinczy u. · Daha az turistik ruin bar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Szimpla'dan daha rahat vibe, yerel+yabancı dengesi iyi. Bahçeli, sakin ama eğlenceli.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ell%C3%A1t%C3%B3+Kert+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍺</div>
+    <div class="inf">
+      <div class="nm">🍺 Manyi — Buda'nın ruin barı</div>
+      <div class="ds">Margit körút 16 · Turistsiz · Yerel sanatçı kalabalığı</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    2020'de açılan Buda tarafının en otantik ruin barı. Buda'da olması sayesinde <strong>bekârlık partisi turistlerinden uzak</strong>, özgür ruhlu kalabalık. Labirent gibi odalar + konser alanı.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Pest'teki ruin barlardan sıkıldıysan buraya gel — bambaşka atmosfer."</em>
+    <div class="eat">🍺 Craft bira, doğal şarap. Vegan yemek de var.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Manyi+Kult%C3%BAr%C3%A1lis+M%C5%B1hely+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🌿</div>
+    <div class="inf">
+      <div class="nm">🌿 Mazel Tov — Bahçeli bar-restoran</div>
+      <div class="ds">Akácfa u. 47 · Akdeniz yemek + kokteyl · 🆕</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Yahudi Mahallesi'nin en güzel bahçeli mekanı. Açık avluda ağaçlar, ışıklar, Akdeniz yemekleri + kokteyller. Daha upscale ama rahat. Szimpla'dan farklı bir ruin bar deneyimi — daha şık, daha sakin.<br><br>
+    <strong>🗺️ Rehber:</strong> <em>"Szimpla kaotik, Mazel Tov zarif. İkisini de gör, farkı hisset."</em>
+    <div class="eat">🍸 Kokteyl + hummus + falafel tabağı.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Mazel+Tov+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="sec night">🍺 Craft Bira & Yerel Publar</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">⭐</div>
+    <div class="inf">
+      <div class="nm">🍻 Élesztőház — Bira Cenneti</div>
+      <div class="ds">Tűzoltó u. 22 · 20+ musluk · Eski cam fabrikası</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Eski cam fabrikasından dönüşmüş <strong>craft bira cenneti</strong>. 20+ musluk — Mad Scientist, Horizont, Monyo gibi Macar craft markaları. Endüstriyel dekor, rahat atmosfer.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Gerçek bira içenler burada. Deneme seti al, 4-5 farklı bira dene."</em>
+    <div class="eat">🍺 Yerel IPA + pulled pork sandviç. Deneme seti ~3.000 Ft.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%89leszt%C5%91h%C3%A1z+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍺</div>
+    <div class="inf">
+      <div class="nm">🍻 Kisüzem</div>
+      <div class="ds">Lokal gençler · Samimi · Ucuz · Sosyalleşme kolay</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Yerel gençlerin takıldığı yer, turist çok az. <strong>En kolay tanışılacak yerlerden biri</strong> — samimi, ucuz, kalabalık ama sıcak.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kis%C3%BCzem+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍺</div>
+    <div class="inf">
+      <div class="nm">🎵 Lámpás Pub</div>
+      <div class="ds">Dob u. 15 · Yeraltı · Her gece canlı müzik</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Kelimenin tam anlamıyla <strong>yeraltında</strong>. Her gece canlı Macar müziği. Turistlerin bilmediği yerel mekan.
+    <div class="eat">🥃 Unicum shot burada denemek şart!</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=L%C3%A1mp%C3%A1s+Pub+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="sec night">🍷 Şarap & Kokteyl — Geceye sakin başla</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍷</div>
+    <div class="inf">
+      <div class="nm">🍷 Doblo Wine Bar</div>
+      <div class="ds">Küçük · Kaliteli · İlk tanışma için ideal</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Küçük, samimi şarap barı. Daha olgun kitle, gürültü az, sohbet kolay. Tokaji, Egri Bikavér ve diğer yerel şarapları burada dene.<br><br>
+    <strong>🗺️ Rehber:</strong> <em>"Garsonlar size hikâyeleriyle şarap anlatır. Geceye burada başla."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Doblo+Wine+Bar+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍷</div>
+    <div class="inf">
+      <div class="nm">🍷 Kadarka Wine Bar</div>
+      <div class="ds">Turist tuzağından uzak · Muazzam şarap seçkisi</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Pest tarafında, turistik olmayan samimi bir yer. <strong>Muazzam Macar şarap seçkisi.</strong><br><br>
+    <strong>🗺️ Rehber:</strong> <em>"Budapeşte'nin en iyi şarap barlarından. Kadeh kadeh dene, garsonlara güven."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kadarka+Wine+Bar+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🥃</div>
+    <div class="inf">
+      <div class="nm">🥃 WarmUp Cocktail Bar</div>
+      <div class="ds">Menü yok! · Sana göre kokteyl yapıyorlar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Menü yok — barmen sana ne sevdiğini soruyor ve <strong>kişiye özel kokteyl</strong> yapıyor. Küçük, özel, deneyim seviyesi yüksek. Genelde çiftler ve küçük gruplar.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Kalite yüksek, ortam intime. Geceye 'special' başlamak için ideal."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=WarmUp+Cocktail+Bar+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="sec night">🎧 Kulüpler — "tam dağıtmalık"</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🔊</div>
+    <div class="inf">
+      <div class="nm">🎧 Toldi Klub</div>
+      <div class="ds">Sinema + kulüp · Alternatif · Yerel kitle</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Gündüz sinema, gece kulüp! Alternatif, sanatçı, öğrenci kitlesi. Turist çok az. <strong>Sohbet açması en kolay yerlerden biri.</strong><br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Dans pistinden çok bar kısmında iletişim kurulur. Farklı vibe, farklı insanlar."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Toldi+Klub+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🔊</div>
+    <div class="inf">
+      <div class="nm">🚢 A38 Gemi</div>
+      <div class="ds">Petőfi híd · 1968 kargo gemisi · Tuna üstünde parti</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1968 yapımı Ukrayna kargo gemisi</strong>nin dönüştürülmüş hali. Alt güverte konser salonu, üst güverte açık bar + dans. Budapeşte'nin en benzersiz mekanı — Tuna üstünde parti!
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=A38+Ship+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="sec night">🥃 Pálinka & Geleneksel Deneyim</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🥃</div>
+    <div class="inf">
+      <div class="nm">🥃 Pálinka Múzeum</div>
+      <div class="ds">Fővám tér · Tadım yapabilirsin!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Market Hall yanında. <strong>Farklı meyve çeşitlerini tadım</strong> yaparak öğren — barack (kayısı), szilva (erik), vilmoskörte (armut). Kaliteli pálinka yumuşak içilir, yakıyorsa kötüdür!<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Gerçek meyve tadını almalısın. 1-2 shot = keyif. 5+ shot = blackout!"</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=P%C3%A1linka+M%C3%BAzeum+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍺</div>
+    <div class="inf">
+      <div class="nm">🍺 Bambi Presszó — Zaman makinesi</div>
+      <div class="ds">1960'lardan kalma · %100 orijinal · Turistik hiçbir yanı yok</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1960'lardan kalma</strong> bir zaman makinesi. Kırmızı plastik koltuklar, yaşlı amcaların kağıt oynadığı masalar. Turistik hiçbir yanı yok, %100 orijinal Budapeşte.<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Benim gençliğim böyleydi. Burada otur, bira iç, hayatı izle."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bambi+Pressz%C3%B3+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="sec special">💃 Gentleman's Club — Güvenilir yerler</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">💃</div>
+    <div class="inf">
+      <div class="nm">💃 P2 Club</div>
+      <div class="ds">Sas u. 9 · 1993'ten beri · 05:00'e kadar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1993'ten beri</strong> güvenilir gentleman's club. Net fiyatlandırma, dolandırıcılık yok. Basilica bölgesinde.
+    <div class="tip">💰 Nakit taşı, fiyatı önceden öğren. Kredi kartı kullanma.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=P2+Club+Budapest+Sas" target="_blank" onclick="event.stopPropagation()">📍 P2 Club → Haritada aç</a>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=P2+Club+Budapest+Sas" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">💃</div>
+    <div class="inf">
+      <div class="nm">💃 Marilyn</div>
+      <div class="ds">Baross u. 4 · 30+ yıllık · 04:00'e kadar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    30+ yıllık mekan, giriş ücretsiz. P2 ile birlikte şehrin <strong>en güvenilir iki mekanından biri</strong>.
+    <div class="tip">⚠️ <strong>SOKAKTA DAVET EDEN YERLERE GİTME!</strong> Sadece bu ikisine git.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Marilyn+Club+Budapest+Baross" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="sec night">🌃 Gizli noktalar + manzara</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🌉</div>
+    <div class="inf">
+      <div class="nm">🌉 Filozófusok Bahçesi</div>
+      <div class="ds">Gellért tepesinde · Sessiz · Manzaralı</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Gellért tepesinin kuzey yamacında, turistlerin bilmediği manzara noktası. Gece bir bira al, çık, otur — şehir ayağının altında.<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"En iyi date spot'u ama erkek arkadaşlarla da mükemmel manzara+bira."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Filoz%C3%B3fusok+kertje+Budapest" target="_blank">📍 Haritada aç</a>
+  </div>
+
+  <div class="sec night">🎯 Altın kurallar</div>
+
+  <div class="info warn">
+    <strong>⚠️ Gece hayatı güvenlik:</strong><br><br>
+    • <strong>"Ucuz shot" yazan yer → uzak dur.</strong> Kalitesiz alkol.<br>
+    • Gerçek pálinka <strong>yumuşak</strong> içilir — yakıyorsa kötüdür<br>
+    • <strong>Sokakta bara davet eden kadınlar = TUZAK!</strong> Sadece kendi seçtiğin yere git<br>
+    • Gece Bolt ile dön, sokaktan taksi çevirme<br>
+    • Cüzdan ve telefonu ön cepte taşı, arka cep = risk<br>
+    • <strong>Bira bardağı tokuşturma!</strong> 1849 geleneği — havaya kaldırıp <em>"Egészségedre!"</em> de<br>
+    • Szervízdíj (servis ücreti) kontrol et — zaten %10-15 eklenmişse bahşiş verme
+  </div>
+
+  <div class="info">
+    <strong>🎯 Önerilen gece akışı:</strong><br><br>
+    <strong>Sakin başla:</strong> Doblo veya WarmUp → şarap/kokteyl<br>
+    <strong>Isın:</strong> Szimpla veya Csendes → ruin bar atmosferi<br>
+    <strong>Dağıt:</strong> Instant-Fogas veya Lärm → dans + müzik<br>
+    <strong>Kapat:</strong> Lángos (gece 2-3) → mutluluk!<br><br>
+    <em>"Açlık + alkol + lángos = Budapeşte'nin en güzel formülü"</em> — Genç Macar
+  </div>
+
+</div>
+
+<!-- ============ ALTERNATİFLER ============ -->
+<div id="alt" class="page">
+
+  <div class="info">
+    <strong>🔄 Programa sığmayan ama bilinmesi gereken yerler.</strong><br>
+    Zamanınız kalırsa veya program değişirse bu alternatiflerden seçebilirsiniz.
+  </div>
+
+  <div class="sec" style="color:#60a5fa">🚊 Ulaşım alternatifleri</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">🚊</div>
+    <div class="inf">
+      <div class="nm">🚊 Tram 2 — Dünyanın en güzel hattı</div>
+      <div class="ds">Pest kıyısı boyunca · 350 Ft · 20dk şehir turu</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    National Geographic <strong>dünyanın en güzel 10 tramvay hattından biri</strong> seçti. Pest kıyısı boyunca: Parlamento, Kale, köprüler, tüm siluet. <strong>350 Ft'ye (~€0.90) 20dk şehir turu!</strong><br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Yürümekten yorulunca bin. Gece versiyonu daha da güzel — ışıklandırılmış Parlamento muhteşem."</em><br><br>
+    <strong>Ne zaman:</strong> Cuma akşam Tuna kıyısından Revue House'a giderken veya herhangi bir gece mekanlar arası.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Tram+2+Budapest+route" target="_blank" onclick="event.stopPropagation()">📍 Tram 2 hattı → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:#60a5fa">🍽️ Alternatif yemek mekanları</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🌭</div>
+    <div class="inf">
+      <div class="nm">🌭 Karavan Street Food</div>
+      <div class="ds">Kazinczy u. · Szimpla'nın yanı · Açık hava</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Szimpla'nın hemen yanında açık hava <strong>sokak yemeği pazarı</strong>. Gulaş, burger, kürtőskalács, lángos — hepsi bir arada. Gece çıkışı kurtarıcı!<br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"Szimpla'ya girmeden önce burada ye. Gece 2'de de açık!"</em><br><br>
+    <strong>Ne zaman:</strong> Cuma gece Szimpla öncesi (programda zaten var!) veya herhangi bir gece.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Karavan+Street+Food+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Karavan → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🍽️</div>
+    <div class="inf">
+      <div class="nm">🍽️ M Restaurant</div>
+      <div class="ds">Kertész u. 48 · Sahibi pişirir! · Fransız-Macar füzyon</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    2002'den beri, <strong>sahibi bizzat pişiriyor</strong>, kızları servis yapıyor. Fransız-Macar füzyon. Küçük, samimi, her akşam dolu. Menza alternatifi olarak Cumartesi akşam veya başka bir gün denenebilir.
+    <div class="eat">🍽️ <strong>Foie gras kremalı karamel</strong> (imza!), <strong>ördek cholent</strong>, <strong>spätzle</strong>.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=M+Restaurant+Budapest+Kert%C3%A9sz" target="_blank" onclick="event.stopPropagation()">📍 M Restaurant → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num y">🥩</div>
+    <div class="inf">
+      <div class="nm">🥩 Kőleves Vendéglő</div>
+      <div class="ds">Kazinczy u. · Bahçeli, saklı · Gulaş + bira</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Yahudi Mahallesi'nde bahçeli, saklı bir restoran. Kaliteli ama turistik değil.
+    <div class="eat">🍽️ Gulaş + bira = mükemmel kombin.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=K%C5%91leves+Vend%C3%A9gl%C5%91+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Kőleves → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:#60a5fa">🌿 Alternatif barlar + mekanlar</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🌿</div>
+    <div class="inf">
+      <div class="nm">🌿 Mazel Tov</div>
+      <div class="ds">Akácfa u. 47 · Bahçeli bar-restoran · Şık ruin bar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Yahudi Mahallesi'nin en güzel bahçeli mekanı. Açık avluda ağaçlar, ışıklar, Akdeniz yemekleri + kokteyller. Szimpla'dan farklı — daha şık, daha sakin. <strong>Pazar veda gecesinde programda!</strong>
+    <div class="eat">🍸 Kokteyl + hummus + falafel.</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Mazel+Tov+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Mazel Tov → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🎧</div>
+    <div class="inf">
+      <div class="nm">🎧 Toldi Klub</div>
+      <div class="ds">Sinema + kulüp · Alternatif kitle · Yerel</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Gündüz sinema, gece kulüp! Alternatif, sanatçı, öğrenci kitlesi. Turist çok az. Instant-Fogas alternatifi.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Toldi+Klub+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Toldi Klub → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🍻</div>
+    <div class="inf">
+      <div class="nm">🍻 Kisüzem</div>
+      <div class="ds">Lokal gençler · Samimi · Ucuz · Sosyalleşme kolay</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Yerel gençlerin takıldığı yer, turist çok az. <strong>En kolay tanışılacak yerlerden biri.</strong>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kis%C3%BCzem+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Kisüzem → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num n">🥃</div>
+    <div class="inf">
+      <div class="nm">🥃 WarmUp Cocktail Bar</div>
+      <div class="ds">Menü yok! · Sana göre kokteyl · Küçük + özel</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Menü yok — barmen sana ne sevdiğini soruyor ve <strong>kişiye özel kokteyl</strong> yapıyor. Geceye "special" başlamak için ideal.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=WarmUp+Cocktail+Bar+Budapest" target="_blank" onclick="event.stopPropagation()">📍 WarmUp → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:#60a5fa">☕ Kafe kültürü — atmosfer için git</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">☕</div>
+    <div class="inf">
+      <div class="nm">☕ Gerbeaud Café</div>
+      <div class="ds">1858'den beri · Vörösmarty tér · Efsanevi</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1858'den</strong> beri açık, Budapeşte'nin en ünlü ve en zarif kahvehanesi. Vörösmarty tér'de. Fiyat yüksek ama <strong>Dobos Torte</strong> ve atmosfer için bir kez gitmeli.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gerbeaud+Cafe+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Gerbeaud → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">☕</div>
+    <div class="inf">
+      <div class="nm">☕ New York Café</div>
+      <div class="ds">"Dünyanın en güzel kahvesi" · Fotoğraf şart</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    1894'ten beri açık, <strong>"dünyanın en güzel kahvehanesi"</strong> ünvanı var. Altın yaldızlı tavanlar, kristal avizeler, freskolar. Fiyat pahalı, yemek vasat ama <strong>atmosfer için bir kahve iç ve fotoğraf çek</strong> — buna değer.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=New+York+Cafe+Budapest" target="_blank" onclick="event.stopPropagation()">📍 New York Café → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">☕</div>
+    <div class="inf">
+      <div class="nm">☕ Ruszwurm Cukrászda</div>
+      <div class="ds">1827'den beri · Kale'de · En eski pastane</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte'nin <strong>en eski pastanesi</strong>, 1827'den beri Kale Mahallesi'nde. Küçücük mekan, sıra olabilir ama <strong>krémes</strong> ve tarih için gitmeli. Cumartesi kale gezisinde yolüstü!
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ruszwurm+Cukr%C3%A1szda+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Ruszwurm → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:#60a5fa">♨️ Termal hamam (programa eklenmedi)</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">♨️</div>
+    <div class="inf">
+      <div class="nm">♨️ Rudas Hamamı — Osmanlı mirası</div>
+      <div class="ds">1566'dan beri! · Çatıda Tuna manzaralı havuz</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>1566'dan beri</strong> açık, gerçek Osmanlı kubbesi altında termal su. Széchenyi turistik ama Rudas otantik. <strong>Çatı katında Tuna manzaralı açık havuz</strong> var — akşam saatlerinde muhteşem!<br><br>
+    <strong>🧓 Yaşlı Macar:</strong> <em>"Gerçek hamam deneyimi istiyorsan Széchenyi'ye değil Rudas'a git. Osmanlı kubbesi hâlâ orijinal."</em><br><br>
+    <strong>Ne zaman:</strong> Cumartesi kale sonrası (Gellért tarafında, yolüstü) veya Pazar Margaret Island öncesi. ~2-3 saat ayır. Giriş ~10.500 Ft.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rudas+Thermal+Bath+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Rudas Hamamı → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">♨️</div>
+    <div class="inf">
+      <div class="nm">♨️ Veli Bej Hamamı — Turistsiz Osmanlı</div>
+      <div class="ds">Rudas alternatifi · Çok daha sakin · Yerel</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Rudas'tan bile daha sakin ve otantik. Osmanlı döneminden kalma, lokal Macarlar gidiyor. Turistler bilmiyor. <strong>Günlük ziyaretçi sayısı sınırlı</strong> — erken git!<br><br>
+    <strong>🗺️ Rehber:</strong> <em>"Gerçek yerel deneyim. Rudas kalabalıksa buraya gel."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Veli+Bej+Bath+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Veli Bej → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:#60a5fa">🌉 Gizli manzara noktaları</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">🌉</div>
+    <div class="inf">
+      <div class="nm">🌉 Filozófusok Bahçesi</div>
+      <div class="ds">Gellért tepesi · Sessiz · Turistsiz manzara</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Gellért tepesinin kuzey yamacında, turistlerin bilmediği manzara noktası. <strong>Gece bira al, çık, otur — şehir ayağının altında.</strong><br><br>
+    <strong>🧑 Genç Macar:</strong> <em>"En iyi spot — ama arkadaşlarla da mükemmel manzara+bira."</em>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Filoz%C3%B3fusok+kertje+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Filozófusok Bahçesi → Haritada aç</a>
+  </div>
+
+  <div class="sec" style="color:#60a5fa">🏛️ İlgi çekerse ayrıca gidilebilir</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">📖</div>
+    <div class="inf">
+      <div class="nm">📖 Szabó Ervin Kütüphanesi</div>
+      <div class="ds">Wenckheim Sarayı · Altın yaldızlı tavanlar · Bedava</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    19. yy <strong>Wenckheim Sarayı</strong>'nın içinde aktif kütüphane. Altın yaldızlı tavanlar, meşe lambri, freskolar. New York Café gibi muhteşem ama <strong>bedava ve sessiz</strong>. 4. kattaki okuma salonu fotoğraf için harika.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Szab%C3%B3+Ervin+Library+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Szabó Ervin → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">🗿</div>
+    <div class="inf">
+      <div class="nm">🗿 Memento Park</div>
+      <div class="ds">Komünist heykel mezarlığı · Şehir dışı ~30dk</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Devrimden sonra kaldırılan <strong>Lenin, Marx, Engels heykelleri</strong> buraya taşındı. Soğuk Savaş tarihi meraklıları için harika. Ama şehir dışında (~30dk otobüs), ayrı bir yarım gün ayırmak lazım.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Memento+Park+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Memento Park → Haritada aç</a>
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num g">🦇</div>
+    <div class="inf">
+      <div class="nm">🦇 Pálvölgyi Mağarası</div>
+      <div class="ds">32 km mağara sistemi · Kristal oluşumlar · Şehir dışı</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Macaristan'ın en uzun mağara sistemi (<strong>32 km!</strong>). Parıldayan kalsit kristalleri ve sarkıt-dikit oluşumları. Labyrinth'ten çok daha etkileyici ama şehir merkezinden ~30dk uzakta.
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=P%C3%A1lv%C3%B6lgyi+Cave+Budapest" target="_blank" onclick="event.stopPropagation()">📍 Pálvölgyi Mağarası → Haritada aç</a>
+  </div>
+
+</div>
+
+<!-- ============ BİLİNMESİ GEREKENLER ============ -->
+<div id="info" class="page">
+
+  <div class="sec" style="color:#f59e0b">🏛️ Bir tarihçi sana şunu söylerdi...</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">📖</div>
+    <div class="inf">
+      <div class="nm">Buda + Pest = 1873'te birleşti</div>
+      <div class="ds">İki ayrı şehrin birleşimi</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte aslında <strong>üç ayrı şehrin</strong> birleşimi: tepeli <strong>Buda</strong> (batı), düz <strong>Pest</strong> (doğu) ve kuzeyde küçük <strong>Óbuda</strong> (Eski Buda). 1873'te resmi olarak birleştiler. Buda sakin, tarihi, yeşil; Pest canlı, ticari, gece hayatı merkezi. <strong>Tuna Nehri</strong> ikisini ayırır ama köprülerle birleştirir.
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">⚔️</div>
+    <div class="inf">
+      <div class="nm">İşgal ve yeniden doğuş</div>
+      <div class="ds">Avrupa'nın en dramatik tarihlerinden biri</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Bu şehir sürekli yıkılıp yeniden doğmuş:<br><br>
+    • <strong>1241 — Moğol istilası:</strong> Şehir yerle bir edildi<br>
+    • <strong>1541-1686 — Osmanlı dönemi:</strong> 145 yıl Osmanlı yönetimi. Kiliseler camiye dönüştürüldü, hamamlar yapıldı (bugün hâlâ ayakta!)<br>
+    • <strong>1686-1918 — Habsburg dönemi:</strong> Avusturya-Macaristan İmparatorluğu. Bugünkü muhteşem binaların çoğu bu dönemden<br>
+    • <strong>1944-45 — 2. Dünya Savaşı:</strong> Şehir neredeyse tamamen yıkıldı, tüm köprüler havaya uçuruldu<br>
+    • <strong>1956 — Macar Devrimi:</strong> Sovyetlere karşı ayaklanma, tanklar ve kurşunlarla bastırıldı. Bina duvarlarında hâlâ kurşun izleri görebilirsin<br>
+    • <strong>1989 — Demir Perde çöktü:</strong> Demokrasi ve yeniden doğuş<br><br>
+    👉 Bugün gördüğün birçok bina aslında <strong>restore edilmiş ya da sıfırdan yeniden yapılmıştır</strong>.
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">🌉</div>
+    <div class="inf">
+      <div class="nm">Tuna sadece manzara değil</div>
+      <div class="ds">Şehrin ruhu ve kimliği</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Tuna Nehri şehri ikiye ayırır ama aynı zamanda birleştirir. <strong>Akşam saatlerinde</strong> şehir kimliğini en iyi burada hissedersin — Parlamento'nun ışıkları, köprüler, Kale silueti. <strong>"Avrupa'nın Paris'i"</strong> denmesinin sebebi bu manzara. Parlamento, Zincir Köprü ve Buda Kalesi sadece turistik yer değil — <strong>Macar ulusal kimliğinin sembolleri</strong>.
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">♨️</div>
+    <div class="inf">
+      <div class="nm">Termal su kültürü</div>
+      <div class="ds">"Dünyanın termal başkenti"</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte, <strong>120'den fazla doğal termal kaynağa</strong> sahip dünyanın en büyük termal başkentlerinden biri. Bu kültür hem <strong>Roma döneminden</strong> (Aquincum yerleşimi) hem de <strong>Osmanlı döneminden</strong> miras. Osmanlılar 16. yy'da muhteşem hamamlar inşa etti — <strong>Rudas, Király, Veli Bej</strong> hâlâ ayakta ve kullanılıyor. Széchenyi (1913) Avrupa'nın en büyük termal hamamı.
+  </div>
+
+  <div class="sec" style="color:#f59e0b">🚶 Yerel bir gezgin sana şunu derdi...</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">🗺️</div>
+    <div class="inf">
+      <div class="nm">Şehir düşündüğünden küçük</div>
+      <div class="ds">2-3 günde rahat gezilir</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Google Maps'e bakınca büyük görünür ama <strong>2-3 günde rahat gezilir</strong>. En güzel şey: <strong>yürümek!</strong> Çoğu turistik yer birbirine 10-20dk yürüme mesafesinde. Yorulursan tramvay ve metro mükemmel çalışıyor.
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">💸</div>
+    <div class="inf">
+      <div class="nm">Para: Forint (HUF), Euro değil!</div>
+      <div class="ds">Kart kullan, ATM dikkat</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Macar Forinti (HUF)</strong> geçerli, Euro değil! ~1€ = ~400 HUF (güncel kuru kontrol et).<br><br>
+    • <strong>Kart her yerde geçiyor</strong> — ama küçük mekanlar nakit isteyebilir<br>
+    • Euro kabul eden yer var ama <strong>kur çok kötü, kazıklanırsın</strong><br>
+    • <strong>Euronet ATM'lerden uzak dur!</strong> Kötü kur uyguluyorlar. <strong>OTP, Raiffeisen, Erste</strong> banka ATM'lerini kullan<br>
+    • ATM'de "conversion" sorarsa <strong>"WITHOUT conversion"</strong> seç — kendi bankan daha iyi kur verir<br>
+    • Döviz bürolarından uzak dur, özellikle Váci utca ve tren istasyonu<br>
+    • <strong>Nakit taşı:</strong> ~50.000 HUF (~€125) yeter, geri kalanı kart
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">🚇</div>
+    <div class="inf">
+      <div class="nm">Toplu taşıma + Taksi</div>
+      <div class="ds">BudapestGO + Bolt uygulaması</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Metro, tramvay, otobüs</strong> mükemmel çalışıyor. M1 metro dünyanın Londra'dan sonra en eski metrosu!<br><br>
+    • <strong>BudapestGO uygulamasını indir</strong> — dijital bilet al, QR kodla bin<br>
+    • <strong>72 saatlik pas</strong> en mantıklısı (~€18)<br>
+    • <span style="color:var(--red);font-weight:700">⚠️ BİLET VALİDE ETMEDEN BİNME!</span> Turuncu kutularda damgala. Kontrol memurları sivil giyimli, mor kolçaklı — <strong>12.000 HUF ceza anında</strong><br>
+    • Sahte kontrol memurlarına dikkat — gerçek olanlar <strong>resmi kimlik + kart terminali</strong> taşır<br><br>
+    <strong>Taksi:</strong><br>
+    • <strong>Sokaktan taksi çevirme!</strong> Her zaman <strong>Bolt uygulaması</strong> kullan<br>
+    • Yasal ücret: ~440 HUF/km. Havaalanı → merkez ~9.000 HUF (~€23)<br>
+    • Sarı taksi + şirket logosu + taksimetre olmalı, yoksa binme
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">💧</div>
+    <div class="inf">
+      <div class="nm">Musluk suyu içilebilir!</div>
+      <div class="ds">Temiz, soğuk ve bedava</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Budapeşte'nin <strong>musluk suyu çok kaliteli, güvenle içilebilir</strong>. Matara taşı, para biriktir. Restoranda <strong>"csapvíz"</strong> (çapviz) dersen musluk suyu getirirler — bedava!
+  </div>
+
+  <div class="sec" style="color:var(--red)">⚠️ Dolandırıcılık & Güvenlik</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">🚨</div>
+    <div class="inf">
+      <div class="nm">1 NUMARALI TEHLİKE: "Güzel kız" tuzağı</div>
+      <div class="ds">Váci utca + Yahudi Mahallesi</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <span style="color:var(--red);font-weight:700">En yaygın ve en tehlikeli dolandırıcılık!</span><br><br>
+    Güler yüzlü bir kadın sohbet açar, yakınlardaki "harika bir mekan" önerir, sonra sizi düzmece bir bara götürür. İçecekler fiyatsız gelir ve hesap yüzlerce hatta binlerce Euro'ya şişer, güvenlikçiler ödemeyi zorlar.<br><br>
+    <strong>Korunma:</strong> Sokakta tanışıp bara davet eden kadınları KESİNLİKLE reddet. Kendi mekanınızı kendiniz seçin. Google Maps puanı 4.0+ olan yerlere gidin.
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">🚨</div>
+    <div class="inf">
+      <div class="nm">Restoran tuzakları</div>
+      <div class="ds">Gizli ücretler + çift menü</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    • <strong>"Szervízdíj"</strong> (servis ücreti): Çoğu merkez restoran <strong>%10-15 servis ücreti otomatik ekliyor</strong>. Menüde küçük yazıyla, Macarca yazıyor. <span style="color:var(--red);font-weight:700">Fatura kontrol et — üstüne bahşiş verme!</span><br>
+    • Dışarıda tezgahtar çağıran restoranlardan uzak dur — bazıları turistlere farklı (pahalı) menü veriyor<br>
+    • Menüde <strong>fiyat yazmıyorsa</strong> oturma!<br>
+    • Balık kiloya satılır — fatura sürpriz olabilir<br>
+    • <strong>5 dilde menü varsa</strong> muhtemelen turistik tuzak
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">🚨</div>
+    <div class="inf">
+      <div class="nm">Taksi dolandırıcılığı</div>
+      <div class="ds">SADECE Bolt kullan!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Havaalanından taksiye binip yorgun halde otele gidersiniz. Şoför güler yüzlüdür, araba meşru görünür. Sonra taksimetre anormal hızla yükselir — veya hiç taksimetre yoktur ve sonunda uydurma bir rakam söylenir.<br><br>
+    <strong>Korunma:</strong> <span style="color:var(--red);font-weight:700">Sokaktan TAKSİ ÇEVİRME!</span> Her zaman <strong>Bolt uygulaması</strong> kullan. Resmi taksi: sarı renk + şirket logosu + taksimetre. "Freelancer" taksiler (küçük "Egyéni Vállalkozó" etiketi) = kaçın!
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">🚨</div>
+    <div class="inf">
+      <div class="nm">Strip club dolandırıcılığı</div>
+      <div class="ds">Zorunlu ilk içecek + şişirilmiş fatura</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Birçok strip club turistleri dolandırmak için belirsiz kurallar ve baskı kullanır. Genellikle 10.000+ Ft'lik zorunlu ilk içecekle başlar, sonra dans ve özel gösteriler için yüksek ücretler gelir. Ödemeyi reddetmek fiziksel tehdit ile sonuçlanabilir.<br><br>
+    <strong>Güvenilir yerler:</strong> P2 Club (Sas u. 9) ve Marilyn (Baross u. 4) — 30+ yıllık, net fiyat, sorun yok. Sokakta davet edilen yerlere gitme!
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num s">⚠️</div>
+    <div class="inf">
+      <div class="nm">Yankesicilik + diğer tuzaklar</div>
+      <div class="ds">Metro, Váci utca, kalabalık alanlar</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    <strong>Yankesicilik:</strong> Metroda, Váci utca'da, kalabalık turistik alanlarda dikkatli ol. Çanta önde ve fermuarlı, arka cepte telefon/cüzdan taşıma.<br><br>
+    <strong>Sahte döviz büroları:</strong> Váci utca ve tren istasyonunda kötü kur veriyorlar. Banka ATM'si kullan.<br><br>
+    <strong>Sahte ilaç satıcıları:</strong> 6. ve 7. bölgelerde (parti bölgesi) sokakta "ilaç" satmaya çalışanlar var — ürünler sahte, para kaybedersin. Tüm uyuşturucular yasadışı, ağır ceza var.<br><br>
+    <strong>Bilet makinesi tuzağı:</strong> Dolandırıcılar BKK bilet makinelerinin para üstü bölümünü bantlayarak tıkıyor, sonra parayı kendileri alıyor. Para üstü gelmezse makineyi kontrol et.
+  </div>
+
+  <div class="sec" style="color:#f59e0b">🍽️ Yemek & İçecek kültürü</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">🍽️</div>
+    <div class="inf">
+      <div class="nm">Yemekler ağır ama güzel!</div>
+      <div class="ds">Paprikás, gulyáš, şnitzel...</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Macar mutfağı <strong>ağır, et ağırlıklı ve paprika bazlı</strong>. Gulyáš (gulaş), paprikás csirke (paprika tavuk), pörkölt (yahni) — hepsi harika ama <em>"her öğün bunu yemeyeyim"</em> diyeceksin! Araya hafif yemekler (salata, çorba) serpişt.<br><br>
+    <strong>Mutlaka dene:</strong> Gulyásleves (gulaş çorbası), lángos, kürtőskalács (baca böreği), mákos guba, foie gras (çok ucuz!), zsíros kenyér.
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">🍷</div>
+    <div class="inf">
+      <div class="nm">Alkol kültürü güçlü</div>
+      <div class="ds">Şarap ucuz, bira bol, pálinka güçlü</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    • <strong>Şarap:</strong> Ucuz ve kaliteli. Tokaji Aszú ("kralların şarabı"), Egri Bikavér ("boğa kanı") dene<br>
+    • <strong>Fröccs:</strong> Şarap+soda karışımı, yazın en popüler içecek. Çeşitleri var: nagyfröccs, kisfröccs...<br>
+    • <strong>Pálinka:</strong> Meyve rakısı, %35-70 alkol. DİKKAT!<br>
+    • <strong>Unicum:</strong> 40+ bitkili likör, Macarların gururu<br>
+    • <strong>Bira:</strong> Dreher, Soproni yerel markalar. Craft bira sahnesi de çok güçlü<br><br>
+    <span style="color:var(--red)">⚠️ Önemli gelenek:</span> Macarlar bira kadehlerini <strong>tokuşturmaz!</strong> 1849'da Avusturyalılar Macar generallerini idam ettikten sonra birayla kutlamış — o günden beri Macarlar bira ile "şerefe" yapmıyor. (Artık gençler umursamıyor ama saygı göstermek güzel.)
+  </div>
+
+  <div class="sec" style="color:#f59e0b">📱 Pratik bilgiler</div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">📱</div>
+    <div class="inf">
+      <div class="nm">İndirilecek uygulamalar</div>
+      <div class="ds">İlk gün bunları indir!</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    • <strong>Bolt</strong> — taksi (Uber yerine, Macaristan'da Bolt dominant)<br>
+    • <strong>BudapestGO</strong> — toplu taşıma bileti + rota planlama<br>
+    • <strong>Google Maps</strong> — offline harita indir (Budapest bölgesi)<br>
+    • <strong>Wise / Revolut</strong> — en iyi döviz kuru için<br>
+    • <strong>Google Translate</strong> — kamera çeviri (menüler için)
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">🆘</div>
+    <div class="inf">
+      <div class="nm">Acil durumlar</div>
+      <div class="ds">112 + Turist Polisi</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    • <strong>Genel acil durum: 112</strong> (İngilizce konuşan operatör var)<br>
+    • <strong>Turist Polisi: +36 1 438 8080</strong><br>
+    • <strong>Ambulans: 104</strong><br>
+    • <strong>Polis: 107</strong><br>
+    • Kimlik yanında taşı — Macaristan'da <strong>yasal zorunluluk</strong><br>
+    • AB sağlık kartı (EHIC) varsa yanında taşı
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">🌡️</div>
+    <div class="inf">
+      <div class="nm">Nisan ayı hava durumu</div>
+      <div class="ds">10-18°C, değişken</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    Nisan'da Budapeşte: <strong>ortalama 10-18°C</strong>. Güneşli günler güzel ama akşam serin. <strong>Katmanlı giyin</strong> — sabah ceket, öğlen tişört yeter.<br><br>
+    • Yağmur ihtimali var — <strong>küçük şemsiye veya yağmurluk</strong> al<br>
+    • Rahat yürüyüş ayakkabısı şart (arnavut kaldırım çok!)<br>
+    • Gellért tepesine çıkacaksın — spor ayakkabı ideal
+  </div>
+
+  <div class="stop" onclick="tog(this)">
+    <div class="num" style="background:rgba(245,158,11,.12);color:#f59e0b">💡</div>
+    <div class="inf">
+      <div class="nm">Faydalı Macarca kelimeler</div>
+      <div class="ds">Teşekkürler = Köszönöm</div>
+    </div>
+    <div class="arr">›</div>
+  </div>
+  <div class="detail">
+    • <strong>Köszönöm</strong> (kösönöm) = Teşekkürler<br>
+    • <strong>Szia</strong> (siya) = Merhaba / Hoşçakal (informal)<br>
+    • <strong>Igen</strong> = Evet<br>
+    • <strong>Nem</strong> = Hayır<br>
+    • <strong>Nem köszi</strong> = Hayır teşekkürler (dolandırıcılara!)<br>
+    • <strong>Csapvíz</strong> (çapviz) = Musluk suyu<br>
+    • <strong>Számla</strong> (samla) = Hesap lütfen<br>
+    • <strong>Egészségedre!</strong> (egeşşegedre) = Şerefe!<br>
+    • <strong>Bocsánat</strong> (boçanat) = Pardon/Özür dilerim<br><br>
+    💡 Macarlar İngilizce'yi iyi konuşuyor, özellikle gençler ve turizm sektörü. Ama birkaç kelime bilmek çok takdir ediliyor!
+  </div>
+
+  <div class="info">
+    <strong>🎯 Son söz:</strong> Budapeşte, tarihsel olarak <em>"acı çekmiş ama estetikten vazgeçmemiş"</em> bir şehir. Günümüzde ise <em>"yaşaması kolay, gezmesi keyifli, sürprizli"</em> bir yer. Genel olarak <strong>Paris veya Londra'dan daha güvenli</strong> — sadece yukarıdaki dolandırıcılık tuzaklarına dikkat et ve keyif sür! 🇭🇺
+  </div>
+
+</div>
+
+<script>
+function tab(t){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.main-tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById(t).classList.add('on');
+  document.querySelector(`.main-tab[data-t="${t}"]`).classList.add('on');
+  window.scrollTo(0,0);
+}
+function tog(el){
+  const d=el.nextElementSibling;
+  if(d&&d.classList.contains('detail')){
+    const isOpen=d.classList.contains('open');
+    // close all others
+    document.querySelectorAll('.detail.open').forEach(x=>{x.classList.remove('open');x.previousElementSibling.classList.remove('open')});
+    if(!isOpen){d.classList.add('open');el.classList.add('open')}
+  }
+}
+</script>
+</body>
+</html>
