@@ -65,18 +65,18 @@ body::before{
 
 /* HERO */
 .hero{
-  padding:60px 32px 50px;
+  padding:36px 32px 28px;
   border-bottom:1px solid var(--rule);
   position:relative;
   z-index:2;
 }
 .hero-eyebrow{
   font-family:'JetBrains Mono',monospace;
-  font-size:11px;
+  font-size:10px;
   text-transform:uppercase;
   letter-spacing:3px;
   color:var(--ink-faded);
-  margin-bottom:24px;
+  margin-bottom:14px;
 }
 .hero h1{
   font-family:'Fraunces',serif;
@@ -89,7 +89,7 @@ body::before{
 }
 .hero h1 .roman{font-style:normal}
 .hero-meta{
-  margin-top:40px;
+  margin-top:20px;
   display:flex;
   gap:48px;
   flex-wrap:wrap;
@@ -108,7 +108,7 @@ body::before{
   z-index:2;
 }
 .section-label{
-  padding:24px 32px;
+  padding:16px 32px;
   border-bottom:1px solid var(--rule);
   font-family:'JetBrains Mono',monospace;
   font-size:11px;
@@ -122,7 +122,7 @@ body::before{
 
 .trip{
   display:block;
-  padding:36px 32px;
+  padding:22px 32px;
   border-bottom:1px solid var(--rule);
   color:var(--ink);
   text-decoration:none;
@@ -133,7 +133,7 @@ body::before{
 .trip:hover{
   background:var(--ink);
   color:var(--paper);
-  padding-left:48px;
+  padding-left:40px;
 }
 .trip:hover .trip-arrow{opacity:1;transform:translateX(0)}
 .trip:hover .trip-meta span:first-child{color:rgba(244,241,236,.5)}
@@ -145,16 +145,16 @@ body::before{
   font-size:11px;
   letter-spacing:2px;
   color:var(--ink-faded);
-  margin-bottom:12px;
+  margin-bottom:8px;
 }
 .trip-name{
   font-family:'Fraunces',serif;
   font-weight:900;
-  font-size:clamp(32px,5.5vw,58px);
-  line-height:.98;
+  font-size:clamp(24px,3.5vw,38px);
+  line-height:1;
   letter-spacing:-0.03em;
   font-variation-settings:"opsz" 144;
-  margin-bottom:20px;
+  margin-bottom:14px;
 }
 .trip-name em{
   font-style:italic;
@@ -193,7 +193,7 @@ body::before{
 
 .trip-status{
   position:absolute;
-  top:36px;
+  top:22px;
   right:32px;
   font-family:'JetBrains Mono',monospace;
   font-size:9px;
@@ -214,9 +214,9 @@ body::before{
 .trip-arrow{
   position:absolute;
   right:32px;
-  bottom:36px;
+  bottom:22px;
   font-family:'Fraunces',serif;
-  font-size:32px;
+  font-size:28px;
   opacity:0;
   transform:translateX(-12px);
   transition:opacity .3s,transform .3s;
@@ -224,7 +224,7 @@ body::before{
 
 /* FOOTER */
 .foot{
-  padding:60px 32px 40px;
+  padding:28px 32px 20px;
   border-top:1px solid var(--rule);
   display:flex;
   justify-content:space-between;
@@ -237,9 +237,9 @@ body::before{
 .foot-quote{
   font-family:'Fraunces',serif;
   font-style:italic;
-  font-size:18px;
+  font-size:14px;
   max-width:480px;
-  line-height:1.45;
+  line-height:1.5;
 }
 .foot-meta{
   font-family:'JetBrains Mono',monospace;
@@ -252,16 +252,16 @@ body::before{
 
 /* MOBILE */
 @media (max-width:680px){
-  .masthead{padding:16px 20px 12px;flex-direction:column;align-items:flex-start;gap:4px}
-  .hero{padding:48px 20px 40px}
-  .hero-meta{gap:24px;margin-top:28px}
-  .trip{padding:28px 20px}
-  .trip:hover{padding-left:32px}
-  .trip-status{top:28px;right:20px;font-size:8px}
-  .trip-arrow{right:20px;bottom:28px;font-size:24px}
-  .trip-meta{gap:20px}
-  .section-label{padding:16px 20px}
-  .foot{padding:40px 20px 24px}
+  .masthead{padding:14px 18px 10px;flex-direction:column;align-items:flex-start;gap:4px}
+  .hero{padding:24px 18px 20px}
+  .hero-meta{gap:24px;margin-top:14px}
+  .trip{padding:18px 18px}
+  .trip:hover{padding-left:26px}
+  .trip-status{top:18px;right:18px;font-size:8px}
+  .trip-arrow{right:18px;bottom:18px;font-size:22px}
+  .trip-meta{gap:18px}
+  .section-label{padding:12px 18px}
+  .foot{padding:24px 18px 18px}
   .foot-meta{text-align:left}
 }
 
