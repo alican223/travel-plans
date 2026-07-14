@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norfolk & Suffolk Aile Turu — Gezi Rehberi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E3A50;        /* Kuzey Denizi */
+    --river:#5C8A70;       /* Stour nehri yeşili */
+    --hut-coral:#E8705F;   /* plaj kulübesi mercan */
+    --hut-teal:#6FA9A0;    /* plaj kulübesi deniz köpüğü */
+    --hut-sun:#EDB94E;     /* plaj kulübesi güneş sarısı */
+    --hut-blue:#6E96C3;    /* plaj kulübesi gök mavisi */
+    --paper:#F7F4EC;       /* deniz tuzu beyazı zemin */
+    --card:#FFFFFF;
+    --ink:#243240;
+    --muted:#6B7684;
+    --line:#E2DCCE;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito Sans',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:16px;
+  }
+  a{color:var(--hut-blue);text-decoration:none;font-weight:700}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--hut-sun);outline-offset:2px;border-radius:6px}
+
+  /* ---------- HERO ---------- */
+  header{
+    background:linear-gradient(175deg,var(--navy) 0%,#2C5470 70%,#3E6E8C 100%);
+    color:#F5F0E4;
+    padding:44px 20px 0;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-inner{max-width:920px;margin:0 auto;position:relative;z-index:2}
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:800;color:var(--hut-sun);margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces',serif;font-weight:900;
+    font-size:clamp(30px,6vw,52px);line-height:1.08;
+    margin-bottom:14px;
+  }
+  h1 em{font-style:italic;color:#BFD9E4}
+  .hero-sub{max-width:620px;font-size:16px;color:#D8E2E8;margin-bottom:30px}
+
+  /* rota şeridi */
+  .route{
+    display:flex;align-items:flex-start;gap:0;
+    overflow-x:auto;padding:6px 0 34px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .stop{min-width:118px;text-align:center;position:relative;flex:1}
+  .stop::before{
+    content:"";position:absolute;top:9px;left:50%;width:100%;height:0;
+    border-top:3px dotted rgba(245,240,228,.45);
+  }
+  .stop:last-child::before{display:none}
+  .dot{
+    width:20px;height:20px;border-radius:50%;
+    margin:0 auto 8px;position:relative;z-index:1;
+    border:3px solid var(--paper);
+  }
+  .stop small{display:block;font-size:11px;color:#A9C2D0;font-weight:600}
+  .stop b{font-size:13px;display:block}
+  /* dalga geçişi */
+  .waves{display:block;width:100%;height:46px;margin-top:8px}
+
+  /* ---------- SEKME ÇUBUĞU: PLAJ KULÜBELERİ ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--paper);
+    border-bottom:2px solid var(--line);
+    padding:14px 12px 0;
+  }
+  .huts{
+    max-width:920px;margin:0 auto;
+    display:flex;gap:8px;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .huts::-webkit-scrollbar{display:none}
+  .hut{
+    --c:var(--navy);
+    flex:1;min-width:104px;cursor:pointer;border:none;background:none;
+    font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:13px;
+    color:var(--muted);padding:0;
+  }
+  .hut .roof{
+    height:14px;background:var(--c);opacity:.25;
+    clip-path:polygon(0 100%,50% 0,100% 100%);
+    transition:opacity .2s;
+  }
+  .hut .body{
+    background:#fff;border:2px solid var(--line);border-top:none;
+    border-radius:0 0 8px 8px;padding:8px 6px 10px;
+    transition:all .2s;
+  }
+  .hut .body small{display:block;font-size:10px;letter-spacing:.08em;color:var(--muted);font-weight:700}
+  .hut.active{color:var(--ink)}
+  .hut.active .roof{opacity:1}
+  .hut.active .body{border-color:var(--c);background:color-mix(in srgb,var(--c) 8%,#fff);transform:translateY(-2px)}
+  .hut:hover .roof{opacity:.6}
+
+  /* ---------- İÇERİK ---------- */
+  main{max-width:920px;margin:0 auto;padding:34px 18px 70px}
+  section{display:none;animation:fade .35s ease}
+  section.visible{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    section{animation:none}
+    .hut.active .body{transform:none}
+  }
+
+  .day-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+  .day-badge{
+    font-family:'Fraunces',serif;font-weight:900;font-size:15px;
+    color:#fff;padding:6px 14px;border-radius:999px;
+  }
+  h2{
+    font-family:'Fraunces',serif;font-weight:700;
+    font-size:clamp(24px,4.5vw,34px);line-height:1.15;
+  }
+  .day-meta{color:var(--muted);font-size:14px;margin-bottom:26px;font-weight:600}
+
+  /* zaman çizelgesi */
+  .timeline{position:relative;padding-left:86px;margin-bottom:36px}
+  .timeline::before{
+    content:"";position:absolute;left:64px;top:8px;bottom:8px;
+    border-left:3px dotted var(--line);
+  }
+  .tl-item{position:relative;margin-bottom:22px}
+  .tl-time{
+    position:absolute;left:-86px;top:2px;width:52px;text-align:right;
+    font-weight:800;font-size:13px;color:var(--navy);
+  }
+  .tl-item::before{
+    content:"";position:absolute;left:-27px;top:7px;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--acc,var(--river));border:2px solid var(--paper);
+  }
+  .tl-item h4{font-size:16px;font-weight:800;margin-bottom:3px}
+  .tl-item p{font-size:14.5px;color:#414D5B}
+  .map{
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:12.5px;background:#EFF4F0;border:1px solid #DCE6DE;
+    padding:2px 9px;border-radius:999px;margin:4px 6px 0 0;
+    color:var(--river);
+  }
+  .map:hover{background:#E2EDE5;text-decoration:none}
+  .tag{
+    display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;
+    text-transform:uppercase;padding:2px 9px;border-radius:999px;margin-left:8px;
+    vertical-align:2px;
+  }
+  .tag.kids{background:#FDEBD2;color:#9A6A12}
+  .tag.adults{background:#E3EBF5;color:#3D608C}
+  .tag.all{background:#E5F0E9;color:#3F7052}
+  .tag.opt{background:#F0EDE5;color:#7A7260}
+
+  /* kartlar */
+  .card{
+    background:var(--card);border:2px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;margin-bottom:18px;
+  }
+  .card h3{
+    font-family:'Fraunces',serif;font-weight:700;font-size:19px;
+    margin-bottom:10px;display:flex;align-items:center;gap:8px;
+  }
+  .card ul{padding-left:20px}
+  .card li{margin-bottom:7px;font-size:14.5px}
+
+  .alt{border-left:6px solid var(--hut-sun);background:#FFFDF6}
+  .alt h3{color:#8A6512}
+  .flex-note{border-left:6px solid var(--hut-teal);background:#F6FBFA}
+  .flex-note h3{color:#3E7068}
+  .warn{border-left:6px solid var(--hut-coral);background:#FFF8F6}
+  .warn h3{color:#A8493C}
+
+  /* genel bakış tablosu */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}}
+  .check li{list-style:none;position:relative;padding-left:28px}
+  .check li::before{
+    content:"✓";position:absolute;left:0;top:0;
+    font-weight:900;color:var(--river);
+  }
+  .num{font-family:'Fraunces',serif;font-weight:900;color:var(--hut-coral);margin-right:4px}
+
+  footer{
+    text-align:center;padding:26px 16px 44px;color:var(--muted);font-size:13px;
+    border-top:2px solid var(--line);background:#F2EEE3;
+  }
+  footer b{color:var(--navy)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero-inner">
+    <div class="eyebrow">Aile Gezi Rehberi · 20 Temmuz Haftası 2026</div>
+    <h1>Norfolk <em>&</em> Suffolk<br>Dört Gün, Dört Karakter</h1>
+    <p class="hero-sub">Dagenham'dan çıkıp Constable'ın nehirlerinden BeWILDerwood ormanına, ortaçağ Norwich'inden Southwold'un pastel kulübelerine uzanan, hiç geri dönüşü olmayan tek çizgilik rota. 2 yetişkin · 2 çocuk (3 ve 5 yaş) · 3 gece · 2 otel.</p>
+    <div class="route">
+      <div class="stop"><span class="dot" style="background:#F5F0E4"></span><b>Dagenham</b><small>Başlangıç</small></div>
+      <div class="stop"><span class="dot" style="background:var(--river)"></span><b>Dedham & Flatford</b><small>Gün 1</small></div>
+      <div class="stop"><span class="dot" style="background:var(--hut-teal)"></span><b>Wroxham</b><small>Gün 1-2 · Otel 1</small></div>
+      <div class="stop"><span class="dot" style="background:var(--hut-blue)"></span><b>Norwich</b><small>Gün 3</small></div>
+      <div class="stop"><span class="dot" style="background:var(--hut-sun)"></span><b>Gt. Yarmouth</b><small>Gün 3 · Otel 2</small></div>
+      <div class="stop"><span class="dot" style="background:var(--hut-coral)"></span><b>Southwold</b><small>Gün 4</small></div>
+    </div>
+  </div>
+  <svg class="waves" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,20 C150,46 350,-6 600,20 C850,46 1050,-6 1200,20 L1200,46 L0,46 Z" fill="#F7F4EC"/>
+  </svg>
+</header>
+
+<nav aria-label="Gün seçimi">
+  <div class="huts">
+    <button class="hut active" style="--c:var(--navy)" data-tab="genel"><span class="roof"></span><span class="body">Genel<small>BAKIŞ</small></span></button>
+    <button class="hut" style="--c:var(--river)" data-tab="gun1"><span class="roof"></span><span class="body">Gün 1<small>CONSTABLE</small></span></button>
+    <button class="hut" style="--c:var(--hut-teal)" data-tab="gun2"><span class="roof"></span><span class="body">Gün 2<small>BEWILDERWOOD</small></span></button>
+    <button class="hut" style="--c:var(--hut-blue)" data-tab="gun3"><span class="roof"></span><span class="body">Gün 3<small>NORWICH</small></span></button>
+    <button class="hut" style="--c:var(--hut-coral)" data-tab="gun4"><span class="roof"></span><span class="body">Gün 4<small>SOUTHWOLD</small></span></button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ GENEL BAKIŞ ============ -->
+<section id="genel" class="visible">
+  <div class="day-head">
+    <span class="day-badge" style="background:var(--navy)">Plan</span>
+    <h2>Gezinin Omurgası</h2>
+  </div>
+  <p class="day-meta">Ritim: Yarı-yarı → Çocuk → Siz → Herkes · En uzun sürüş 1 sa 40 dk · Tüm sürüşler akşam yemeği sonrası</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🏨 Konaklama</h3>
+      <ul>
+        <li><b>Otel 1 · Wroxham (2 gece, Gün 1-2):</b> <a class="map" href="https://www.google.com/maps/search/?api=1&query=Hotel+Wroxham+Norfolk" target="_blank">📍 Hotel Wroxham</a> (nehir manzarası, BeWILDerwood'a 5 dk) <i>veya</i> <a class="map" href="https://www.google.com/maps/search/?api=1&query=Premier+Inn+Norwich+Nelson+City+Centre" target="_blank">📍 Premier Inn Norwich Nelson</a></li>
+        <li><b>Otel 2 · Great Yarmouth (1 gece, Gün 3):</b> <a class="map" href="https://www.google.com/maps/search/?api=1&query=Premier+Inn+Great+Yarmouth+Seafront" target="_blank">📍 Premier Inn Seafront</a> (sahile sıfır, aile odası)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🚗 Sürüş Mesafeleri</h3>
+      <ul>
+        <li>Dagenham → Dedham: <b>1 sa 05 dk</b></li>
+        <li>Dedham → Wroxham: <b>1 sa 25 dk</b> (akşam)</li>
+        <li>Norwich → Gt. Yarmouth: <b>45 dk</b> (akşam)</li>
+        <li>Yarmouth → Southwold: <b>50 dk</b></li>
+        <li>Southwold → Dagenham: <b>1 sa 50 dk</b> (akşam)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>✅ Rezervasyon Kontrol Listesi <span class="tag opt">öncelik sırasıyla</span></h3>
+    <ul class="check">
+      <li><span class="num">1</span><b>Oteller</b> — Temmuz yüksek sezon, aile odaları ilk tükenir: bu hafta ayırt.</li>
+      <li><span class="num">2</span><b>BeWILDerwood online bilet</b> — 18-31 Temmuz ziyaretlerinde online alımda %25 indirim (kapıda yarısı). 92 cm altı ücretsiz; küçüğün boyunu ölç → <a href="https://bewilderwood.co.uk" target="_blank">bewilderwood.co.uk</a></li>
+      <li><span class="num">3</span><b>Elektrikli tekne, Gün 1</b> — <b>Flatford 16:30 seferi</b> (Flatford → Dedham dönüşü), önceden rezervasyon şart → <a href="https://www.riverstourtrust.org" target="_blank">riverstourtrust.org</a></li>
+      <li><span class="num">4</span><b>The New Inn Wroxham</b> — Gün 2 akşam yemeği masası (yaz akşamları doluyor).</li>
+      <li><span class="num">5</span><b>Valize:</b> yedek çocuk kıyafetleri (nehir + 3 yaş!), sırt taşıyıcı (puset değil), plaj seti, piknik örtüsü.</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <h3>☔ Genel Yağmur Stratejisi</h3>
+    <ul>
+      <li><b>1 yağmurlu gün varsa:</b> Gün 1'i Colchester versiyonuyla oyna (kale tamamen kapalı).</li>
+      <li><b>Yağmur BeWILDerwood gününe denk gelirse:</b> Gün 2 ↔ Gün 3 takası — Norwich'in kalesi, katedrali ve pasajları yağmur geçirmez.</li>
+      <li><b>Son gün yağmur:</b> Southwold yerine Gorleston kısa programı + erken dönüş. İki plan da otelin güneyinde — sabah hava durumuna bakıp karar ver.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>🗓️ Dört Günün Karakteri</h3>
+    <ul>
+      <li><b>Gün 1 — Constable Ülkesi</b> <span class="tag all">herkes</span> Tekne, kayık, sanat ve nehir kenarı köy hayatı.</li>
+      <li><b>Gün 2 — BeWILDerwood</b> <span class="tag kids">çocuk</span> Tam gün orman macerası; çocuklar kendini tüketir.</li>
+      <li><b>Gün 3 — Norwich</b> <span class="tag adults">siz</span> Peppa Pig → Oxford formülü: çocuklar dünden yorgun, şehir sizin.</li>
+      <li><b>Gün 4 — Southwold</b> <span class="tag all">herkes</span> Zarif sahil, yengeç avı, yumuşak dönüş.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ GÜN 1 ============ -->
+<section id="gun1">
+  <div class="day-head">
+    <span class="day-badge" style="background:var(--river)">Gün 1</span>
+    <h2>Constable Ülkesi: Dedham & Flatford</h2>
+  </div>
+  <p class="day-meta">Çıkış 11:00 · 2026, Constable'ın 250. doğum yılı — özel sergiler tüm sezon açık · Gece: Otel 1, Wroxham</p>
+
+  <div class="timeline" style="--acc:var(--river)">
+    <div class="tl-item"><span class="tl-time">11:00</span>
+      <h4>Dagenham'dan çıkış</h4>
+      <p>A12 kuzey yönü. Bagajda: piknik örtüsü, yedek çocuk kıyafeti.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">12:05</span>
+      <h4>Dedham'a varış + öğle yemeği <span class="tag all">herkes</span></h4>
+      <p>Köy merkezine park, direkt masaya: <b>The Sun Inn</b> (bahçeli gastropub) veya hafif istersen Old Bakery Cafe.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Dedham+Essex" target="_blank">📍 Dedham</a>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=The+Sun+Inn+Dedham" target="_blank">📍 The Sun Inn</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">13:30</span>
+      <h4>Ahşap kayık kiralama 🚣 <span class="tag all">günün yıldızı</span></h4>
+      <p>The Boatyard'da geleneksel kayıklar — rezervasyonsuz, ilk gelen alır, tekne başına 4 kişi (tam aile boyu), 30-60 dk. Sonrası kiosktan dondurma ödülü. 🍦</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=The+Boatyard+Dedham" target="_blank">📍 The Boatyard</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">14:30</span>
+      <h4>Nehir kenarı yürüyüşüyle Flatford'a 🦆</h4>
+      <p>2,4 km dümdüz patika, ördek-kuğu eşliğinde; çocuk temposuyla ~1 saat. "The Hay Wain"in içinden yürümek gibi — ve dönüş yürünmeyecek, tekneyle! ⬇️</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">15:30</span>
+      <h4>Flatford keşfi 🎨 <span class="tag adults">Constable 250</span></h4>
+      <p><b>Bridge Cottage</b> sergisi ve <b>Willy Lott's House</b> — "The Hay Wain" tablosunun gerçek karesi. Çocuklar için Granary'de boyama istasyonu + dev Jenga; RSPB bahçesinde söğüt tüneli. Tea Room'dan ikindi scone'u da cabası.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Flatford+National+Trust" target="_blank">📍 Flatford NT</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">16:30</span>
+      <h4>Elektrikli tekne ile Dedham'a dönüş ⛵ <span class="tag kids">çocuk favorisi</span></h4>
+      <p>River Stour Trust'ın 16:30 Flatford seferi 30 dakikada sizi Boathouse iskelesine geri bırakır — yürüyüşün dönüşü bedavaya tekne keyfi. <b>Önceden rezervasyon şart.</b></p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Flatford+Bridge+Cottage" target="_blank">📍 Biniş iskelesi</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">17:10</span>
+      <h4>Dedham köy turu <span class="tag adults">sizin çeyrek saatler</span></h4>
+      <p>St Mary's Kilisesi'nde <b>orijinal Constable tablosu</b>, pembe-krem Tudor evleri boyunca kısa yürüyüş.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=St+Mary%27s+Church+Dedham" target="_blank">📍 St Mary's</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">17:45</span>
+      <h4>Akşam yemeği</h4>
+      <p>Nehir kenarında <b>The Boathouse Restaurant</b> (iskelenin hemen yanı) veya öğlen gitmediyseniz The Sun Inn.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Dedham+Boathouse+Restaurant" target="_blank">📍 The Boathouse</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">19:00</span>
+      <h4>Yola çıkış → Wroxham 🚗</h4>
+      <p>1 sa 25 dk; çocuklar tok karınla arabada uyur. ~20:25 Otel 1'e varış, direkt yatak. ✅</p>
+    </div>
+  </div>
+
+  <div class="card alt">
+    <h3>🔄 Gün Alternatifi A — Colchester (yağmur planı)</h3>
+    <ul>
+      <li><b>55 dk mesafe.</b> Sabah <b>Colchester Castle</b>: İngiltere'nin en büyük Norman kalesi, bodrumda Roma tapınağı temelleri — tamamen kapalı, yağmura dayanıklı. <a class="map" href="https://www.google.com/maps/search/?api=1&query=Colchester+Castle" target="_blank">📍 Kale</a></li>
+      <li>Öğlen <b>Castle Park</b>: dev oyun alanı + mini tren.</li>
+      <li>Öğleden sonra <b>Dutch Quarter</b>: 16. yy Flaman dokumacı evleri arasında yürüyüş.</li>
+      <li>Akşam ritmi aynı: yemek → Wroxham'a sürüş (1 sa 40 dk).</li>
+    </ul>
+  </div>
+  <div class="card alt">
+    <h3>🔄 Gün Alternatifi B — Audley End House & Miniature Railway</h3>
+    <ul>
+      <li><b>50 dk, M11 üzeri.</b> Sabah ormanda <b>buharlı mini tren</b> + peri kapıları yürüyüşü (çocuklar). <a class="map" href="https://www.google.com/maps/search/?api=1&query=Audley+End+Miniature+Railway" target="_blank">📍 Mini tren</a></li>
+      <li>Öğleden sonra Jakoben dönemi malikânesi ve Capability Brown bahçeleri (siz). <a class="map" href="https://www.google.com/maps/search/?api=1&query=Audley+End+House" target="_blank">📍 Audley End</a></li>
+      <li>Wroxham'a devam: M11 → A11, 1 sa 50 dk — rotada hiç sapma yok.</li>
+    </ul>
+  </div>
+  <div class="card flex-note">
+    <h3>⚙️ Gün İçi Esneklikler</h3>
+    <ul>
+      <li>16:30 teknesi dolu/iptal ise dönüş de yürüyerek yapılır (~1 saat, düz patika) — akşam yemeği 17:45 yerine 18:00'e kayar, sorun yok.</li>
+      <li>Munnings Art Museum bu tempoda opsiyonel; köy turunda enerji artarsa 20-30 dakikalık ziyaret sığar. <a class="map" href="https://www.google.com/maps/search/?api=1&query=Munnings+Art+Museum+Dedham" target="_blank">📍 Munnings</a></li>
+      <li>NT otoparkı ücretlidir (üyeye bedava); plan Dedham parkı üzerine kurulu, sorun değil.</li>
+      <li>Yedek çocuk kıyafeti şart: nehir + 3 yaş kombinasyonunun sonu bellidir. 😄</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ GÜN 2 ============ -->
+<section id="gun2">
+  <div class="day-head">
+    <span class="day-badge" style="background:var(--hut-teal)">Gün 2</span>
+    <h2>BeWILDerwood: Tam Çocuk Günü</h2>
+  </div>
+  <p class="day-meta">Açılış 10:00 · Son giriş 16:00 · Yaz boyu BeWILDerfest etkinlikleri · Gece: yine Otel 1 — bavul açma yok 😌</p>
+
+  <div class="timeline" style="--acc:var(--hut-teal)">
+    <div class="tl-item"><span class="tl-time">09:00</span>
+      <h4>Otelde kahvaltı</h4>
+      <p>Sırt taşıyıcıyı hazırla — park orman zemini, puset işlemez.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">09:45</span>
+      <h4>Park kapısında ol 🌳</h4>
+      <p>Otelden 5 dk. 10:00-12:00 arası en tenha saatler.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=BeWILDerwood+Norfolk+Hoveton" target="_blank">📍 BeWILDerwood</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">10:00</span>
+      <h4>Ana park turu <span class="tag kids">5 yaş</span></h4>
+      <p>Önce <b>tekne turu</b>, büyük ağaç evler ve Wobbly Wires — kalabalık artmadan.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">12:00</span>
+      <h4>Öğle yemeği</h4>
+      <p>Munch Bar'da Norfolk sosisli + yerel dondurma, veya geniş piknik alanları.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">13:00</span>
+      <h4>Toddlewood on the Hill <span class="tag kids">3 yaş</span></h4>
+      <p>Her şeyin küçültülmüş versiyonu. Arada hikaye anlatımı seansları, yüz boyama, kulübe yapımı (den building) ve BeWILDerfest müzikleri.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">15:30</span>
+      <h4>Tempoya göre çıkış</h4>
+      <p>Otelde kısa dinlenme — akşama enerji topla.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">18:00</span>
+      <h4>Akşam yemeği: The New Inn Wroxham</h4>
+      <p>Nehir kenarı bahçe — çocuklar koşar, siz nefes alırsınız. Masa rezervasyonu önerilir.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=The+New+Inn+Wroxham" target="_blank">📍 The New Inn</a>
+    </div>
+  </div>
+
+  <div class="card warn">
+    <h3>🎟️ Bilet Stratejisi (para tasarrufu)</h3>
+    <ul>
+      <li>18-31 Temmuz ziyaretlerinde <b>online önceden alınan biletlerde %25 indirim</b>; kapıda alımda indirim yarıya düşer.</li>
+      <li><b>92 cm altı çocuklar ücretsiz</b> — 3 yaşındakinin boyunu ölçüp bilet tipini ona göre seç.</li>
+    </ul>
+  </div>
+  <div class="card alt">
+    <h3>🔄 Gün Alternatifi — Yağmur Takası</h3>
+    <ul>
+      <li>BeWILDerwood <b>tamamen açık hava</b>. Kötü hava bu güne denk gelirse <b>Gün 3 (Norwich) ile takas et</b> — kale, katedral ve pasajlar yağmur geçirmez, orman günü güneşe kayar.</li>
+    </ul>
+  </div>
+  <div class="card flex-note">
+    <h3>⚙️ Gün İçi Esneklikler</h3>
+    <ul>
+      <li>Puset yerine sırt taşıyıcı + bol mola stratejisi.</li>
+      <li>Çocuklar erken tükenirse 15:00 çıkış → otelde dinlenme; akşam programı aynı kalır.</li>
+      <li>3 yaşındaki yüksek köprülere çıkamaz ama tekne turu, hikayeler ve yüz boyama yaşa bakmaz.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ GÜN 3 ============ -->
+<section id="gun3">
+  <div class="day-head">
+    <span class="day-badge" style="background:var(--hut-blue)">Gün 3</span>
+    <h2>Norwich: Sizin Gününüz</h2>
+  </div>
+  <p class="day-meta">Oxford formülü: çocuklar dünden yorgun, şehir sizin · Gece: Otel 2, Great Yarmouth</p>
+
+  <div class="timeline" style="--acc:var(--hut-blue)">
+    <div class="tl-item"><span class="tl-time">09:15</span>
+      <h4>Wroxham'dan çıkış → Norwich</h4>
+      <p>Sadece 20 dk.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">09:45</span>
+      <h4>Elm Hill 📸 <span class="tag adults">siz</span></h4>
+      <p>Tudor evli, Arnavut kaldırımlı ortaçağ sokağı — bu saatte bomboş, fotoğraflar sizin.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Elm+Hill+Norwich" target="_blank">📍 Elm Hill</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">10:30</span>
+      <h4>Norwich Cathedral <span class="tag all">herkes</span></h4>
+      <p>İngiltere'nin en yüksek ikinci kule sivrisi; cloister avlusunda çocuklar serbestçe dolaşır.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Norwich+Cathedral" target="_blank">📍 Katedral</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">12:00</span>
+      <h4>Öğle: Norwich Lanes</h4>
+      <p>Bağımsız kafeler ve butikler; Royal Arcade'in Art Nouveau pasajından geç. Tatlı: <b>Ronaldo's</b> dondurması — çocukların günlük rüşveti. 🍦</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Norwich+Lanes" target="_blank">📍 The Lanes</a>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Royal+Arcade+Norwich" target="_blank">📍 Royal Arcade</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">13:30</span>
+      <h4>Norwich Castle 🏰 <span class="tag all">herkes</span></h4>
+      <p>Yenilenmiş Norman keep: sizin için gerçek tarih, çocuklar için interaktif kral sarayı. Hafif tempo — 1-1,5 saat yeter.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Norwich+Castle" target="_blank">📍 Kale</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">15:00</span>
+      <h4>Kale bahçesinde mola</h4>
+      <p>Veya Lanes'te son bir gezinti — tempo tamamen serbest.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">16:30</span>
+      <h4>Erken akşam yemeği</h4>
+      <p>Norwich'te veya Wroxham yönünde.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">19:30</span>
+      <h4>Kısa sürüş → Great Yarmouth 🚗</h4>
+      <p>45 dk; Otel 2'ye (Seafront) yerleşme. Kısa yol — çocuklar uyumasa da sorun değil.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Premier+Inn+Great+Yarmouth+Seafront" target="_blank">📍 Otel 2</a>
+    </div>
+  </div>
+
+  <div class="card alt">
+    <h3>🔄 Gün Alternatifi — Tam Sakin Gün (Norwich atlanır)</h3>
+    <ul>
+      <li>Sabah <b>Wroxham Barns</b>: keçi besleme, traktör turu, kapalı oyun alanı — otele 5 dk. <a class="map" href="https://www.google.com/maps/search/?api=1&query=Wroxham+Barns" target="_blank">📍 Wroxham Barns</a></li>
+      <li>Öğleden sonra <b>Broads tekne turu</b>: Wroxham iskelesinden 1 saatlik turlar; 16:00-17:00 seferleri en boş — gün batımında bataklık kuşları. <a class="map" href="https://www.google.com/maps/search/?api=1&query=Wroxham+boat+trips+Broads" target="_blank">📍 İskele</a></li>
+      <li>Akşam yine Yarmouth'a geçiş.</li>
+    </ul>
+  </div>
+  <div class="card flex-note">
+    <h3>⚙️ Gün İçi Esneklikler</h3>
+    <ul>
+      <li>Çocuklar zinde uyanırsa Norwich öncesi <b>1 saatlik Wroxham Barns molası</b> — geçen yılki "1 saat oyun yetti" gözlemi buraya birebir oturur.</li>
+      <li>Kale çocuklara ağır gelirse dönüşümlü gezin: biri keep'te, diğeri kale bahçesinde.</li>
+      <li>Yağmurda en güçlü gün budur — kale, katedral, pasajlar tamamen kapalı.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ GÜN 4 ============ -->
+<section id="gun4">
+  <div class="day-head">
+    <span class="day-badge" style="background:var(--hut-coral)">Gün 4</span>
+    <h2>Southwold & Walberswick: Herkes Günü</h2>
+  </div>
+  <p class="day-meta">İngiliz sahilinin en zarifi + yumuşak dönüş · Dönüş sürüşü ikiye bölünmüş: 50 dk + 1 sa 50 dk</p>
+
+  <div class="timeline" style="--acc:var(--hut-coral)">
+    <div class="tl-item"><span class="tl-time">09:30</span>
+      <h4>Yarmouth'tan çıkış → güneye</h4>
+      <p>Bavullar arabada — otelden tam çıkış.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">10:20</span>
+      <h4>Southwold'a varış</h4>
+      <p>Sahil otoparkına park.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Southwold+Suffolk" target="_blank">📍 Southwold</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">10:30</span>
+      <h4>Southwold Pier + Under the Pier Show 🎡 <span class="tag all">herkes</span></h4>
+      <p>Mucit yapımı absürt-komik makinelerle dolu "alternatif arcade" — yetişkinler çocuklardan çok güler. Çocuklara birkaç jeton, size kahve + Kuzey Denizi manzarası.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Southwold+Pier" target="_blank">📍 Pier</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">11:30</span>
+      <h4>Plaj kulübeleri + kum saati 🏠</h4>
+      <p>Meşhur pastel beach hut sırası boyunca yürüyüş (fotoğraflarınız), sonra çocuklar kumda kova-kürek mesaisine. Arkanızda kasaba: tuvalet/dondurma lojistiği kolay.</p>
+    </div>
+    <div class="tl-item"><span class="tl-time">12:45</span>
+      <h4>Öğle yemeği</h4>
+      <p><b>Sole Bay Fish Company</b> — limanda balıkçı kooperatifinden taze deniz ürünleri (sizin gastronomi durağınız); pratik istersen iskele üstü fish & chips.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Sole+Bay+Fish+Company+Southwold" target="_blank">📍 Sole Bay</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">14:00</span>
+      <h4>Kürekli sandal + yengeç avı 🦀 <span class="tag kids">günün yıldızı</span></h4>
+      <p>Limandan karşı kıyıdaki <b>Walberswick</b>'e kürekle çekilen yüz yıllık yolcu sandalı (2 dk'lık geçiş, başlı başına olay). Walberswick = İngiltere'nin yengeç avı (crabbing) başkenti: olta ipi + kova + yem sahil dükkânından; yakala-bırak.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Walberswick+Suffolk" target="_blank">📍 Walberswick</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">16:15</span>
+      <h4>Dönüş sandalı + kasabada son tur</h4>
+      <p>Deniz feneri sokakları; <b>Adnams</b> mağazasından eve yerel bira/cin — bavul hediyesi buradan. 🍺</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Adnams+Southwold" target="_blank">📍 Adnams</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">17:00</span>
+      <h4>Erken akşam yemeği</h4>
+      <p><b>The Lord Nelson</b> — fener dibinde, çocuk dostu klasik pub.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=The+Lord+Nelson+Southwold" target="_blank">📍 Lord Nelson</a>
+    </div>
+    <div class="tl-item"><span class="tl-time">18:00</span>
+      <h4>Yola çıkış → Dagenham 🏡</h4>
+      <p>1 sa 50 dk — gezinin en kısa dönüşü. ~19:50 varış, çocuklar uykuda finiş. ✅</p>
+    </div>
+  </div>
+
+  <div class="card alt">
+    <h3>🔄 Gün Alternatifi — Gorleston-on-Sea (yağmur / yorgunluk planı)</h3>
+    <ul>
+      <li>Otele 10 dk, <b>sıfır efor günü</b>: sakin plaj, ücretsiz splash pad, sahil kahvesi, fish & chips. <a class="map" href="https://www.google.com/maps/search/?api=1&query=Gorleston-on-Sea+beach" target="_blank">📍 Gorleston</a></li>
+      <li>Öğleden sonra <b>Merrivale Model Village</b>: minyatür kasaba + mini golf (1,5 saat). <a class="map" href="https://www.google.com/maps/search/?api=1&query=Merrivale+Model+Village+Great+Yarmouth" target="_blank">📍 Merrivale</a></li>
+      <li>Erken yemek, 18:30 çıkış → ~21:00 Dagenham.</li>
+      <li><b>İpucu:</b> İki plan da otelin güneyinde — sabah hava durumuna bakıp son dakika karar verilebilir.</li>
+    </ul>
+  </div>
+  <div class="card flex-note">
+    <h3>⚙️ Gün İçi Esneklikler</h3>
+    <ul>
+      <li>Walberswick sandalı çalışmıyorsa yengeç avı Southwold liman köprüsünden de yapılır.</li>
+      <li>Çocuklar plajdan kopmuyorsa Walberswick atlanır, gün plajda biter — zorlamak yok, bu gün tamponunuz.</li>
+      <li>Venetian Waterways (Yarmouth) sabaha eklenebilir bir mini durak: kanallı Victoria bahçeleri + pedallı tekne.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>Norfolk & Suffolk Aile Turu · 2026</b><br>
+  Dagenham → Dedham → Wroxham → Norwich → Great Yarmouth → Southwold → Dagenham<br>
+  Gezi Kurulu tarafından hazırlandı — iyi yolculuklar! 🚗🌊
+</footer>
+
+<script>
+  const huts = document.querySelectorAll('.hut');
+  const sections = document.querySelectorAll('main section');
+  huts.forEach(h => h.addEventListener('click', () => {
+    huts.forEach(x => x.classList.remove('active'));
+    h.classList.add('active');
+    sections.forEach(s => s.classList.remove('visible'));
+    document.getElementById(h.dataset.tab).classList.add('visible');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }));
+</script>
+
+</body>
+</html>
