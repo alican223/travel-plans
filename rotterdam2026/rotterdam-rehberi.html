@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotterdam · 27 Eylül – 2 Ekim 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --concrete:#EDEEEF;
+  --paper:#FFFFFF;
+  --ink:#14243A;
+  --steel:#5A6B7D;
+  --dock:#F7C61A;
+  --water:#2E6E8E;
+  --flag:#BF3A22;
+  --hair:#D3D7DB;
+  --sans:'Archivo',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --board:'Barlow Condensed','Archivo Narrow',system-ui,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--concrete);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.5;
+  padding-bottom:3rem;
+}
+.wrap{max-width:44rem;margin:0 auto;background:var(--paper);min-height:100vh}
+
+/* ---------- header ---------- */
+.masthead{
+  background:var(--ink);
+  color:var(--paper);
+  padding:1.75rem 1.25rem 1.5rem;
+}
+.masthead h1{
+  font-size:clamp(2.5rem,13vw,4.25rem);
+  font-weight:800;
+  letter-spacing:-.045em;
+  line-height:.88;
+}
+.rule{height:5px;background:var(--dock);width:4.5rem;margin:.9rem 0 .85rem}
+.masthead .dates{font-size:1.0625rem;font-weight:600;letter-spacing:-.01em}
+.masthead .base{font-size:.9375rem;color:#A9B7C6;margin-top:.2rem}
+
+/* ---------- tabs ---------- */
+nav{
+  position:sticky;top:0;z-index:20;
+  background:var(--ink);
+  border-top:1px solid #2C3D54;
+  display:flex;gap:0;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+nav::-webkit-scrollbar{display:none}
+nav button{
+  flex:0 0 auto;
+  font-family:var(--sans);
+  font-size:.9375rem;font-weight:600;
+  color:#93A3B4;
+  background:none;border:none;
+  border-bottom:3px solid transparent;
+  padding:.8rem .85rem .7rem;
+  cursor:pointer;
+  white-space:nowrap;
+}
+nav button[aria-selected="true"]{color:var(--paper);border-bottom-color:var(--dock)}
+nav button:focus-visible{outline:2px solid var(--dock);outline-offset:-4px}
+
+/* ---------- panels ---------- */
+.panel{display:none;padding:0 0 2rem}
+.panel.on{display:block}
+
+.daytop{padding:1.5rem 1.25rem 1.1rem;border-bottom:1px solid var(--hair)}
+.daytop .slot{
+  font-family:var(--board);font-size:1.0625rem;font-weight:600;
+  color:var(--water);letter-spacing:.02em;
+}
+.daytop h2{font-size:1.75rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:.1rem 0 .35rem}
+.daytop .gist{font-size:1rem;color:var(--steel)}
+
+/* ---------- schedule board ---------- */
+.board{border-bottom:1px solid var(--hair)}
+.stop{display:flex;gap:.9rem;padding:.95rem 1.25rem;border-bottom:1px solid #E7EAEC}
+.stop:last-child{border-bottom:none}
+.stop time{
+  flex:0 0 3.25rem;
+  font-family:var(--board);font-size:1.375rem;font-weight:600;
+  text-align:right;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+  line-height:1.25;
+}
+.stop .body{flex:1;border-left:1px solid var(--hair);padding-left:.9rem}
+.stop.key .body{border-left:3px solid var(--dock);padding-left:.8rem}
+.stop h3{font-size:1.0625rem;font-weight:600;letter-spacing:-.01em}
+.stop p{font-size:.9375rem;color:var(--steel);margin-top:.15rem}
+.stop .addr{font-family:var(--board);font-size:1rem;color:var(--water)}
+
+/* ---------- strips ---------- */
+.flagbox,.extra{margin:1.1rem 1.25rem;padding:.85rem 1rem}
+.flagbox{background:#FBEEEB;border-left:4px solid var(--flag)}
+.flagbox h4{font-size:.9375rem;font-weight:700;color:var(--flag);margin-bottom:.2rem}
+.flagbox p{font-size:.9375rem}
+.extra{border:1px dashed var(--hair);background:#FAFBFB}
+.extra h4{font-size:.9375rem;font-weight:700;margin-bottom:.4rem}
+.extra ul{list-style:none}
+.extra li{font-size:.9375rem;color:var(--steel);padding-left:1rem;position:relative;margin-bottom:.3rem}
+.extra li::before{content:"";position:absolute;left:0;top:.55rem;width:5px;height:5px;background:var(--dock)}
+
+/* ---------- content blocks ---------- */
+.block{padding:1.5rem 1.25rem;border-bottom:1px solid var(--hair)}
+.block:last-child{border-bottom:none}
+.block h2{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.3rem}
+.block .lede{font-size:1rem;color:var(--steel);margin-bottom:1.1rem}
+.block h3{font-size:1.125rem;font-weight:700;letter-spacing:-.015em;margin:1.4rem 0 .5rem}
+.block h3:first-of-type{margin-top:0}
+.block p{font-size:.9375rem;margin-bottom:.5rem}
+
+.item{padding:.85rem 0;border-bottom:1px solid #E7EAEC}
+.item:last-child{border-bottom:none}
+.item .name{font-size:1.0625rem;font-weight:600;letter-spacing:-.01em}
+.item .where{font-family:var(--board);font-size:1.0625rem;color:var(--water);margin-top:.05rem}
+.item .desc{font-size:.9375rem;color:var(--steel);margin-top:.25rem}
+.shut{color:var(--flag);font-weight:600}
+
+.star{background:#FEF8E3;border-left:4px solid var(--dock);padding:.9rem 1rem;margin-bottom:1rem}
+.star .name{font-size:1.0625rem;font-weight:700}
+.star .desc{font-size:.9375rem;margin-top:.25rem}
+
+/* ---------- checklist ---------- */
+.check{list-style:none}
+.check li{border-bottom:1px solid #E7EAEC}
+.check label{display:flex;gap:.75rem;align-items:flex-start;padding:.8rem 0;cursor:pointer}
+.check input{margin-top:.25rem;width:1.15rem;height:1.15rem;accent-color:var(--water);flex:0 0 auto}
+.check .txt{font-size:.9375rem}
+.check .txt b{font-weight:600;font-size:1rem;display:block}
+.check input:checked + .txt{color:var(--steel);text-decoration:line-through}
+
+/* ---------- day map ---------- */
+.dmap{list-style:none}
+.dmap li{display:flex;gap:.85rem;padding:.7rem 0;border-bottom:1px solid #E7EAEC;font-size:.9375rem}
+.dmap .d{font-family:var(--board);font-size:1.125rem;font-weight:600;flex:0 0 3rem;color:var(--water)}
+
+footer{padding:1.5rem 1.25rem;color:var(--steel);font-size:.875rem;border-top:1px solid var(--hair)}
+@media(prefers-reduced-motion:no-preference){
+  .panel.on{animation:in .18s ease-out}
+  @keyframes in{from{opacity:0}to{opacity:1}}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <h1>ROTTER<br>DAM</h1>
+  <div class="rule"></div>
+  <p class="dates">27 Eylül – 2 Ekim 2026</p>
+  <p class="base">The Usual · Westblaak 10-14 · iş gezisi</p>
+</header>
+
+<nav role="tablist" aria-label="Bölümler">
+  <button role="tab" aria-selected="true"  data-t="pzt">Pzt</button>
+  <button role="tab" aria-selected="false" data-t="sal">Sal</button>
+  <button role="tab" aria-selected="false" data-t="car">Çar</button>
+  <button role="tab" aria-selected="false" data-t="per">Per</button>
+  <button role="tab" aria-selected="false" data-t="cum">Cum</button>
+  <button role="tab" aria-selected="false" data-t="yemek">Yemek</button>
+  <button role="tab" aria-selected="false" data-t="icecek">İçecek</button>
+  <button role="tab" aria-selected="false" data-t="notlar">Notlar</button>
+</nav>
+
+<!-- ================= PAZARTESİ ================= -->
+<section class="panel on" id="pzt" role="tabpanel">
+  <div class="daytop">
+    <p class="slot">28 Eylül · tam gün</p>
+    <h2>Kinderdijk, Lijnbaan, Delfshaven</h2>
+    <p class="gist">Müzelerin kapalı olduğu gün. Bugün su ve sokak günü — hepsi açık hava.</p>
+  </div>
+
+  <div class="board">
+    <div class="stop"><time>07:30</time><div class="body"><h3>Otelde kahvaltı</h3><p>Erken kalk, bugün uzun.</p></div></div>
+    <div class="stop key"><time>08:10</time><div class="body"><h3>Erasmusbrug iskelesine yürüyüş</h3><p>14 dakika. Yağmurluysa Beurs metro → Leuvehaven, sonra 5 dakika.</p></div></div>
+    <div class="stop key"><time>08:30</time><div class="body"><h3>Waterbus 20 → Ridderkerk</h3><p>26 dakika. Saatleri bir gün önce teyit et.</p></div></div>
+    <div class="stop key"><time>09:15</time><div class="body"><h3>Driehoeksveer → Kinderdijk</h3><p>10 dakika, 2,35 € — <b>sadece kart, nakit yok.</b></p></div></div>
+    <div class="stop"><time>09:30</time><div class="body"><h3>Kinderdijk</h3><p>19 yel değirmeni, iki müze değirmen, Wisboom pompa istasyonu. Ziyaretçi merkezi 09:00–17:30. 2,5 saat.</p></div></div>
+    <div class="stop"><time>12:30</time><div class="body"><h3>Aynı rotayla dönüş</h3></div></div>
+    <div class="stop"><time>14:00</time><div class="body"><h3>Merkezde öğle yemeği</h3><p class="addr">Bram Ladage · Lijnbaan 79D</p><p>“Patatje oorlog” iste: mayonez + fıstık sosu + çiğ soğan.</p></div></div>
+    <div class="stop key"><time>14:30</time><div class="body"><h3>Lijnbaan + Koopgoot</h3><p>Avrupa'nın ilk yaya alışveriş sokağı, 1953. <b>Dükkânlar 18:00'de kapanıyor — haftanın tek alışveriş penceresi bu.</b></p></div></div>
+    <div class="stop"><time>15:45</time><div class="body"><h3>Didi's Stroopwafels</h3><p class="addr">Oude Binnenweg 95-C · 10:00–18:00</p><p>Sipariş üzerine pişiyor, sıcak geliyor. İlk seferde sade al.</p></div></div>
+    <div class="stop"><time>16:15</time><div class="body"><h3>Delfshaven</h3><p>Eendrachtsplein'den metro 2 durak. Bombardımandan kurtulan tek eski mahalle; Pilgrim Fathers Amerika'ya buradan yola çıktı.</p></div></div>
+    <div class="stop key"><time>17:30</time><div class="body"><h3>Shoarma El Aviva — kapsalonun doğduğu yer</h3><p class="addr">Schiedamseweg 22a · 12:00–01:00</p><p>Kapsalon 2003'te tam burada icat edildi. Menüde hikâyesi yazıyor.</p></div></div>
+    <div class="stop"><time>19:30</time><div class="body"><h3>Akşam: De Witte Aap</h3><p class="addr">Witte de Withstraat 78 · 16:00–04:00</p><p>Üstü kapalı, ısıtmalı teras. Bokbier sor.</p></div></div>
+  </div>
+
+  <div class="flagbox">
+    <h4>Bugün kapalı</h4>
+    <p>Depot Boijmans, Fenix Food Factory, Kaapse Brouwers, Oliva, Miniworld, De Pelgrim, BIRD, Jenevermuseum. Planı buna göre kurdum, sapma.</p>
+  </div>
+
+  <div class="flagbox">
+    <h4>Yağmur varsa</h4>
+    <p>Bugünün tamamı açık hava. Pazar akşamı tahmin kötüyse Pazartesi ile Perşembe'yi <b>tamamen takas et</b>: Pazartesi Delft (kiliseler açık), Perşembe sabah Kinderdijk + öğleden sonra Miniworld. O senaryoda feribotun yaz tarifesi bitmiş olacağı için Kralingse Zoom'dan <b>489 otobüsünü</b> kullan.</p>
+  </div>
+
+  <div class="extra">
+    <h4>Ekstra vakit kalırsa</h4>
+    <ul>
+      <li>Kinderdijk'te bisiklet kirala — değirmen hattı boyunca 5 km, en güzeli bu</li>
+      <li>Waterbus'la 30 dakika ileride Dordrecht, Hollanda'nın en eski şehri</li>
+      <li>Delfshaven'da Coolhaven ve eski ambar sokakları</li>
+      <li>Locus Publicus · Oostzeedijk 364 — şehrin bira otoritesi, yüzlerce çeşit</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= SALI ================= -->
+<section class="panel" id="sal" role="tabpanel">
+  <div class="daytop">
+    <p class="slot">29 Eylül · 17:00 sonrası</p>
+    <h2>Euromast</h2>
+    <p class="gist">Tek destinasyon, düşük efor. Toplantıdan çıkıp doğrudan gidiyorsun.</p>
+  </div>
+
+  <div class="board">
+    <div class="stop"><time>17:30</time><div class="body"><h3>Otelden Euromast'a</h3><p>Metro Dijkzigt, toplam 15 dakika.</p></div></div>
+    <div class="stop key"><time>17:45</time><div class="body"><h3>Euromast</h3><p class="addr">Parkhaven 20 · her gün 09:30–22:00</p><p>185 m. Döner asansörle en tepeye “Euroscoop”. Bileti online al, gişede sıra oluyor. Tepedeki restoranda bir kadeh iç — yemeği aşağıda ye.</p></div></div>
+    <div class="stop"><time>19:15</time><div class="body"><h3>Gün batımı</h3><p>Bu saatte tepede ol.</p></div></div>
+    <div class="stop key"><time>20:00</time><div class="body"><h3>Oliva</h3><p class="addr">Witte de Withstraat 15A · rezervasyon şart</p><p>Dört kap tadım menüsü. Mutfak 21:30'da kapanıyor.</p></div></div>
+    <div class="stop"><time>21:45</time><div class="body"><h3>Jigger</h3><p class="addr">Hoogstraat 73A · 15:00–01:00</p><p>Bitkilerle dolu küçük speakeasy. Jenever'li kokteyl isteyebileceğin nadir yerlerden.</p></div></div>
+  </div>
+
+  <div class="extra">
+    <h4>Alternatifler</h4>
+    <ul>
+      <li>Oliva yerine Warung Mini · Witte de Withstraat 47 — Surinam roti, otelden 2 dakika, porsiyonlar iki kişilik</li>
+      <li>Het Park'ta akşam yürüyüşü, Euromast'ın hemen dibinde</li>
+      <li>Museumpark'tan geçerken Depot Boijmans'ın aynalı cephesi — bedava, bilet yok</li>
+      <li>1983 Coffees &amp; Cocktails · Nieuwemarkt 49 — tarihi çeşmeye bakan teras</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ÇARŞAMBA ================= -->
+<section class="panel" id="car" role="tabpanel">
+  <div class="daytop">
+    <p class="slot">30 Eylül · 17:00 sonrası</p>
+    <h2>Katendrecht</h2>
+    <p class="gist">Eski liman ve Çin mahallesi, şimdi şehrin yeme-içme kalbi. Yerel bira gecesi.</p>
+  </div>
+
+  <div class="board">
+    <div class="stop key"><time>17:30</time><div class="body"><h3>Watertaxi ile karşıya</h3><p>10 euroya şehrin en iyi on dakikası. Akşam silüeti.</p></div></div>
+    <div class="stop"><time>18:00</time><div class="body"><h3>Hotel New York</h3><p>Eski Holland-Amerika Lijn merkezi — Amerika'ya göç edenlerin son durağı. İçinde bir şey içmek yeter.</p></div></div>
+    <div class="stop key"><time>19:00</time><div class="body"><h3>Fenix Food Factory</h3><p class="addr">Nico Koomanskade 1025 · 11:00–22:00</p><p>Bitterballen (hardalla, bir dakika bekle — içi cehennem sıcağı), tosti, erwtensoep, Booij Kaasmakers'ta 2–3 yıllık Gouda.</p></div></div>
+    <div class="stop"><time>20:30</time><div class="body"><h3>Kaapse Brouwers</h3><p class="addr">Fenix içinde · 11:00–22:00</p><p>Tadım tahtasıyla birkaç çeşit yerel bira.</p></div></div>
+    <div class="stop"><time>21:30</time><div class="body"><h3>Deliplein çevresinde dolaş, dönüş</h3><p>Rijnhaven metrosundan Beurs'e 2 durak.</p></div></div>
+  </div>
+
+  <div class="extra">
+    <h4>Ekstra vakit kalırsa</h4>
+    <ul>
+      <li>SS Rotterdam — rıhtımda demirli eski transatlantik</li>
+      <li>Rijnhavenpark — yeni liman kıyısı park ve şehir plajı</li>
+      <li>Eski Çin mahallesi sokakları</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= PERŞEMBE ================= -->
+<section class="panel" id="per" role="tabpanel">
+  <div class="daytop">
+    <p class="slot">1 Ekim · tam gün</p>
+    <h2>Delft, Miniworld, gece</h2>
+    <p class="gist">Haftanın finali. Miniworld sadece bugün açık ve gece hayatı da bugün.</p>
+  </div>
+
+  <div class="board">
+    <div class="stop"><time>08:30</time><div class="body"><h3>Centraal → Delft</h3><p>13 dakika tren.</p></div></div>
+    <div class="stop"><time>09:15</time><div class="body"><h3>Nieuwe Kerk</h3><p><b>376 basamak</b>, dar merdiven. Tepesi açık hava, Rotterdam silüeti görünüyor.</p></div></div>
+    <div class="stop"><time>10:45</time><div class="body"><h3>Oude Kerk</h3><p>Eğik kule, Vermeer'in mezarı. İki kilise tek biletle, 10:00–17:00.</p></div></div>
+    <div class="stop"><time>12:00</time><div class="body"><h3>Markt / Beestenmarkt</h3><p>Kanal kenarı öğle yemeği.</p></div></div>
+    <div class="stop"><time>13:15</time><div class="body"><h3>Rotterdam'a dönüş</h3></div></div>
+    <div class="stop key"><time>14:00</time><div class="body"><h3>Miniworld Rotterdam</h3><p class="addr">Weena 745 · 12:00–17:00</p><p>Hollanda'nın en büyük minyatür şehri, gündüz-gece döngüsü çalışıyor. <span class="shut">17:00'de kapanıyor</span> — gecikme.</p></div></div>
+    <div class="stop"><time>16:15</time><div class="body"><h3>Markthal → Kübik Evler → Oude Haven</h3><p>Hepsi yol üstünde, akşam ışığında iyi.</p></div></div>
+    <div class="stop"><time>17:15</time><div class="body"><h3>Luchtsingel</h3><p>390 metrelik sarı ahşap köprü; kalasları tek tek halk bağışıyla finanse edildi, üzerlerinde bağışçıların yazıları var. Küçük ve biraz yıpranmış — ama Rotterdam'ı en iyi anlatan yer.</p></div></div>
+    <div class="stop"><time>17:45</time><div class="body"><h3>Hofbogen + Man Met Bril Koffie</h3><p class="addr">Linker Rottekade 12</p><p>Eski demiryolu viyadüğü, üstü yeni çatı parkı. Kanal kenarında kendi kavurdukları kahve.</p></div></div>
+    <div class="stop key"><time>19:30</time><div class="body"><h3>Waroeng EmJay</h3><p class="addr">Diergaardesingel 96A · Perşembe açık</p><p>Endonezya: rijsttafel veya ayam penyet + sambal. Acıyı gerçekten acı yapıyorlar.</p></div></div>
+    <div class="stop key"><time>21:30</time><div class="body"><h3>BIRD — haftanın tek gerçek gecesi</h3><p class="addr">Raampoortstraat 24 · Sal–Per 17:30–01:00</p><p>Hofbogen viyadüğünün altında caz, funk ve club gecesi. Hollanda'da Perşembe geleneksel çıkma günü.</p></div></div>
+  </div>
+
+  <div class="extra">
+    <h4>Alternatifler</h4>
+    <ul>
+      <li>Delft'te vakit kalırsa Royal Delft porselen fabrikası veya Vermeer Centrum</li>
+      <li>Delft dönüşünde Schiedam'da in: Nationaal Jenevermuseum, Lange Haven 74, 11:00–17:00 — çalışan damıtımevi, tadım odası, yel değirmeni</li>
+      <li>Sonneveld Huis · Museumpark — 1933 modernist ev, orijinal eşyalarıyla. Resim değil mimari</li>
+      <li>OX · Schiekade 189, Per–Cmt 18:00–01:00 — gizli girişten bodruma inen kokteyl eşleştirmeli akşam, pahalı segment</li>
+      <li>De Pelgrim · Aelbrechtskolk 12 — Delfshaven'daki bira fabrikası, “Mayflower” biraları. Pazartesi gidemediğin için ancak bugün mümkün</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CUMA ================= -->
+<section class="panel" id="cum" role="tabpanel">
+  <div class="daytop">
+    <p class="slot">2 Ekim · bonus sabah</p>
+    <h2>Spido ve son öğle yemeği</h2>
+    <p class="gist">Akşam uçuşu bir gün daha kazandırdı. Boş geçme.</p>
+  </div>
+
+  <div class="board">
+    <div class="stop"><time>10:00</time><div class="body"><h3>Check-out, bavulu bırak</h3><p>Otelde ya da Centraal'daki emanet dolapları.</p></div></div>
+    <div class="stop key"><time>10:30</time><div class="body"><h3>Spido liman turu</h3><p class="addr">Willemsplein 85 · gişe 09:00–17:00</p><p>75 dakika. Avrupa'nın en büyük limanının ölçeğini ancak sudan anlıyorsun. Kapalı güverte var, yağmur sorun değil. Sefer saatlerini bir gün önce teyit et.</p></div></div>
+    <div class="stop"><time>12:30</time><div class="body"><h3>Markthal — son öğle yemeği</h3><p class="addr">Cuma 10:00–21:00</p><p>Royal Fish standında kibbeling ve çiğ ringa. Ringa sezonu tam kapanıyor, son şans.</p></div></div>
+    <div class="stop"><time>13:30</time><div class="body"><h3>Hediyeler</h3><p>Paket stroopwafel, hagelslag, speculaas, vakumlu yaşlanmış Gouda, stroop, bir şişe oude jenever.</p></div></div>
+    <div class="stop key"><time>14:00</time><div class="body"><h3>Bavulu al, havalimanına</h3><p>Rotterdam The Hague: Centraal'dan 33 numaralı otobüs, ~20 dakika. Schiphol: trenle ~40 dakika. <b>Kontroller dahil 3 saat bırak.</b></p></div></div>
+  </div>
+
+  <div class="extra">
+    <h4>Spido yerine</h4>
+    <ul>
+      <li>Kunsthal · Museumpark, 10:00–17:00</li>
+      <li>Lijnbaan'da eksik kalan alışveriş — Cuma dükkânlar geç kapanıyor</li>
+      <li>Miniworld · Cuma 12:00–17:00, Pazartesi kaçırdıysan buradan telafi</li>
+    </ul>
+  </div>
+
+  <div class="flagbox">
+    <h4>Peyniri en son al</h4>
+    <p>Vakumlu bile olsa koku yayıyor. El bagajına koyma.</p>
+  </div>
+</section>
+
+<!-- ================= YEMEK ================= -->
+<section class="panel" id="yemek" role="tabpanel">
+  <div class="block">
+    <h2>Yemek</h2>
+    <p class="lede">Rotterdam'ın yemek kimliği liman göçünden geliyor: Surinam, Endonezya, Kâpe Verde, Ortadoğu. Klasik Hollanda mutfağı da yanında duruyor.</p>
+
+    <div class="star">
+      <p class="name">Kapsalon — bunu atlarsan gelmiş sayılmazsın</p>
+      <p class="desc">2003'te bu şehirde icat edildi. Kâpe Verdeli bir kuaför, yanındaki dönerciden hep aynı şeyi istemiş: patatesin üzerine döner, erimiş kaşar, salata, sarımsak sosu. Dükkânın adı “kapsalon” (kuaför salonu) olduğu için yemek de o adla kaldı. Bugün tüm Hollanda'nın gece yemeği.<br><br><b>Shoarma El Aviva · Schiedamseweg 22a · her gün 12:00–01:00</b> — yemeğin doğduğu asıl dükkân. Pazartesi Delfshaven turunda yol üstü.</p>
+    </div>
+
+    <h3>Tuzlu klasikler</h3>
+    <div class="item"><p class="name">Bitterballen</p><p class="where">Fenix Food Factory · Çarşamba</p><p class="desc">Kızarmış, içi kremalı dana ragu köftesi, yanında hardal. En yaygın bira mezesi. Isırmadan önce bir dakika bekle.</p></div>
+    <div class="item"><p class="name">Kibbeling</p><p class="where">Markthal · Royal Fish standı</p><p class="desc">Unlanıp kızartılmış morina parçaları, sarımsak sosuyla. Balıkçı standı yemeği.</p></div>
+    <div class="item"><p class="name">Haring — Hollandse Nieuwe</p><p class="where">Markthal · Cuma öğle</p><p class="desc">Çiğ ringa, soğan ve turşuyla. Yerel usul: kuyruğundan tutup başını yukarı kaldırıp ısırıyorsun. <span class="shut">Sezonu yaz sonunda kapanıyor — son şansın bu hafta.</span></p></div>
+    <div class="item"><p class="name">Patat</p><p class="where">Bram Ladage · Lijnbaan 79D · 11:00–19:00</p><p class="desc">“Frites” deme, burada adı patat. Bram Ladage şehrin kendi markası, patatesi gözünün önünde kesiyorlar. Sipariş: <b>patatje oorlog</b> — mayonez + fıstık sosu + çiğ soğan. Tuhaf duruyor, muazzam.</p></div>
+    <div class="item"><p class="name">Kroket / broodje kroket</p><p class="desc">Bitterballen'in silindir hali, beyaz ekmek arasında hardalla. Deneyimi tamamlamak için bir FEBO duvar otomatından al — parayı atıp kapağı açıyorsun.</p></div>
+    <div class="item"><p class="name">Frikandel</p><p class="desc">Baharatlı sosis kızartması. “Speciaal” istersen üstüne curry sosu, mayonez ve doğranmış soğan.</p></div>
+    <div class="item"><p class="name">Erwtensoep (snert)</p><p class="where">Fenix / Kaapse Brouwers</p><p class="desc">Kaşığın dik durduğu kadar koyu bezelye çorbası, içinde sosis. Eylül sonu havası için tam zamanı.</p></div>
+    <div class="item"><p class="name">Oude kaas</p><p class="where">Booij Kaasmakers · Fenix içinde</p><p class="desc">2–3 yıllık Gouda, tuz kristalleri ağızda çatlıyor. Süpermarket peyniriyle alakası yok.</p></div>
+
+    <h3>Liman mutfağı</h3>
+    <div class="item"><p class="name">Surinam — roti, pom, moksi meti</p><p class="where">Warung Mini · Witte de Withstraat 47 · her gün 12:00–22:00</p><p class="desc">Otelinden 2 dakika. Roti: dürüm ekmeğiyle köri tavuk-patates. Porsiyonlar iki kişiyi doyuruyor, ~17 €.</p></div>
+    <div class="item"><p class="name">Endonezya — rijsttafel, ayam penyet</p><p class="where">Waroeng EmJay · Diergaardesingel 96A</p><p class="desc">Hollanda'nın en köklü “yabancı” mutfağı. Rijsttafel bir sofraya 15–20 küçük tabak. <span class="shut">Çarşamba kapalı</span> — Perşembe veya Cuma git.</p></div>
+    <div class="item"><p class="name">Ortadoğu / Türk</p><p class="where">Bazar · Witte de Withstraat 16 · 09:00–22:30</p><p class="desc">Eski banka binasında, otelden 2 dakika. Memleket molası gerekirse ya da erken kahvaltı için.</p></div>
+    <div class="item"><p class="name">Kanton — ördek</p><p class="where">Hung Kee · Witte de Withstraat 61B · 16:00'da açılıyor</p><p class="desc">Ucuz ve hızlı. Toplantı uzarsa kurtarıcı plan.</p></div>
+
+    <h3>Tatlılar</h3>
+    <div class="star">
+      <p class="name">Appelgebak met slagroom — bir numaralı önerim</p>
+      <p class="desc">Kalın, tarçınlı, hamuru kurabiye gibi elmalı turta; yanında şekersiz gerçek krem şanti. <b>Dudok · Meent 88 · her gün 09:00–23:00</b> bu işin Rotterdam'daki kurumu, otelden 10 dakika, Perşembe yürüyüşünün üstünde. <b>Kritik: “warm” iste</b> — sıcak servis edilince tamamen başka bir tatlıya dönüşüyor.</p>
+    </div>
+    <div class="item"><p class="name">Stroopwafel — taze ve sıcak olanı</p><p class="where">Didi's Stroopwafels · Oude Binnenweg 95-C · 10:00–18:00</p><p class="desc">Paketlisini herkes biliyor; asıl olay sipariş üzerine pişip elinde ılık gelen, karameli akan hali. Otelden 5 dakika. İlk seferde sade al.</p></div>
+    <div class="item"><p class="name">Poffertjes</p><p class="desc">Bozuk para büyüklüğünde mini pancake'ler, tereyağı ve pudra şekeriyle. Didi's'te de var.</p></div>
+    <div class="item"><p class="name">Tompouce</p><p class="desc">İki milföy arasında muhallebi, üstü pembe fondan. Ulusal pasta. Fırından veya süpermarketten al — pahalı olanı daha iyi değil. Zarif yeme yolu yok, kabul et.</p></div>
+    <div class="item"><p class="name">Oliebollen</p><p class="desc">Pudra şekerli hamur topları. Sezonu Ekim başında açılıyor — 1–2 Ekim'de ilk tezgâhları yakalayabilirsin. Görürsen kaçırma.</p></div>
+    <div class="item"><p class="name">Vlaai</p><p class="desc">Limburg usulü meyveli açık turta, kayısılı veya vişneli.</p></div>
+  </div>
+</section>
+
+<!-- ================= İÇECEK ================= -->
+<section class="panel" id="icecek" role="tabpanel">
+  <div class="block">
+    <h2>İçecek ve gece</h2>
+    <p class="lede">Rotterdam'ın kulüp gecesi Cuma ve Cumartesi — sende ikisi de yok. Büyük kulüpleri baştan sil. Sende çalışacak olan bar, bira ve canlı müzik; haftanın tek gerçek gecesi Perşembe.</p>
+
+    <div class="star">
+      <p class="name">Jenever + kopstootje</p>
+      <p class="desc">Cin'in atası, 16. yüzyıldan beri burada damıtılıyor. <b>Jonge</b> nötr ve temiz, <b>oude</b> arpa maltı ağırlıklı ve viskiye yakın — bunu tercih et.<br><br>Asıl olay ritüel: <b>kopstootje</b> (kafa vuruşu). Lale bardak taşacak kadar dolduruluyor, yanına bir bira geliyor. <b>İlk yudumu elini kullanmadan, öne eğilip bardağın kenarından alıyorsun.</b> Sonra bira. Barmene “kopstootje” dersen anlar ve muhtemelen hoşuna gider.</p>
+    </div>
+
+    <h3>Denenecekler</h3>
+    <div class="item"><p class="name">Bokbier — sezonu tam senin haftan</p><p class="desc">Sonbaharda çıkan koyu, malt yoğun mevsim birası. Eylül sonu–Ekim başı tam çıkış zamanı. Barda “bok” diye sor; tapta varsa mutlaka al.</p></div>
+    <div class="item"><p class="name">Beerenburg</p><p class="desc">Bitki karışımlı sert şnaps, buzlu. Soğuk akşam içeceği.</p></div>
+    <div class="item"><p class="name">Advocaat</p><p class="desc">Yumurta likörü, üstüne krem şanti. Tatlı yerine geçiyor.</p></div>
+
+    <h3>Alkolsüz</h3>
+    <div class="item"><p class="name">Verse muntthee</p><p class="desc">Bardakta taze nane demeti + sıcak su. Her kafede var; poşet çaydan kaçmanın tek yolu ve sana çok tanıdık gelecek.</p></div>
+    <div class="item"><p class="name">Chocomel</p><p class="desc">Soğuk kakaolu süt, ulusal bağımlılık. Sıcak hali “warme chocomel met slagroom”.</p></div>
+    <div class="item"><p class="name">Karnemelk</p><p class="desc">Ayrana yakın ekşi süt. Cesaret işi ama Hollandalıların günlük içeceği.</p></div>
+    <div class="item"><p class="name">Alkolsüz bira</p><p class="desc">Neredeyse her tapta 0.0 var, kimse tuhaf bakmıyor.</p></div>
+
+    <h3>Bira ve brown café</h3>
+    <div class="item"><p class="name">Bierlokaal Locus Publicus</p><p class="where">Oostzeedijk 364 · her gün 16:00–01:00</p><p class="desc">Şehrin bira otoritesi. Yüzlerce çeşit, personel gerçekten biliyor. Küçük ve dolu oluyor, erken git. Bokbier sormak için en doğru yer.</p></div>
+    <div class="item"><p class="name">De Witte Aap</p><p class="where">Witte de Withstraat 78 · her gün 16:00–04:00</p><p class="desc">Otelden 3 dakika, parti sokağının kalbi. Üstü kapalı ısıtmalı teras — eylül sonu için önemli. Sende geç kapanan tek seçenek.</p></div>
+    <div class="item"><p class="name">Stadsbrouwerij De Pelgrim</p><p class="where">Aelbrechtskolk 12, Delfshaven · <span class="shut">Pzt–Sal kapalı</span></p><p class="desc">Tarihi binada bira fabrikası. “Mayflower” biraları var: Pilgrim Fathers'ın Amerika'ya tam o mahalleden yola çıkmasına gönderme. Altı ev birasını tadım tahtasıyla deneyebiliyorsun. Pazartesi kapalı olduğu için ancak Perşembe mümkün.</p></div>
+    <div class="item"><p class="name">Kaapse Brouwers</p><p class="where">Fenix içinde · <span class="shut">Pazartesi kapalı</span></p><p class="desc">Çarşamba planında zaten var. Tadım tahtası al.</p></div>
+    <div class="item"><p class="name">Brouwerij Noordt</p><p class="where">Zaagmolenkade 46 · Per–Paz</p><p class="desc">Eski itfaiye binasında, şehrin kuzeyi, sakin. Kalabalıktan kaçmak istersen.</p></div>
+
+    <h3>Kokteyl</h3>
+    <div class="item"><p class="name">Jigger</p><p class="where">Hoogstraat 73A · her gün 15:00–01:00</p><p class="desc">Küçük, bitkilerle dolu, speakeasy havasında mahalle barı. Menü dışı klasikleri de yapıyorlar — jenever'li kokteyl isteyebileceğin nadir yerlerden.</p></div>
+    <div class="item"><p class="name">1983 Coffees &amp; Cocktails</p><p class="where">Nieuwemarkt 49 · her gün 11:00–01:00</p><p class="desc">Gündüz kahve, akşam kokteyl. Tarihi çeşmeye ve Erasmus binasına bakan köşe terası. Erken de gidilir, geç de.</p></div>
+    <div class="item"><p class="name">OX</p><p class="where">Schiekade 189 · <span class="shut">sadece Per–Cmt 18:00–01:00</span></p><p class="desc">Gizli girişten bodruma inen, karakterli bir yer. Kokteyl eşleştirmeli menü. Pahalı segment — özel bir son akşam istiyorsan.</p></div>
+
+    <h3>Canlı müzik</h3>
+    <div class="item"><p class="name">BIRD — en iyi gece seçeneğin</p><p class="where">Raampoortstraat 24 · Sal–Per 17:30–01:00 · <span class="shut">Pzt ve Paz kapalı</span></p><p class="desc">Hofbogen viyadüğünün altında caz, funk ve club gecesi. Aynı zamanda restoran, pizzası iyi. Perşembe yürüyüşünün tam bitiş noktasında.</p></div>
+    <div class="item"><p class="name">LantarenVenster</p><p class="where">Kop van Zuid</p><p class="desc">Hafta içi caz konserleri oluyor, programına bak.</p></div>
+
+    <h3>Bar pratiği</h3>
+    <p>“Een biertje” dersen 25 cl gelir; küçüğü “fluitje”, büyüğü “pint”.</p>
+    <p><b>Köpük normal.</b> Bardağın üstünde iki parmak köpük bırakıp spatülle düzeltirler. Hata değil, standart — şikâyet etme.</p>
+    <p><b>Bahşiş beklenmiyor.</b> Yuvarlamak yeterli, %10 bile fazla.</p>
+    <p>Çoğu bar nakit almıyor. Masa servisi varsa hesabı çıkışta ödüyorsun.</p>
+    <p>İçeride sigara yasak; teraslar ısıtmalı ve üstü kapalı — eylül sonu için bunu soran ol.</p>
+    <p>Kimlik yanında olsun. Hafta içi barlar 01:00'de kapanıyor, Witte de Withstraat istisna.</p>
+    <p>Bira 25 cl ~5–7 €, kokteyl 12–16 €, jenever kadehi ~4–6 €.</p>
+  </div>
+</section>
+
+<!-- ================= NOTLAR ================= -->
+<section class="panel" id="notlar" role="tabpanel">
+  <div class="block">
+    <h2>Şimdi alınacak biletler</h2>
+    <p class="lede">Hepsi online. Depot yok — çatı bileti iptal edildi, aynalı cepheyi Museumpark'tan geçerken bedava görüyorsun.</p>
+    <ul class="check">
+      <li><label><input type="checkbox"><span class="txt"><b>Euromast</b>Salı 17:45, Euroscoop dahil. Gişe sırası uzun, online al.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Kinderdijk girişi</b>Pazartesi, ~18 € hafta içi tarifesi.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Miniworld</b>Perşembe 14:00. Tek uygun günün bu.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Oliva rezervasyonu</b>Salı 20:00. Rezervasyon şart.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Spido</b>Cuma 10:30. Sefer saatlerini teyit et.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Waterbus 20 + Driehoeksveer saatleri</b>Pazar akşamı iki tarifeyi yan yana koy. Bağlantı kötüyse 489 otobüsü.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Otelle WhatsApp</b>Westblaak cephesi yerine arka taraf oda iste — ortada kaykay parkı var.</span></label></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>Otelden mesafeler</h2>
+    <p class="lede">The Usual · Westblaak 10-14. Program neredeyse tamamen yürüme mesafesinde.</p>
+    <ul class="dmap">
+      <li><span class="d">2 dk</span><span>Witte de Withstraat — Oliva, Bazar, Warung Mini, Hung Kee, De Witte Aap</span></li>
+      <li><span class="d">3 dk</span><span>Beurs metro, ana aktarma merkezi</span></li>
+      <li><span class="d">4 dk</span><span>Eendrachtsplein metro</span></li>
+      <li><span class="d">5 dk</span><span>Lijnbaan, Didi's Stroopwafels</span></li>
+      <li><span class="d">8 dk</span><span>Museumpark, Depot'un aynalı cephesi</span></li>
+      <li><span class="d">10 dk</span><span>Markthal, Kübik Evler, Oude Haven, Dudok</span></li>
+      <li><span class="d">14 dk</span><span>Erasmusbrug / Willemskade iskelesi, Rotterdam Centraal</span></li>
+      <li><span class="d">2 durak</span><span>Delfshaven (Eendrachtsplein'den) · Katendrecht (Beurs'ten)</span></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>Pazar 27 Eylül — varış</h2>
+    <p>Yorgunsan hiçbir şey yapma. Enerjin varsa Erasmusbrug'a 20 dakikalık akşam yürüyüşü.</p>
+    <p>Bu akşam iki şey yap: <b>Waterbus 20 ve Driehoeksveer saatlerini teyit et</b>, <b>Pazartesi hava tahminine bak</b>.</p>
+  </div>
+
+  <div class="block">
+    <h2>Çanta ve kart</h2>
+    <p><b>Kapüşonlu yağmurluk.</b> Rüzgârda şemsiye işe yaramaz.</p>
+    <p><b>İki temassız Visa/Mastercard.</b> OVpay Amex kabul etmiyor. Birçok Hollanda mekânı nakit almıyor, bazıları da sadece yerel PIN kartı okuyor — KKTC kartın reddedilirse ikinci kart devreye girsin. Driehoeksveer feribotu da sadece kart.</p>
+    <p><b>OVpay:</b> temassız kartı binişte ve inişte okut. Çıkışta okutmayı unutmak ağır cezalı — refleks haline getir.</p>
+    <p><b>Mutfaklar 21:30'da kapanıyor.</b> Akşam yemeği 18:00'de başlıyor, geç kalırsan aç kalırsın.</p>
+    <p>Öğle yemeği soğuk sandviç kültürü. İş yemeği beklentini buna göre ayarla.</p>
+  </div>
+
+  <div class="block">
+    <h2>Kapalı gün tablosu</h2>
+    <ul class="dmap">
+      <li><span class="d">Pzt</span><span>Depot, Fenix, Kaapse, Oliva, Miniworld, De Pelgrim, Stadshaven, Noordt, BIRD, Jenevermuseum, Pannenkoekenboot</span></li>
+      <li><span class="d">Sal</span><span>Miniworld, De Pelgrim, Stadshaven, Noordt, OX</span></li>
+      <li><span class="d">Çar</span><span>Waroeng EmJay, Noordt, OX</span></li>
+      <li><span class="d">Per</span><span>—</span></li>
+      <li><span class="d">Paz</span><span>Delft kiliseleri, BIRD, OX</span></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>Yağmur planı</h2>
+    <p>Pazartesi'nin tamamı açık hava — haftanın tek gerçek kırılganlığı bu.</p>
+    <p>Pazar akşamı tahmin kötüyse <b>Pazartesi ile Perşembe'yi tamamen takas et</b>: Pazartesi Delft (iki kilise de Pazartesi açık), Perşembe sabah Kinderdijk + öğleden sonra Miniworld. O senaryoda 1 Ekim'de feribotun yaz tarifesi bitmiş olacağı için Kralingse Zoom'dan <b>489 otobüsünü</b> kullan.</p>
+    <p>Kısa süreli yağmur için otelin 10 dakika içindeki kapalı alanlar: Markthal, Kunsthal, Doğa Tarihi Müzesi, Koopgoot.</p>
+  </div>
+
+  <footer>
+    Gün batımı 28 Eylül'de 19:15, 1 Ekim'de 19:05. Hava 15–18°C, rüzgârlı, ani sağanaklı.
+  </footer>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('nav button');
+  var panels = document.querySelectorAll('.panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.setAttribute('aria-selected','false'); });
+      panels.forEach(function(p){ p.classList.remove('on'); });
+      tab.setAttribute('aria-selected','true');
+      var target = document.getElementById(tab.dataset.t);
+      if (target) target.classList.add('on');
+      window.scrollTo({top:0, behavior:'instant'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
