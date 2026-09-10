@@ -20,7 +20,7 @@ body{font-family:var(--sans);background:var(--concrete);color:var(--ink);font-si
 .wrap{max-width:44rem;margin:0 auto;background:var(--paper);min-height:100vh}
 
 .masthead{background:var(--ink);color:var(--paper);padding:1.75rem 1.25rem 1.5rem}
-.masthead h1{font-size:clamp(2.5rem,13vw,4.25rem);font-weight:800;letter-spacing:-.045em;line-height:.88}
+.masthead h1{font-size:clamp(2.25rem,12vw,4.25rem);font-weight:800;letter-spacing:-.04em;line-height:1;white-space:nowrap}
 .rule{height:5px;background:var(--dock);width:4.5rem;margin:.9rem 0 .85rem}
 .masthead .dates{font-size:1.0625rem;font-weight:600;letter-spacing:-.01em}
 .masthead .base{font-size:.9375rem;color:#A9B7C6;margin-top:.2rem}
@@ -116,6 +116,7 @@ html,body{overflow-x:hidden}
 details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;padding:.35rem 0}
 @media (max-width:420px){
   .masthead{padding:1.35rem 1rem 1.15rem}
+  .masthead h1{font-size:clamp(2.1rem,12.2vw,3.3rem)}
   nav button{padding:.75rem .68rem .65rem;font-size:.9375rem}
   .daytop{padding:1.2rem 1rem .95rem}
   .daytop h2{font-size:1.5rem}
@@ -137,16 +138,18 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
 .loc a{font-family:var(--board);font-size:1rem;font-weight:600;color:var(--water);text-decoration:none;display:inline-flex;align-items:center;min-height:2.25rem;padding:.15rem .55rem .15rem 0;border-bottom:1px solid transparent}
 .loc a:hover,.loc a:focus-visible{border-bottom-color:var(--water)}
 .star .loc a{color:#8A6A05}
+.masthead .loc a{color:var(--dock)}
+.masthead .loc a:hover,.masthead .loc a:focus-visible{border-bottom-color:var(--dock)}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header class="masthead">
-  <h1>ROTTER<br>DAM</h1>
+  <h1>ROTTERDAM</h1>
   <div class="rule"></div>
   <p class="dates">27 Eylül – 2 Ekim 2026</p>
-  <p class="base">The Usual · Westblaak 10-14 · iş gezisi</p>
+  <p class="base">The Usual · Westblaak 10-14 · iş gezisi</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
 </header>
 
 <nav role="tablist" aria-label="Bölümler">
@@ -659,7 +662,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     </ul>
     <h3>Otel</h3>
     <ul class="dmap">
-      <li><span class="d">baz</span><span>The Usual · Westblaak 10-14</span></li>
+      <li><span class="d">baz</span><span>The Usual · Westblaak 10-14 · <a href="https://www.google.com/maps/search/?api=1&query=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam" target="_blank" rel="noopener" style="color:var(--water);font-weight:600">haritada aç &#8599;</a></span></li>
     </ul>
   </div>
 
