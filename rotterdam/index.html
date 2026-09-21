@@ -140,6 +140,31 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
 .star .loc a{color:#8A6A05}
 .masthead .loc a{color:var(--dock)}
 .masthead .loc a:hover,.masthead .loc a:focus-visible{border-bottom-color:var(--dock)}
+
+.tix{margin-top:.15rem}
+.tix a{font-family:var(--board);font-size:1rem;font-weight:600;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;min-height:2.25rem;padding:.15rem .55rem .15rem 0;border-bottom:2px solid var(--dock)}
+.tix a:hover,.tix a:focus-visible{background:#FEF8E3}
+
+.locs{margin-top:.3rem;display:flex;flex-wrap:wrap;align-items:center;gap:0 1rem}
+.locs a{font-family:var(--board);font-size:1rem;font-weight:600;color:var(--water);text-decoration:none;min-height:2.1rem;display:inline-flex;align-items:center;padding:.1rem .3rem .1rem 0;border-bottom:1px solid transparent}
+.locs a:hover,.locs a:focus-visible{border-bottom-color:var(--water)}
+.locs .sep{color:var(--hair);padding-right:.3rem}
+.extra a{color:var(--water);font-weight:600;text-decoration:none;font-family:var(--board);font-size:1rem;border-bottom:1px solid transparent;white-space:nowrap}
+.extra a:hover,.extra a:focus-visible{border-bottom-color:var(--water)}
+
+.jump{margin:1.1rem 1.25rem}
+.jump button{width:100%;font-family:var(--sans);font-size:.9375rem;font-weight:600;color:var(--ink);background:#FEF8E3;border:none;border-left:4px solid var(--dock);padding:.9rem 1rem;text-align:left;cursor:pointer;min-height:3rem}
+.jump button:hover,.jump button:focus-visible{background:#FCEFC0}
+@media (max-width:420px){.jump{margin:.9rem 1rem}}
+
+.routes{margin:1.1rem 1.25rem;padding:.9rem 1rem;background:var(--ink);color:var(--paper)}
+.routes h4{font-family:var(--board);font-size:1.0625rem;font-weight:600;color:var(--dock);margin-bottom:.5rem;letter-spacing:.02em}
+.routes a{display:block;font-size:.9375rem;font-weight:600;color:var(--paper);text-decoration:none;padding:.65rem .75rem;margin-top:.4rem;background:#1E3350;border-left:3px solid var(--dock);min-height:2.75rem}
+.routes a:hover,.routes a:focus-visible{background:#2A4466}
+.routes a::after{content:" \2197";color:var(--dock)}
+@media (max-width:420px){.routes{margin:.9rem 1rem;padding:.8rem .9rem}}
+
+.g code{font-family:var(--board);font-size:1.0625rem;font-weight:600;color:var(--water);background:#EFF4F7;padding:.05rem .3rem}
 </style>
 </head>
 <body>
@@ -158,6 +183,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
   <button role="tab" aria-selected="false" data-t="car">Çar</button>
   <button role="tab" aria-selected="false" data-t="per">Per</button>
   <button role="tab" aria-selected="false" data-t="cum">Cum</button>
+  <button role="tab" aria-selected="false" data-t="ekstra">Ekstra</button>
   <button role="tab" aria-selected="false" data-t="yemek">Yemek</button>
   <button role="tab" aria-selected="false" data-t="icecek">İçecek</button>
   <button role="tab" aria-selected="false" data-t="notlar">Notlar</button>
@@ -171,30 +197,25 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <p class="gist">Müzelerin kapalı olduğu gün. Bugün su ve sokak günü — hepsi açık hava.</p>
   </div>
 
+  <div class="flagbox">
+    <h4>Saatler 13:30 dönüşe göre</h4>
+    <p>Kinderdijk'i erken bitirirsen <b>daha önceki sefere bin</b> — combiticket seni bir saate bağlamıyor. 12:15 seferiyle dönersen öğleden sonranın tamamı bir saat öne kayar ve Delfshaven'a akşam ışığı için daha çok vakit kalır. Alışverişin <span class="warn">18:00'den önce bitmesi</span> tek sabit kısıt.</p>
+  </div>
+
+  <div class="routes"><h4>Google Maps rotaları</h4>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam&destination=Willemskade%2C%20Rotterdam&travelmode=walking" target="_blank" rel="noopener">① Sabah · otelden WaterShuttle iskelesine</a>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=The%20Tosti%20Club%2C%20Oude%20Binnenweg%20127B%2C%20Rotterdam&destination=Eendrachtsplein%20metrostation%2C%20Rotterdam&travelmode=walking&waypoints=Cafe%20Restaurant%20Floor%2C%20Schouwburgplein%2028%2C%20Rotterdam%7CDidi%27s%20Stroopwafels%2C%20Oude%20Binnenweg%2095C%2C%20Rotterdam%7CHEMA%2C%20Beursplein%202%2C%20Rotterdam%7CHunkemoller%2C%20Beurstraverse%2024%2C%20Rotterdam%7CDe%20Bijenkorf%2C%20Coolsingel%20105%2C%20Rotterdam" target="_blank" rel="noopener">② Öğleden sonra · yemek, tatlı, alışveriş</a>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=Delfshaven%20metrostation%2C%20Rotterdam&destination=Het%20Eethuisje%20van%20Delfshaven%2C%20Mathenesserdijk%20436%2C%20Rotterdam&travelmode=walking&waypoints=Voorhaven%2C%20Delfshaven%2C%20Rotterdam%7CPelgrimvaderskerk%2C%20Aelbrechtskolk%2020%2C%20Rotterdam%7CShoarma%20El%20Aviva%2C%20Schiedamseweg%2022a%2C%20Rotterdam" target="_blank" rel="noopener">③ Akşam · Delfshaven ve yemek</a>
+  </div>
+
   <div class="board">
-    <div class="stop"><time>07:30</time><div class="body"><h3>Otelde kahvaltı</h3><p class="lead">Erken kalk, bugün uzun. Yağmurluk yanına.</p></div></div>
+    <div class="stop"><time>08:00</time><div class="body"><h3>Otelde kahvaltı</h3><p class="lead">Bugün uzun. Yağmurluk yanına.</p></div></div>
 
-    <div class="stop key"><time>08:10</time><div class="body"><h3>Erasmusbrug iskelesine yürüyüş</h3><p class="lead">14 dakika, Coolsingel üzerinden düz iniş. Yağmurluysa Beurs metro → Leuvehaven, sonra 5 dakika.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Erasmusbrug%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
-      <details class="guide"><summary>Rehber</summary><div class="g">
-        <p><span class="h">Yol üstünde</span>Erasmusbrug, 1996'da açıldı; 802 metre uzunluğunda ve asimetrik 139 metrelik pilonu yüzünden şehirde adı "Kuğu". Rotterdam'ın simgesi bu köprü, ve sabah ışığında en iyi göründüğü saat tam senin geçiş saatin.</p>
-        <p><span class="h">Dikkat</span>Köprü üzerinde bisiklet yolu ile yaya yolu ayrı. Yanlış şeride girersen zil sesiyle uyarılırsın — Hollanda'da bisikletlinin yol hakkı gerçekten vardır.</p>
-      </div></details></div></div>
+    <div class="stop key"><time>08:45</time><div class="body"><h3>Willemskade iskelesine yürüyüş</h3><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Willemskade%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">14 dakika, Coolsingel üzerinden düz iniş. Yağmurluysa Beurs metro → Leuvehaven, sonra 5 dakika.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Yol üstünde</span>Erasmusbrug, 1996'da açıldı; 802 metre uzunluğunda ve asimetrik 139 metrelik pilonu yüzünden şehirde adı "Kuğu". Sabah ışığında en iyi göründüğü saat tam senin geçiş saatin.</p><p><span class="h">Dikkat</span>Köprü ve rıhtımda bisiklet yolu ile yaya yolu ayrı. Kırmızı asfalt bisiklet yoludur, üstünde yürüme — Hollanda'da bisikletlinin yol hakkı gerçekten vardır.</p></div></details></div></div>
 
-    <div class="stop key"><time>08:30</time><div class="body"><h3>Waterbus 20 → Ridderkerk</h3><p class="lead">26 dakika. Saatleri bir gün önce teyit et.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Waterbus%20halte%20Erasmusbrug%2C%20Willemskade%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
-      <details class="guide"><summary>Rehber</summary><div class="g">
-        <p><span class="h">Ne olduğu</span>Waterbus turistik bir tekne turu değil, bölgesel toplu taşımanın parçası olan bir vapur hattı. İçi kapalı ve ısıtmalı, tuvaleti var, bisiklet alıyor. Yanındaki insanların çoğu işe gidiyor.</p>
-        <p><span class="h">Bilmen gerekenler</span>OVpay ile temassız kartla biniliyor, binişte ve inişte okutuyorsun. Nehir manzarası için gidişte sağ tarafa otur — liman, tersaneler ve köprüler o tarafta kalıyor.</p>
-        <p><span class="h">Dikkat</span><span class="warn">Bu planın en kırılgan halkası burası.</span> Waterbus'un varışı ile feribotun kalkışı bağımsız iki tarife; kötü denk gelirse iskelede 40 dakika beklersin. Pazar akşamı iki tarifeyi yan yana koy.</p>
-      </div></details></div></div>
+    <div class="stop key"><time>09:10</time><div class="body"><h3>WaterShuttle → Kinderdijk (direkt)</h3><p class="addr">Willemskade · ~30 dakika, aktarmasız</p><p class="lead"><b>İlk sefer 09:10.</b> Sonraki seferler 1–2 saatte bir.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Eski Waterbus hattı 21, 2025'te turistik bir hatta dönüştürüldü: <b>WaterShuttle</b>. Rotterdam'dan Kinderdijk'e <b>aktarmasız</b> gidiyor, 30 dakika sürüyor. İçi kapalı oturma yerli, üstü açık güverteli. Bisiklet ve scooter ücretsiz.</p><p><span class="h">Combiticket — 32,50 € kişi başı</span>Ayrı ayrı alsan 19,50 € tekne + 18 € giriş = 37,50 €. Combiticket <b>kişi başı 32,50 €</b>, yani <b>5 € tasarruf</b> ve tek işlemde hallediyorsun.</p><p><span class="h">Nasıl alınır — adım adım</span>Combiticket ayrı bir ürün değil, <b>Kinderdijk'in giriş bileti akışında bir seçenek</b>. Bu yüzden Waterbus'ın sitesindeki link seni Kinderdijk'e atıyor ve sayfa giriş bileti gibi görünüyor — doğrusu bu.<br><br><b>1.</b> <code>kinderdijk.com/tickets</code> adresine git<br><b>2.</b> Giriş bileti seçimini yap, tarih: <b>28 Eylül Pazartesi</b><br><b>3.</b> Ulaşım seçeneklerinde <b>"WaterShuttle"</b>i işaretle — combiticket burada devreye giriyor<br><b>4.</b> Kartla öde, e-bilet mailine gelir<br><br>İçeriği: gidiş-dönüş WaterShuttle + iki müze değirmenin içi, değirmenler arasında tekne turu, tanıtım filmi, Wisboom pompa istasyonu ve online Kinderdijk Guide'dan ücretsiz sesli tur.</p><p><span class="h">Saat dilimi</span>Kinderdijk üzerinden combiticket aldıysan <b>WaterShuttle için saat dilimi rezerve etmen gerekmiyor</b> — sana uyan sefere biniyorsun. WaterShuttle webshop'undan ayrı bilet alırsan seçtiğin saat garanti oluyor ama o saate bağlanıyorsun.</p></div></details></div></div>
 
-    <div class="stop key"><time>09:15</time><div class="body"><h3>Driehoeksveer → Kinderdijk</h3><p class="lead">10 dakika, 2,35 € — <b>sadece kart, nakit yok.</b></p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Driehoeksveer%2C%20Ridderkerk" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
-      <details class="guide"><summary>Rehber</summary><div class="g">
-        <p><span class="h">Ne olduğu</span>Üç kıyı arasında mekik dokuyan küçük bir yerel feribot — adı da bu, "üçgen feribotu". Turist aracı değil, mahalle ulaşımı.</p>
-        <p><span class="h">Dikkat</span><span class="warn">Nakit kabul etmiyor</span>, sadece kart. Yaz tarifesi 30 Eylül'de bitiyor; 1 Ekim'den sonra öğleden önceki bazı seferler düşüyor. Programı Pazartesi'ye kurmamın sebebi bu.</p>
-        <p><span class="h">Yedek</span>Bağlantı çalışmazsa Kralingse Zoom'dan 489 numaralı otobüs, yarım saatte bir, tek araçla gidiyor.</p>
-      </div></details></div></div>
-
-    <div class="stop"><time>09:30</time><div class="body"><h3>Kinderdijk</h3><p class="lead">Ziyaretçi merkezi 09:00–17:30. 2,5 saat ayır.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Werelderfgoed%20Kinderdijk%2C%20Nederwaard%201%2C%20Kinderdijk" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>09:40</time><div class="body"><h3>Kinderdijk</h3><p class="lead">Ziyaretçi merkezi 09:00–17:30. <b>4 saatin var</b> ama 2,5–3 saat yeter — combiticket girişi, tekne turunu ve iki müze değirmeni kapsıyor.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Werelderfgoed%20Kinderdijk%2C%20Nederwaard%201%2C%20Kinderdijk" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>1997'den beri UNESCO Dünya Mirası. 19 yel değirmeni 1738–1740 arasında, deniz seviyesinin altındaki Alblasserwaard polderini kurutmak için yapıldı. Bunlar dekoratif değil: Hollanda'nın "suyla savaş" mühendisliğinin hâlâ ayakta duran en büyük örneği ve sistem bugün de çalışıyor.</p>
         <p><span class="h">İsmin hikâyesi</span>"Kinderdijk" çocuk seti demek. 1421'deki büyük selden sonra sete vuran bir sallanan beşik bulunduğu, içinde bir bebek ve dengeyi sağlayan bir kedi olduğu anlatılır. Efsane, ama şehrin selle ilişkisini iyi özetliyor.</p>
@@ -202,21 +223,21 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
         <p><span class="h">Dikkat</span>Set boyunca yürüyüş yaklaşık 3 km ve <span class="warn">tamamen açık, gölge ve siper yok</span> — rüzgâr burada şehirden çok daha sert. Tuvalet sadece ziyaretçi merkezinde. Sağlam ayakkabı giy, çamur olabilir. Fotoğraf için sabah ışığı en iyisi, ki sen zaten o saatte olacaksın.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>12:30</time><div class="body"><h3>Aynı rotayla dönüş</h3></div></div>
+    <div class="stop"><time>13:30</time><div class="body"><h3>WaterShuttle ile dönüş</h3><p class="lead">30 dakika, aktarmasız. 14:00 civarı Willemskade. <b>Erken bitirirsen önceki sefere bin</b> — combiticket seni bir saate bağlamıyor.</p></div></div>
 
-    <div class="stop"><time>14:00</time><div class="body"><h3>Merkezde öğle yemeği</h3><p class="lead">Broodje, tosti veya Markthal'de hafif bir şey. <b>Bugün patates yeme</b> — akşam kapsalon var, o zaten patatesin üstüne döner demek. Patatje oorlog Cuma'ya kaldı.</p></div></div>
+    <div class="stop"><time>14:20</time><div class="body"><h3>Öğle yemeği — iki seçenek, o saatte karar ver</h3><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=The%20Tosti%20Club%2C%20Oude%20Binnenweg%20127B%2C%20Rotterdam" target="_blank" rel="noopener">The Tosti Club &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Cafe%20Restaurant%20Floor%2C%20Schouwburgplein%2028%2C%20Rotterdam" target="_blank" rel="noopener">Café Floor &#8599;</a></p><p class="lead">40 dakikan var. Aralarında 6 dakika yürüme mesafesi. <b>Bugün patates yeme</b> — 17:30'da kapsalon, 19:00'da stamppot var.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Nasıl karar vereceksin</span>Kinderdijk'te 3 km yürüdün; açlığın ne durumda olduğunu ancak o saatte bilirsin. <b>Hafif açsan Tosti Club, gerçekten açsan Floor.</b> Çok açsan ikisini birleştir: Tosti Club'da tadımlık bir tosti, sonra 6 dakika yürüyüp Floor'da uitsmijter — o durumda stroopwafel'i 15:15'e, alışverişi 15:30'a kaydır, Delfshaven yine 16:30.</p><p><span class="h">① The Tosti Club</span>Oude Binnenweg 127B, 10:00–17:00. Sadece tosti yapan bağımsız bir mekân, kendi soslarıyla veriyor. Zincir değil, mahallenin yeri. Tosti tek başına hafif kalır; yanına dolgulu sandviç veya <b>tomatensoep</b> ekleyebilirsin. Hızlı bir yer, 30 dakikada çıkarsın. <b>Avantajı:</b> Didi's Stroopwafels aynı sokakta, 100 metre ötede.</p><p><span class="h">② Café Restaurant Floor</span>Schouwburgplein 28, 10:00–22:00. Gerçek bir Hollanda kafesi. Burada <b>uitsmijter</b> ye: ekmek dilimlerinin üstüne sahanda yumurta, jambon ve kaşar. Klasik Hollanda öğle yemeği ve tostiden çok daha doyurucu. Merkezde özel bir iç bahçesi olan tek yer — sadece restoranın içinden giriliyor, şehrin ortasında sessiz bir kuytu. Lijnbaan'ın hemen yanı. <span class="warn">Servisi yavaşlayabiliyor</span>, acelen varsa Tosti Club'ı seç.</p><p><span class="h">Tostiyi kaçırma korkusu olmasın</span>Çarşamba Fenix'in listesinde tosti zaten var. Yani Floor'u seçsen de o yemeği tadacaksın.</p></div></details></div></div>
 
-    <div class="stop key"><time>14:30</time><div class="body"><h3>Lijnbaan + Koopgoot</h3><p class="lead"><b>Dükkânlar 18:00'de kapanıyor — haftanın tek alışveriş penceresi bu.</b></p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Lijnbaan%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>15:00</time><div class="body"><h3>Didi's Stroopwafels</h3><p class="addr">Oude Binnenweg 95-C · 10:00–18:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Didi%27s%20Stroopwafels%2C%20Oude%20Binnenweg%2095C%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Sipariş üzerine pişiyor, sıcak geliyor. İlk seferde sade al.</p></div></div>
+
+    <div class="stop key"><time>15:15</time><div class="body"><h3>Alışveriş — Lijnbaan, Koopgoot, HEMA, Hunkemöller</h3><p class="lead"><b>Dükkânlar 18:00'de kapanıyor — haftanın tek alışveriş penceresi bu.</b></p><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=Lijnbaan%2C%20Rotterdam" target="_blank" rel="noopener">Lijnbaan &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Beurstraverse%20Koopgoot%2C%20Rotterdam" target="_blank" rel="noopener">Koopgoot &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=De%20Bijenkorf%2C%20Coolsingel%20105%2C%20Rotterdam" target="_blank" rel="noopener">De Bijenkorf &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=HEMA%2C%20Beursplein%202%2C%20Rotterdam" target="_blank" rel="noopener">HEMA &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Hunkemoller%2C%20Beurstraverse%2024%2C%20Rotterdam" target="_blank" rel="noopener">Hunkemöller Beurs &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>1953'te Van den Broek ve Bakema tarafından tasarlanan, <b>Avrupa'nın ilk özel olarak inşa edilmiş yaya alışveriş sokağı.</b> Bombalanmış şehir merkezinin yeniden kurulması planının kalbiydi ve fikir sonra Coventry'den Stockholm'e kadar kopyalandı. Bugün sıradan bir alışveriş sokağı gibi görünüyor — asıl önemi tam olarak bu: normalleşmiş bir devrim.</p>
         <p><span class="h">Ne bakılır</span>Yukarı bak. Dükkânlar alçak ve iki katlı, konut kuleleri geride ayrı duruyor. Alışveriş, konut ve trafiğin birbirinden ayrılması o dönemin büyük iddiasıydı. Sundurmalar da özgün tasarımın parçası.</p>
-        <p><span class="h">Koopgoot</span>Yan taraftaki Beurstraverse'in yerel adı "alışveriş oluğu" — caddenin altına gömülmüş açık bir alışveriş sokağı. Yağmurda buraya in.</p>
-        <p><span class="h">Dikkat</span>Hafta içi <span class="warn">18:00'de kapanıyor</span>, bazı dükkânlar Pazartesi öğleden önce hiç açılmıyor. Sen 14:30'da olacaksın, sorun yok.</p>
+        <p><span class="h">Koopgoot</span>Yan taraftaki Beurstraverse'in yerel adı "alışveriş oluğu" — caddenin altına gömülmüş açık bir alışveriş sokağı. Yağmurda buraya in.</p><p><span class="h">De Bijenkorf — dışarıdan bak, içine girme</span>Coolsingel'deki lüks mağaza; ismi "arı kovanı" demek, 1870'te kurulmuş ülkenin en köklü mağazası. Ama senin için önemli olan içi değil <b>cephesi</b>: binayı 1957'de <b>Marcel Breuer</b> tasarladı — Bauhaus'tan çıkan, Wassily sandalyesinin mimarı. Beyaz travertenle kaplı, neredeyse penceresiz, petek dokulu bir kütle. Lijnbaan'ın alçak dükkân blokları arasında kasıtlı bir ağırlık olarak duruyor ve savaş sonrası yeniden inşanın parçası — yani Lijnbaan hikâyesinin devamı.</p><p><span class="h">Yanındaki heykel</span>Girişin yakınındaki <b>Naum Gabo</b> heykeli de aynı dönemin işi, mağaza için yapılmış konstrüktivist bir yapı. Kolayca gözden kaçıyor, arayarak bak.</p><p><span class="h">Pratik</span>Otelden 5–6 dakika, alışveriş hattının zaten üzerinde, <span class="warn">sapma gerektirmiyor</span>. İçi pahalı ve hediye almak için doğru yer değil — cepheye 3 dakika ayır, geç.</p>
+        <p><span class="h">HEMA</span>Beursplein 2. 1926'dan beri Hollanda'nın en sevilen mağazası; ucuz ama tasarım itibarı olan, yerlilerin de alışveriş ettiği bir yer. Kırtasiyeden mutfak eşyasına, giyimden oyuncağa her şey var. Beursplein şubesi en geniş olanı. Bakılacaklar: <b>Nijntje</b> ürünleri (Dick Bruna'nın tavşanı, Hollanda'nın çocuk klasiği), ahşap oyuncak, pijama, ev tekstili. Alt katta market bölümünde <b>hagelslag</b> ve stroopwafel.</p><p><span class="h">Hunkemöller</span>Beurstraverse 24, Pzt 12:00–19:00, HEMA'nın 100 metre yanı. 1886'da Amsterdam'da kurulan, Hollanda'nın iç giyim ve gecelik markası. Pijama ve gecelik tarafı güçlü; XS-S-M-L etiketiyle satılıyor. Eylül sonu için kışlık bölüme bak — pamuklu uzun kollu veya polar. Kasada hediye paketi yapıyorlar.</p><p><span class="h">Dikkat</span>Hafta içi <span class="warn">18:00'de kapanıyor</span>, bazı dükkânlar Pazartesi öğleden önce hiç açılmıyor. Sen 14:30'da olacaksın, sorun yok.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>15:45</time><div class="body"><h3>Didi's Stroopwafels</h3><p class="addr">Oude Binnenweg 95-C · 10:00–18:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Didi%27s%20Stroopwafels%2C%20Oude%20Binnenweg%2095C%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Sipariş üzerine pişiyor, sıcak geliyor. İlk seferde sade al.</p></div></div>
-
-    <div class="stop"><time>16:15</time><div class="body"><h3>Delfshaven</h3><p class="lead">Eendrachtsplein'den metro 2 durak.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Historisch%20Delfshaven%2C%20Voorhaven%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>17:00</time><div class="body"><h3>Delfshaven</h3><p class="lead">Eendrachtsplein'den metro 2 durak.</p><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=Voorhaven%2C%20Delfshaven%2C%20Rotterdam" target="_blank" rel="noopener">Voorhaven &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Pelgrimvaderskerk%2C%20Aelbrechtskolk%2020%2C%20Rotterdam" target="_blank" rel="noopener">Pelgrimvaderskerk &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>Rotterdam'ın 14 Mayıs 1940 bombardımanından kurtulan tek eski mahallesi — hedef bölgenin dışında kaldığı için 17. yüzyıl kanal evleri, ambarlar ve tersane yapıları hâlâ ayakta. Şehrin geri kalanına baktıktan sonra buraya gelmek, Rotterdam'ın neyi kaybettiğini tek seferde anlatıyor.</p>
         <p><span class="h">Hikâyesi</span>1620'de Pilgrim Fathers Amerika'ya doğru ilk adımı tam buradan attı: Speedwell gemisiyle Delfshaven'dan çıktılar, Southampton'da Mayflower'a geçtiler. Kanal başındaki <b>Pelgrimvaderskerk</b> bunu anıyor. Ayrıca amiral Piet Heyn burada doğdu.</p>
@@ -224,16 +245,18 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
         <p><span class="h">Dikkat</span>Mahalledeki bira fabrikası <b>De Pelgrim Pazartesi ve Salı kapalı</b> — bugün kapısı kilitli olacak, hayal kırıklığı olmasın. İçmek istersen Perşembe ayrıca gelmen gerekir.</p>
       </div></details></div></div>
 
-    <div class="stop key"><time>17:30</time><div class="body"><h3>Shoarma El Aviva — kapsalonun doğduğu yer</h3><p class="addr">Schiedamseweg 22a · her gün 12:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Shoarma%20El%20Aviva%2C%20Schiedamseweg%2022a%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop key"><time>18:00</time><div class="body"><h3>Shoarma El Aviva — kapsalon (tadım)</h3><p class="addr">Schiedamseweg 22a · her gün 12:00–01:00</p><p class="lead"><b>Küçük boy al</b> — 19:15'te stamppot var.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Shoarma%20El%20Aviva%2C%20Schiedamseweg%2022a%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Neden burası</span>Kapsalon 2003'te tam bu dükkânda icat edildi. Yandaki kuaför salonunda çalışan Kâpe Verdeli bir berber her gün aynı şeyi istemiş: patatesin üstüne döner, erimiş kaşar, salata, sarımsak sosu, hepsi tek kapta. Personel siparişe onun iş yerinin adını vermiş — "kapsalon", yani kuaför salonu. Bugün tüm Hollanda'nın gece yemeği ve menüde hikâyesi yazıyor.</p>
         <p><span class="h">Nasıl sipariş verilir</span>Küçük ve büyük boy var; ilk denemede <b>küçüğü al</b>, büyüğü iki kişilik. Etini seçebiliyorsun. Yanına sarımsak sosu ve acı sos ayrı istenebiliyor.</p>
         <p><span class="h">Dikkat</span>Burası restoran değil, ayakta veya basit masalarda yenen bir dönerci. Beklentini ona göre kur — gelme sebebin yemeğin kendisi ve doğduğu yer olması.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>19:30</time><div class="body"><h3>Akşam: De Witte Aap</h3><p class="addr">Witte de Withstraat 78 · her gün 16:00–04:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=De%20Witte%20Aap%2C%20Witte%20de%20Withstraat%2078%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop key"><time>19:15</time><div class="body"><h3>Het Eethuisje van Delfshaven — stamppot</h3><p class="addr">Mathenesserdijk 436 · Pzt–Cum 16:00–20:30</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Het%20Eethuisje%20van%20Delfshaven%2C%20Mathenesserdijk%20436%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">El Aviva'nın 100 metre ötesi. Günün asıl yemeği burada.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Bea ve Martin adlı çiftin işlettiği küçük bir aile lokantası. Turistik değil, mahallenin yeri; ziyaretçiler "Hollanda'da yediğim en iyi Hollanda yemeği" diyor. Günün yemeği tahtaya yazılıyor.</p><p><span class="h">Ne yiyeceksin</span><b>Stamppot</b>: patates püresine karalahana veya hindiba karıştırılıyor, yanında <b>rookworst</b> (füme sosis) ve et suyu sosu. Hollanda ev yemeğinin tam merkezi bu tabak — lokantada değil, evde yenen türden. Eylül sonu havası için tam mevsimi ve porsiyonlar büyük.</p><p><span class="h">Dikkat</span><span class="warn">Cumartesi ve Pazar kapalı</span>, hafta içi 16:00–20:30. Yani senin tek şansın Pazartesi. Küçük bir yer, kalabalıksa beklemek gerekebilir.</p><p><span class="h">Kapsalonla sırası</span>18:00'de kapsalonu <b>küçük boy</b> al, tadım olarak. Asıl yemek burada. İkisi birden ağır gelirse kapsalondan birkaç lokma alıp bırak — stamppot'u kaçırmak daha büyük kayıp.</p></div></details></div></div>
+
+    <div class="stop"><time>20:45</time><div class="body"><h3>Akşam: De Witte Aap</h3><p class="addr">Witte de Withstraat 78 · her gün 16:00–04:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=De%20Witte%20Aap%2C%20Witte%20de%20Withstraat%2078%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
-        <p><span class="h">Ne olduğu</span>Otelinin 3 dakika ötesindeki Witte de Withstraat, şehrin galeri ve bar sokağı; De Witte Aap ("beyaz maymun") bu sokağın çapası. Bir dönem uluslararası "en iyi bar" listelerine girerek sokağın ününü kurdu.</p>
+        <p><span class="h">Sokağın kendisi</span>Witte de Withstraat sadece bar sokağı değil, <b>Rotterdam'ın çağdaş sanat ekseni</b>. Adını 17. yüzyıl amirali Witte de With'ten alıyor; 1980'lerden itibaren galerilerle doldu ve şehrin kültür omurgası oldu. 400 metre boyunca <b>Kunstinstituut Melly</b> (sokağa adını veren çağdaş sanat kurumu), <b>TENT</b> ve <b>MAMA</b> yan yana duruyor, aralarında duvar resimleri ve sürekli değişen vitrin işleri var.</p><p><span class="h">İsim tartışması</span>Kurum 2021'de adını "Witte de With"ten "Melly"ye çevirdi, çünkü amiralin sömürge geçmişi yıllarca süren bir tartışma yarattı. Cephedeki tabela o hikâyenin izi — bir şehrin kendi geçmişiyle nasıl hesaplaştığının canlı örneği.</p><p><span class="h">Zamanlama notu</span>Galeriler genelde 11:00–18:00 arası açık, yani senin boş olduğun akşam saatlerinde kapalı oluyor. Sokağı bir kez <b>gündüz gözüyle</b> baştan sona yürürsen (400 metre, 15 dakika) akşam gördüğünden bambaşka bir yer.</p><p><span class="h">Ne olduğu</span>Otelinin 3 dakika ötesindeki Witte de Withstraat, şehrin galeri ve bar sokağı; De Witte Aap ("beyaz maymun") bu sokağın çapası. Bir dönem uluslararası "en iyi bar" listelerine girerek sokağın ününü kurdu.</p>
         <p><span class="h">Neden bugün</span>Üstü kapalı ve ısıtmalı geniş bir terası var — eylül sonu için önemli. Ayrıca sabahın 4'üne kadar açık, senin haftanda geç kapanan tek yer.</p>
         <p><span class="h">Ne içilir</span><b>Bokbier</b> sor: sonbaharda çıkan koyu, malt yoğun mevsim birası ve tam çıkış haftasındasın.</p>
       </div></details></div></div>
@@ -246,68 +269,61 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
 
   <div class="flagbox">
     <h4>Yağmur varsa</h4>
-    <p>Bugünün tamamı açık hava. Pazar akşamı tahmin kötüyse Pazartesi ile Perşembe'yi <b>tamamen takas et</b>: Pazartesi Delft (kiliseler açık), Perşembe sabah Kinderdijk + öğleden sonra Miniworld. O senaryoda feribotun yaz tarifesi bitmiş olacağı için <b>489 otobüsünü</b> kullan.</p>
+    <p>Bugünün tamamı açık hava. Pazar akşamı tahmin kötüyse Pazartesi ile Perşembe'yi <b>tamamen takas et</b>: Pazartesi Delft (kiliseler açık), Perşembe sabah Kinderdijk + öğleden sonra Miniworld. WaterShuttle 25 Ekim'e kadar her gün çalıştığı için takas sorunsuz.</p>
   </div>
 
-  <div class="extra">
-    <h4>Ekstra vakit kalırsa</h4>
-    <ul>
-      <li>Kinderdijk'te bisiklet kirala — değirmen hattı boyunca 5 km, en güzeli bu</li>
-      <li>Waterbus'la 30 dakika ileride Dordrecht, Hollanda'nın en eski şehri</li>
-      <li>Delfshaven'da Coolhaven ve eski ambar sokakları</li>
-      <li>Locus Publicus · Oostzeedijk 364 — şehrin bira otoritesi, yüzlerce çeşit, personel gerçekten biliyor</li>
-    </ul>
-  </div>
+  <div class="jump"><button type="button" data-goto="ekstra">Ekstra vakit kalırsa &#8594; alternatifler</button></div>
 </section>
 
 <!-- ============ SALI ============ -->
 <section class="panel" id="sal" role="tabpanel">
   <div class="daytop">
     <p class="slot">29 Eylül · 17:00 sonrası</p>
-    <h2>Euromast</h2>
-    <p class="gist">Tek destinasyon, düşük efor. Toplantıdan çıkıp doğrudan gidiyorsun.</p>
+    <h2>Euromast, Veerhaven, jenever</h2>
+    <p class="gist">Kule, köfte, nehir kıyısı ve jenever. Dönüşü metroyla değil yürüyerek yapıyorsun.</p>
+  </div>
+
+  <div class="routes"><h4>Google Maps rotaları</h4>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam&destination=Euromast%2C%20Parkhaven%2020%2C%20Rotterdam&travelmode=transit" target="_blank" rel="noopener">① Otelden Euromast'a (metro)</a>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=Euromast%2C%20Parkhaven%2020%2C%20Rotterdam&destination=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam&travelmode=walking&waypoints=De%20Ballentent%2C%20Parkkade%201%2C%20Rotterdam%7CWesterkade%2C%20Rotterdam%7CVeerhaven%2C%20Rotterdam%7CWestplein%2C%20Rotterdam%7CProeflokaal%20De%20Riddert%2C%20Mauritsweg%2028%2C%20Rotterdam" target="_blank" rel="noopener">② Euromast · Ballentent · Veerhaven · De Riddert · otel</a>
   </div>
 
   <div class="board">
     <div class="stop"><time>17:30</time><div class="body"><h3>Otelden Euromast'a</h3><p class="lead">Metro Dijkzigt, toplam 15 dakika.</p></div></div>
 
-    <div class="stop key"><time>17:45</time><div class="body"><h3>Euromast</h3><p class="addr">Parkhaven 20 · her gün 09:30–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Euromast%2C%20Parkhaven%2020%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop key"><time>17:45</time><div class="body"><h3>Euromast</h3><p class="addr">Parkhaven 20 · her gün 09:30–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Euromast%2C%20Parkhaven%2020%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="tix"><a href="https://euromast.nl/en/tickets/" target="_blank" rel="noopener">Euromast bileti al &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>1960'ta Floriade bahçe sergisi için Huig Maaskant tasarımıyla 101 metre olarak dikildi. 1970'te tepesine "Space Tower" bölümü eklenince 185 metreye çıktı ve <b>Hollanda'nın en yüksek yapısı</b> oldu. Yani gövdesi 60'ların iyimserliği, tepesi 70'lerin uzay hevesi — iki ayrı dönem üst üste duruyor.</p>
-        <p><span class="h">İki katman</span>Alt gözlem platformu 96 metrede, kapalı ve rüzgârsız. Üstteki <b>Euroscoop</b> ise dönerek yükselen cam bir asansör kabini: yukarı çıkarken kendi etrafında da dönüyor, böylece 360 dereceyi tırmanış boyunca görüyorsun. İkisi ayrı bilet.</p>
+        <p><span class="h">İki bilet seviyesi</span><b>General ticket</b> (online 13,50 €, gişede 17,50 €): "The Rise of Rotterdam" adlı sürükleyici sergi + <b>112 metredeki</b> gözlem platformları, kapalı ve rüzgârsız.<br><b>Complete experience</b> (online 19 €, gişede 23,50 €): buna ek olarak <b>Euroscoop</b> ile 185 metreye çıkıyorsun — dönerek yükselen cam kabin, 360 derece manzara ve <b>cam zemin</b>.<br>Sen ikincisini al; aradaki 5,5 euro zaten geliş sebebin. Çoğu ziyaretçi toplam 1 saat kalıyor.</p>
         <p><span class="h">Ne görünür</span>Liman, Erasmusbrug, Kop van Zuid silüeti; hava açıksa Den Haag yönü ve rüzgâr türbini hatları. 100 metrede iki otel süiti ve bir restoran var.</p>
-        <p><span class="h">Dikkat</span><span class="warn">Bulutlu havada anlamsız.</span> Çıkmadan önce gökyüzüne bak; kapalıysa bugünü Salı akşamı yerine Perşembe'ye kaydır, kule her gün 22:00'ye kadar açık. Bileti <b>online al</b>, gişede sıra oluyor. Tepedeki restoranda yemek yeme — bir kadeh iç, yemeği aşağıda ye.</p>
+        <p><span class="h">Dikkat</span><span class="warn">Bulutlu havada anlamsız.</span> İyi haber: <b>tarihi bir kez ücretsiz değiştirebiliyorsun</b> — "Manage my booking" üzerinden, ama <b>orijinal ziyaret gününden önce</b> yapman şart. Yani Salı hava kapalıysa Perşembe'ye kaydır, kule her gün 22:00'ye kadar açık.</p><p><span class="h">Ödeme</span>Euromast'ta <span class="warn">nakit kabul edilmiyor</span>, sadece banka veya kredi kartı. Bileti online alırsan hem daha ucuz hem gişe sırası yok.</p><p><span class="h">Kombine bilet</span>Cuma günü Spido'ya da gideceksin: <b>Euromast + Spido kombosu 32 €</b>. İkisini ayrı almaya göre hesap yap, muhtemelen kârlı. SS Rotterdam'lı kombo da 31,50 €.</p><p><span class="h">Restoran</span>Tepedeki Brasserie'de yemek yeme — bir kadeh iç, yemeği aşağıda ye. Yemek yiyecekseniz masa rezervasyonu gerekiyor.</p>
       </div></details></div></div>
 
     <div class="stop"><time>19:15</time><div class="body"><h3>Gün batımı</h3><p class="lead">Bu saatte tepede ol.</p></div></div>
 
-    <div class="stop key"><time>20:00</time><div class="body"><h3>Oliva</h3><p class="addr">Witte de Withstraat 15A · rezervasyon şart</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Oliva%2C%20Witte%20de%20Withstraat%2015A%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
-      <details class="guide"><summary>Rehber</summary><div class="g">
-        <p><span class="h">Ne olduğu</span>Küçük, gürültülü, İtalyan; sabit dört kap tadım menüsüyle çalışıyor. Otelinden 2 dakika.</p>
-        <p><span class="h">Dikkat</span>Masa sayısı az, <span class="warn">rezervasyonsuz girilmiyor.</span> Pazar ve Pazartesi kapalı, o yüzden Salı akşamında. Mutfak 21:30'da kapanıyor — toplantın uzarsa haber ver, yoksa masa düşer.</p>
-      </div></details></div></div>
+    <div class="stop key"><time>19:30</time><div class="body"><h3>De Ballentent — gehaktbal</h3><p class="addr">Parkkade 1 · her gün 09:00–23:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=De%20Ballentent%2C%20Parkkade%201%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Euromast'tan 5 dakika yürüme, nehir kıyısında.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Nehir kıyısında geleneksel bir liman kafesi ve Rotterdam'ın kendi kurumlarından biri. Menüsü neredeyse tamamen <b>gehaktbal</b> etrafında kurulu — avuç büyüklüğünde Hollanda köftesi, et suyu sosuyla, yanında ekmek veya patates. Mekânın adı da bundan geliyor: "köfte çadırı".</p><p><span class="h">Neden burada</span>Kuleden indiğinde 5 dakika ötesinde ve geniş bir nehir terası var. Gün batımından sonra Maas'ın ve karşı kıyının ışıkları görünüyor. Sade, ucuz, gerçek.</p><p><span class="h">Dikkat</span>Süslü bir yer değil, liman meyhanesi kıvamında — beklentini ona göre kur. İçeride şapka konusunda hassas oldukları söyleniyor, çıkarman istenebilir. Her gün 23:00'e kadar açık.</p></div></details></div></div>
 
-    <div class="stop"><time>22:00</time><div class="body"><h3>Otele dön</h3><p class="lead">Yarın mesai günü. İki mekân bir iş akşamının tavanı.</p></div></div>
+    <div class="stop key"><time>20:45</time><div class="body"><h3>Su kıyısı yürüyüşü — Veerhaven</h3><p class="lead">De Ballentent'ten otele kadar nehir kıyısından, ~30 dakika. Metroya binme, yürü.</p><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=Westerkade%2C%20Rotterdam" target="_blank" rel="noopener">Westerkade &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Veerhaven%2C%20Rotterdam" target="_blank" rel="noopener">Veerhaven &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Westplein%2C%20Rotterdam" target="_blank" rel="noopener">Westplein &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Veerhaven nedir</span>Küçük, tarihi bir şehir limanı; içinde klasik yelkenliler demirli ve çevresi 19. yüzyıl konaklarıyla sarılı. Buraya <b>Scheepvaartkwartier</b> deniyor — denizcilik mahallesi. Delfshaven dışında Rotterdam'ın savaş öncesi zarafetini koruyan tek yer bu.</p><p><span class="h">Neden önemli</span>Bir ziyaretçinin yorumu şunu iyi anlatıyor: Rotterdam bombalanmamış olsaydı Hollanda'nın diğer güzel şehirleri gibi görünecekti — Veerhaven o ihtimalin kalan parçası. Pazartesi Delfshaven'da aynı duyguyu yaşayacaksın; bu onun merkezdeki küçük kardeşi. Gece aydınlatmalı, 24 saat açık, bilet yok.</p><p><span class="h">Rota</span>Parkkade'den doğuya: Westerkade boyunca yürü, Veerhaven'a in, yelkenlilerin arasından geç, Westplein'den kuzeye dönüp Schiedamse Vest üzerinden otele. <b>Erasmusbrug'a gitmiyorsun</b> — onu Pazartesi sabahı zaten yürüdün.</p><p><span class="h">Yol üstünde</span>Euromast'la Veerhaven arasında Westzeedijk 300'de <b>Norveç Denizciler Kilisesi</b> var — ahşap, şist çatılı, liman işçileri için yapılmış. <span class="warn">Akşamları kapalı</span>, sadece dışından görünüyor ama 2 dakikalık bir sapma.</p></div></details></div></div>
+
+    <div class="stop key"><time>21:45</time><div class="body"><h3>Proeflokaal De Riddert — jenever</h3><p class="addr">Mauritsweg 28 · her gün 17:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Proeflokaal%20De%20Riddert%2C%20Mauritsweg%2028%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Veerhaven'dan kuzeye yürürken otelin 5 dakika batısı.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Adı zaten "tadım odası" demek. Rotterdam'ın en küçük barı olduğu söyleniyor — köşede, daracık, klasik bir <b>bruine kroeg</b> (brown café). Duvarlar yıllardan koyulaşmış, masa oyunları var, işletmeci tezgâhın arkasından sohbet ediyor. Turistik değil, mahalle barı.</p><p><span class="h">Neden burada jenever</span>Bira listesinin yanında ciddi bir <b>damıtık içki rafı</b> var ve personel ne önerdiğini biliyor. Jenever'i kokteylin içinde değil, olduğu gibi denemenin doğru yeri bir kokteyl barı değil, işte böyle bir yer.</p><p><span class="h">Ne isteyeceksin</span><b>Oude jenever</b>, sade. Jonge nötr ve temiz, oude arpa maltı ağırlıklı ve viskiye yakın — cin'in atasını asıl anlatan bu.<br><br>Sonra <b>"kopstootje"</b> de: lale biçimli bardak taşacak kadar dolduruluyor, yanına bir bira geliyor. <b>İlk yudumu elini kullanmadan, öne eğilip bardağın kenarından alıyorsun</b> — bardağı kaldırırsan dökersin, kural bu yüzden var. Sonra bira. Böyle bir barda bu isteği tuhaf karşılamazlar, aksine hoşlarına gider.</p><p><span class="h">Yol üstünde kalmasını istersen</span><b>Proeflokaal Reijngoud</b>, Schiedamse Vest 148 — Veerhaven'dan otele giden hattın tam üzerinde, otelden 3 dakika. Daha büyük ve bira ağırlıklı bir yer, karakteri De Riddert kadar güçlü değil ama hiç sapmıyorsun.</p><p><span class="h">Dikkat</span>Yarın mesai günü. Bir kadeh jenever ve bir bira yeter; jenever kadehi ~4–6 €. Çok küçük bir yer, kalabalıksa ayakta kalabilirsin.</p></div></details></div></div>
+
+    <div class="stop"><time>22:45</time><div class="body"><h3>Otele dön</h3><p class="lead">Witte de Withstraat otelin önünde — son bir bira istersen De Witte Aap 04:00'e kadar açık.</p></div></div>
   </div>
 
-  <div class="extra">
-    <h4>Alternatifler</h4>
-    <ul>
-      <li>Jigger · Hoogstraat 73A, 15:00–01:00 — jenever'li kokteyl isteyebileceğin nadir yer. Enerjin varsa üçüncü mekân olarak buraya git, yoksa atla</li>
-      <li>Oliva yerine Warung Mini · Witte de Withstraat 47 — Surinam roti, otelden 2 dakika, porsiyonlar iki kişilik</li>
-      <li>Het Park'ta akşam yürüyüşü, Euromast'ın hemen dibinde</li>
-      <li>Museumpark'tan geçerken Depot Boijmans'ın aynalı cephesi — bedava, bilet yok</li>
-      <li>1983 Coffees &amp; Cocktails · Nieuwemarkt 49 — tarihi çeşmeye bakan teras</li>
-    </ul>
-  </div>
+  <div class="jump"><button type="button" data-goto="ekstra">Ekstra vakit kalırsa &#8594; alternatifler</button></div>
 </section>
 
 <!-- ============ ÇARŞAMBA ============ -->
 <section class="panel" id="car" role="tabpanel">
   <div class="daytop">
     <p class="slot">30 Eylül · 17:00 sonrası</p>
-    <h2>Katendrecht</h2>
-    <p class="gist">Eski liman ve Çin mahallesi, şimdi şehrin yeme-içme kalbi.</p>
+    <h2>Kop van Zuid ve Katendrecht</h2>
+    <p class="gist">Kop van Zuid'in yüksek yapıları, ardından eski Çin mahallesi. Tek hat, geri dönüş yok.</p>
+  </div>
+
+  <div class="routes"><h4>Google Maps rotaları</h4>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam&destination=Watertaxi%20Rotterdam%2C%20Willemskade%2C%20Rotterdam&travelmode=walking" target="_blank" rel="noopener">① Otelden Watertaxi iskelesine</a>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=Hotel%20New%20York%2C%20Koninginnenhoofd%201%2C%20Rotterdam&destination=Rijnhaven%20metrostation%2C%20Rotterdam&travelmode=walking&waypoints=De%20Rotterdam%2C%20Wilhelminakade%20139%2C%20Rotterdam%7CRijnhavenbrug%2C%20Rotterdam%7CFenix%20Food%20Factory%2C%20Nico%20Koomanskade%201025%2C%20Rotterdam%7CDeliplein%2C%20Rotterdam" target="_blank" rel="noopener">② Karşı kıyı · Kop van Zuid'den Katendrecht'e</a>
   </div>
 
   <div class="board">
@@ -325,7 +341,9 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
         <p><span class="h">Dikkat</span>Kafe kısmı kalabalık ve içecek için rezervasyon alınmıyor; boş masa beklemek gerekebilir. Yemek için gelmiyorsun — bir şey içip binayı gezmek yeterli.</p>
       </div></details></div></div>
 
-    <div class="stop key"><time>19:00</time><div class="body"><h3>Fenix Food Factory</h3><p class="addr">Nico Koomanskade 1025 · 11:00–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Fenix%20Food%20Factory%2C%20Nico%20Koomanskade%201025%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>18:45</time><div class="body"><h3>Wilhelminapier — Kop van Zuid yürüyüşü</h3><p class="lead">15–20 dakika, pier boyunca batıya. Sonunda Rijnhavenbrug'u geçip Katendrecht'e iniyorsun.</p><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=De%20Rotterdam%2C%20Wilhelminakade%20139%2C%20Rotterdam" target="_blank" rel="noopener">De Rotterdam &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Wilhelminakade%2C%20Rotterdam" target="_blank" rel="noopener">Wilhelminapier &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Rijnhavenbrug%2C%20Rotterdam" target="_blank" rel="noopener">Rijnhavenbrug &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Kop van Zuid, limanın terk edilmiş rıhtımlarının 1990'lardan sonra yüksek yapı bölgesine çevrildiği alan. Rotterdam'ın <b>"Manhattan aan de Maas"</b> lakabı doğrudan buradan geliyor ve Wilhelminapier bu şehirde mimari olarak en yoğun 500 metre.</p><p><span class="h">Ne bakılır</span><b>De Rotterdam</b> — Rem Koolhaas/OMA, üst üste kaydırılmış üç blok; hangi açıdan bakarsan başka bir bina gibi görünüyor. Yanında <b>Toren op Zuid</b>, eski <b>Nieuwe Luxor</b> tiyatrosu ve <b>LantarenVenster</b> (hafta içi caz konserleri, İçecek sekmesinde duruyor).</p><p><span class="h">Neden burada</span>Bu yürüyüş programa fazladan yol eklemiyor: Hotel New York pier'in uç noktasında, Katendrecht'e geçtiğin <b>Rijnhavenbrug</b> ise diğer ucunda. Yani zaten yürümen gereken hattı mimariyi göre göre yürüyorsun — geri dönüş yok.</p><p><span class="h">Zamanlama</span>Gün batımı 19:10. Bu saatte pier üzerinde olursun, ışık köprünün ve kulelerin üstünde. Sonunda Rijnhavenbrug'u geçip 5 dakikada Fenix'e varıyorsun.</p></div></details></div></div>
+
+    <div class="stop key"><time>19:15</time><div class="body"><h3>Fenix Food Factory</h3><p class="addr">Nico Koomanskade 1025 · 11:00–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Fenix%20Food%20Factory%2C%20Nico%20Koomanskade%201025%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>1920'lerden kalma bir liman ambarının içine yerleşmiş, bağımsız üreticilerden oluşan bir yeme-içme salonu; 2014'te açıldı ve Katendrecht'in dönüşümünün simgesi oldu. Turistik bir food court değil, mahallenin kendi yeri.</p>
         <p><span class="h">Mahallenin hikâyesi</span>Katendrecht, 1910'lardan itibaren Çinli gemicilerin yerleştiği <b>kıta Avrupası'nın ilk Çin mahallesi</b> olarak bilinir. Uzun süre limanın en kötü şöhretli bölgesiydi; 2010'lardan sonra tamamen değişti. "De Kaap" diye anılır.</p>
@@ -333,19 +351,12 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
         <p><span class="h">Dikkat</span>Her stant ayrı ödeme alıyor, tek hesap yok. <span class="warn">Pazartesi kapalı.</span> Hafta sonu çok kalabalık — Çarşamba gitmen isabetli. Dışarıdaki masalarda ısıtıcı var.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>20:30</time><div class="body"><h3>Kaapse Brouwers</h3><p class="addr">Fenix içinde · 11:00–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Kaapse%20Brouwers%2C%20Nico%20Koomanskade%201025%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Tadım tahtasıyla birkaç çeşit yerel bira.</p></div></div>
+    <div class="stop"><time>20:45</time><div class="body"><h3>Kaapse Brouwers</h3><p class="addr">Fenix içinde · 11:00–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Kaapse%20Brouwers%2C%20Nico%20Koomanskade%201025%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Tadım tahtasıyla birkaç çeşit yerel bira.</p></div></div>
 
-    <div class="stop"><time>21:30</time><div class="body"><h3>Deliplein çevresinde dolaş, dönüş</h3><p class="lead">Rijnhaven metrosundan Beurs'e 2 durak.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Deliplein%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p></div></div>
+    <div class="stop"><time>21:30</time><div class="body"><h3>Deliplein çevresinde dolaş, dönüş</h3><p class="lead">Rijnhaven metrosundan Beurs'e 2 durak.</p><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=Deliplein%2C%20Rotterdam" target="_blank" rel="noopener">Deliplein &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Rijnhaven%20metrostation%2C%20Rotterdam" target="_blank" rel="noopener">Rijnhaven metro &#8599;</a></p></div></div>
   </div>
 
-  <div class="extra">
-    <h4>Ekstra vakit kalırsa</h4>
-    <ul>
-      <li>SS Rotterdam — rıhtımda demirli eski transatlantik, gemi turu var</li>
-      <li>Rijnhavenpark — yeni liman kıyısı park ve şehir plajı</li>
-      <li>Eski Çin mahallesi sokakları, Deliplein çevresi</li>
-    </ul>
-  </div>
+  <div class="jump"><button type="button" data-goto="ekstra">Ekstra vakit kalırsa &#8594; alternatifler</button></div>
 </section>
 
 <!-- ============ PERŞEMBE ============ -->
@@ -354,6 +365,12 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <p class="slot">1 Ekim · tam gün</p>
     <h2>Delft, Miniworld, gece</h2>
     <p class="gist">Haftanın finali. Miniworld sadece bugün açık ve gece hayatı da bugün.</p>
+  </div>
+
+  <div class="routes"><h4>Google Maps rotaları</h4>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=Delft%20station%2C%20Delft&destination=Delft%20station%2C%20Delft&travelmode=walking&waypoints=Nieuwe%20Kerk%2C%20Markt%2080%2C%20Delft%7COude%20Kerk%2C%20Heilige%20Geestkerkhof%2025%2C%20Delft%7CBeestenmarkt%2C%20Delft" target="_blank" rel="noopener">① Delft yürüyüşü</a>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=Miniworld%20Rotterdam%2C%20Weena%20745%2C%20Rotterdam&destination=Man%20Met%20Bril%20Koffie%2C%20Linker%20Rottekade%2012%2C%20Rotterdam&travelmode=walking&waypoints=Markthal%2C%20Dominee%20Jan%20Scharpstraat%20298%2C%20Rotterdam%7CPoffertjessalon%20Seth%2C%20Hoogstraat%20147%2C%20Rotterdam%7CKubuswoningen%2C%20Overblaak%2070%2C%20Rotterdam%7COude%20Haven%2C%20Rotterdam%7CGrote%20of%20Sint-Laurenskerk%2C%20Grotekerkplein%2027%2C%20Rotterdam%7CLuchtsingel%2C%20Rotterdam" target="_blank" rel="noopener">② Miniworld'den merkez halkasına</a>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=Man%20Met%20Bril%20Koffie%2C%20Linker%20Rottekade%2012%2C%20Rotterdam&destination=BIRD%2C%20Raampoortstraat%2024%2C%20Rotterdam&travelmode=walking&waypoints=Waroeng%20EmJay%2C%20Diergaardesingel%2096A%2C%20Rotterdam" target="_blank" rel="noopener">③ Akşam · yemek ve canlı müzik</a>
   </div>
 
   <div class="board">
@@ -376,7 +393,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
         <p><span class="h">Notu</span>Vermeer'in mezarı gösterişsiz bir taş — aramak gerekiyor. Sabah mezarını görüp, istersen akşamüstü Den Haag'da tablosunun karşısına geçmek günü hikâyeye çeviriyor.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>12:00</time><div class="body"><h3>Markt / Beestenmarkt</h3><p class="lead">Kanal kenarı öğle yemeği.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Markt%2C%20Delft" target="_blank" rel="noopener">Haritada aç &#8599;</a></p></div></div>
+    <div class="stop"><time>12:00</time><div class="body"><h3>Markt / Beestenmarkt</h3><p class="lead">Kanal kenarı öğle yemeği.</p><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=Markt%2C%20Delft" target="_blank" rel="noopener">Markt &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Beestenmarkt%2C%20Delft" target="_blank" rel="noopener">Beestenmarkt &#8599;</a></p></div></div>
 
     <div class="stop"><time>13:15</time><div class="body"><h3>Rotterdam'a dönüş</h3></div></div>
 
@@ -388,14 +405,18 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
         <p><span class="h">Dikkat</span><span class="warn">Pazartesi ve Salı kapalı, 17:00'de kesin kapanıyor</span> — senin haftanda tek uygun gün bu. 1,5–2 saat ayır. Tamamen kapalı alan, yağmur planı olarak da mükemmel. Centraal'dan 5 dakika yürüme.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>16:15</time><div class="body"><h3>Markthal → Kübik Evler → Oude Haven</h3><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Kubuswoningen%2C%20Overblaak%2070%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>16:15</time><div class="body"><h3>Markthal → Kübik Evler → Oude Haven</h3><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=Markthal%2C%20Dominee%20Jan%20Scharpstraat%20298%2C%20Rotterdam" target="_blank" rel="noopener">Markthal &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Kubuswoningen%2C%20Overblaak%2070%2C%20Rotterdam" target="_blank" rel="noopener">Kübik Evler &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Oude%20Haven%2C%20Rotterdam" target="_blank" rel="noopener">Oude Haven &#8599;</a></p><p class="tix"><a href="https://kunstkubus.i-reserve.net" target="_blank" rel="noopener">Kunstkubus bileti al &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Markthal</span>2014'te açıldı, MVRDV tasarımı: at nalı biçiminde 228 daireden oluşan bir konut bloğu, altındaki pazar salonunu bir kemer gibi örtüyor. Tavandaki dev eser Arno Coenen'in "Bereket Boynuzu" çalışması, ülkenin en büyük sanat işlerinden biri ve binlerce panele basılarak monte edildi. <span class="warn">Fiyatlar turist seviyesinde</span> — mimarisi için gir, yemek için değil.</p>
-        <p><span class="h">Kübik Evler</span>Piet Blom, 1984. Altışar köşeli sütunların üstüne 45 derece eğilmiş 38 küp; fikir, şehrin üstünde bir "beton orman" kurmak. İçlerinden biri müze olarak gezilebiliyor. İçeride bütün duvarlar eğik, mobilya yerleştirmek kâbus — mimarlık tarihinin en tartışmalı yaşanabilirlik örneklerinden. En iyi görüntü Oude Haven tarafından.</p>
+        <p><span class="h">Kübik Evler</span>Piet Blom, 1984. Altışar köşeli sütunların üstüne 45 derece eğilmiş 38 küp; fikir, şehrin üstünde bir "beton orman" kurmak. İçlerinden biri — <b>Kunstkubus / ART CUBE</b>, Overblaak'ta — ziyarete açık: içinde sanat odaları ve silüete bakan bir bölüm var. Yetişkin 4 €, saat dilimli rezervasyon, e-bilet mailine geliyor; sanat kısmı seni çekmese de <b>45 derece eğik bir evin içini görmek</b> için 4 euro ucuz. İçeride bütün duvarlar eğik, mobilya yerleştirmek kâbus — mimarlık tarihinin en tartışmalı yaşanabilirlik örneklerinden. En iyi görüntü Oude Haven tarafından.</p>
         <p><span class="h">Oude Haven</span>Şehrin en eski limanı, 1350'lerde kazıldı. Tarihi yük tekneleri hâlâ demirli. Kıyıdaki <b>Witte Huis</b> 1898'de yapıldığında 45 metreyle Avrupa'nın ilk yüksek binası sayılıyordu ve bombardımandan sağ çıktı.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>17:15</time><div class="body"><h3>Luchtsingel</h3><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Luchtsingel%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>16:30</time><div class="body"><h3>Poffertjessalon Seth — poffertjes</h3><p class="addr">Hoogstraat 147 · 10:30–17:30</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Poffertjessalon%20Seth%2C%20Hoogstraat%20147%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Markthal'in 200 metre yanı. <span class="shut">17:30'da kapanıyor</span> — haftadaki tek şansın.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Bozuk para büyüklüğünde mini pancake'ler, özel dökme demir tavada pişiriliyor. Üstüne tereyağı ve bol pudra şekeri — yerliler bu klasik halini tercih ediyor, soslu versiyonlar asıl tadı gizliyor.</p><p><span class="h">Neden burası</span>Şehirdeki poffertjes ölçütü sayılıyor ve taze pişiyor. Rotterdam'ın çoğu yeni binalardan oluşurken burası eski bir salon havasını koruyor. Dışarıda oturma yeri ve alt katta tuvalet var.</p><p><span class="h">Porsiyon</span>10'luk küçük porsiyon bir kişiye yeter; akşam Waroeng EmJay'de rijsttafel var, büyük porsiyon alma.</p></div></details></div></div>
+
+    <div class="stop"><time>17:05</time><div class="body"><h3>Laurenskerk</h3><p class="lead">Grotekerkplein 27. Oude Haven'dan 5 dakika kuzeye, Luchtsingel'in yolu üstünde.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Grote%20of%20Sint-Laurenskerk%2C%20Grotekerkplein%2027%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>15. yüzyıldan kalma kilise ve <b>bombardımandan ayakta kalan tek büyük yapı</b>. 14 Mayıs 1940'ta içi tamamen yandı, sadece duvarları kaldı. Yıkılması tartışıldı, sonunda korunmasına karar verildi ve 1968'e kadar restore edildi.</p><p><span class="h">Neden mutlaka</span>Bu rehberin her yerinde "Rotterdam'ın eski merkezi yok" diye okuyorsun. Laurenskerk o cümlenin hem istisnası hem kanıtı: etrafındaki her şey yeni, o eski. Yeniden kurulmuş bir şehirde savaş öncesinden gelen en önemli anıt bu — ve şehrin neyi kaybettiğini Delfshaven'dan sonra en iyi anlatan ikinci yer.</p><p><span class="h">Ne bakılır</span>Önündeki <b>Erasmus heykeli</b> — 1622'de dikildi, şehrin en eski heykeli ve o da bombardımandan kurtuldu. Kilisenin tuğla duvarlarında yangının izleri hâlâ okunuyor. Bronz giriş kapıları savaş sonrası eklendi.</p><p><span class="h">Dikkat</span>İçine girmene gerek yok; dışı ve meydan yeterli, akşam aydınlatmalı. İçini merak ediyorsan ziyaret saatleri sınırlı ve <span class="warn">Pazar kapalı</span> — sen zaten Perşembe oradasın.</p></div></details></div></div>
+
+    <div class="stop"><time>17:30</time><div class="body"><h3>Luchtsingel</h3><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Luchtsingel%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>390 metrelik sarı ahşap yaya köprüsü; ZUS mimarlık ofisinin işi, 2015'te tamamlandı. Ayırıcı özelliği finansmanı: kalaslar tek tek halka satıldı ve <b>üzerlerinde bağış yapanların adları ve yazıları duruyor</b>. 2012'de şehrin "vatandaş girişimi" oylamasını kazanarak bütçe aldı. Yani bu köprüyü belediye değil, şehirliler yaptırdı.</p>
         <p><span class="h">Ne işe yarıyor</span>Geniş yollarla birbirinden kopmuş üç bölgeyi — Centraal çevresi, Schieblock ve Hofplein — yaya olarak birleştiriyor. Rotterdam'ın "eksik olanı kendimiz yaparız" tavrının en somut örneği.</p>
@@ -403,7 +424,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
         <p><span class="h">Dürüst uyarı</span>Küçük ve biraz yıpranmış; "vay canına" dedirtmiyor. <span class="warn">Manzara için değil, fikir için git.</span> 10 dakikanı alır.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>17:45</time><div class="body"><h3>Hofbogen + Man Met Bril Koffie</h3><p class="addr">Linker Rottekade 12</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Man%20Met%20Bril%20Koffie%2C%20Linker%20Rottekade%2012%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>17:45</time><div class="body"><h3>Hofbogen + Man Met Bril Koffie</h3><p class="addr">Linker Rottekade 12</p><p class="locs"><a href="https://www.google.com/maps/search/?api=1&query=Hofbogen%2C%20Raampoortstraat%2C%20Rotterdam" target="_blank" rel="noopener">Hofbogen &#8599;</a><a href="https://www.google.com/maps/search/?api=1&query=Man%20Met%20Bril%20Koffie%2C%20Linker%20Rottekade%2012%2C%20Rotterdam" target="_blank" rel="noopener">Man Met Bril &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Hofbogen</span>1908'de yapılmış Hofplein demiryolu viyadüğü: yaklaşık 2 kilometre uzunluğunda ve yüzlerce kemerden oluşuyor. 2010'da trenler durdu; kemerlerin altı dükkân, atölye ve kafeye dönüştü, üstü de aşamalı olarak çatı parkına çevriliyor. New York'un High Line'ının Rotterdam versiyonu, ama daha ham ve daha yerel.</p>
         <p><span class="h">Man Met Bril</span>"Gözlüklü adam" — kendi çekirdeğini kavuran Rotterdam kahvecisi, Rotte kanalının kıyısında. Turistik değil, mahalle yeri. Kahveyi burada iç, sonra viyadük boyunca yürü.</p>
@@ -431,17 +452,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <p>BIRD 01:00'e kadar açık, Cuma 10:00'da check-out ve 10:30'da Spido var. İkisi aynı gece olmaz.<br><br><b>Önerilen: Spido'yu koru.</b> BIRD'de bir set izle, 23:00'te çık. Spido tek seferlik ve hava geçirmez; BIRD'ün yerine geçebilecek üç akşamın daha var.<br><br><b>Diğer seçenek:</b> BIRD'de sonuna kadar kal, Cuma sabahını Markthal kahvaltısına indir ve Spido'yu iptal et. Bilet almadan karar ver.</p>
   </div>
 
-  <div class="extra">
-    <h4>Alternatifler</h4>
-    <ul>
-      <li>Delft'te vakit kalırsa Royal Delft porselen fabrikası veya Vermeer Centrum</li>
-      <li>Delft dönüşünde Schiedam'da in: Nationaal Jenevermuseum, Lange Haven 74, 11:00–17:00 — çalışan damıtımevi, tadım odası, dev yel değirmeni. Jenever'in dünya başkenti burası</li>
-      <li>Sonneveld Huis · Museumpark — 1933 modernist ev, orijinal eşyalarıyla duruyor. Resim değil mimari, tam senin ilgi alanın</li>
-      <li>OX · Schiekade 189, Per–Cmt 18:00–01:00 — gizli girişten bodruma inen kokteyl eşleştirmeli akşam, pahalı segment</li>
-      <li>De Pelgrim · Aelbrechtskolk 12 — Delfshaven'daki bira fabrikası, "Mayflower" biraları. Pazartesi gidemediğin için ancak bugün mümkün</li>
-      <li>Van Nelle Fabriek — UNESCO Dünya Mirası, Hollanda modernizminin başyapıtı. Sadece randevulu turla giriliyor; önceden ayarlamadıysan kaçırdığın tek büyük şey bu</li>
-    </ul>
-  </div>
+  <div class="jump"><button type="button" data-goto="ekstra">Ekstra vakit kalırsa &#8594; alternatifler</button></div>
 </section>
 
 <!-- ============ CUMA ============ -->
@@ -452,6 +463,10 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <p class="gist">Akşam uçuşu bir gün daha kazandırdı. Boş geçme.</p>
   </div>
 
+  <div class="routes"><h4>Google Maps rotaları</h4>
+    <a href="https://www.google.com/maps/dir/?api=1&origin=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam&destination=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam&travelmode=walking&waypoints=Spido%2C%20Willemsplein%2085%2C%20Rotterdam%7CDudok%2C%20Meent%2088%2C%20Rotterdam%7CMarkthal%2C%20Dominee%20Jan%20Scharpstraat%20298%2C%20Rotterdam%7CBram%20Ladage%2C%20Lijnbaan%2079D%2C%20Rotterdam" target="_blank" rel="noopener">① Spido · Dudok · Markthal · Bram Ladage</a>
+  </div>
+
   <div class="board">
     <div class="stop"><time>10:00</time><div class="body"><h3>Check-out, bavulu bırak</h3><p class="lead">Otelde ya da Centraal'daki emanet dolapları.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p></div></div>
 
@@ -459,12 +474,14 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>1919'dan beri çalışan liman turu — Rotterdam'ın en eski turistik kurumu. 75 dakikalık tur, şehir silüetinin altından geçip konteyner terminallerine, kuru havuzlara ve dev gemilerin arasına giriyor.</p>
         <p><span class="h">Neden gitmeli</span>Rotterdam limanı yaklaşık 40 kilometre uzunluğunda ve Avrupa'nın en büyüğü. Bu ölçek karadan hiçbir noktadan anlaşılmıyor; şehri anlamak için kalan son parça bu. Sesli anlatım birkaç dilde.</p>
-        <p><span class="h">Dikkat</span>Alt güverte kapalı ve ısıtmalı, <span class="warn">yağmur sorun değil</span>; üst güverte manzara için iyi ama rüzgârlı. Ekim'de sefer sayısı azalıyor — <b>saatleri bir gün önce teyit et</b>. Erasmusbrug'un dibinde, otelden 12 dakika yürüme.</p>
+        <p><span class="h">Kombine bilet</span>Salı Euromast'a çıkacaksın: <b>Euromast + Spido kombosu 32 €</b> — ikisini ayrı almadan önce hesabı yap.</p><p><span class="h">Dikkat</span>Alt güverte kapalı ve ısıtmalı, <span class="warn">yağmur sorun değil</span>; üst güverte manzara için iyi ama rüzgârlı. Ekim'de sefer sayısı azalıyor — <b>saatleri bir gün önce teyit et</b>. Erasmusbrug'un dibinde, otelden 12 dakika yürüme.</p>
       </div></details></div></div>
 
-    <div class="stop"><time>12:30</time><div class="body"><h3>Markthal — son öğle yemeği</h3><p class="addr">Cuma 10:00–21:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Markthal%2C%20Dominee%20Jan%20Scharpstraat%20298%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Royal Fish standında kibbeling ve çiğ ringa. Ringa sezonu tam kapanıyor, son şans.</p></div></div>
+    <div class="stop key"><time>12:10</time><div class="body"><h3>Dudok — sıcak elmalı turta</h3><p class="addr">Meent 88 · her gün 09:00–23:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Dudok%2C%20Meent%2088%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Spido'dan 15 dakika yürüme. Rehberdeki bir numaralı tatlı önerim, nihayet programda.</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Hollanda elmalı turtası: kalın, tarçınlı, hamuru kurabiye gibi; yanında şekeri az gerçek krem şanti. Dudok bu işin Rotterdam'daki kurumu ve 1990'lardan beri aynı yerde.</p><p><span class="h">Kritik detay</span>Turtayı <b>"warm"</b> (sıcak) iste — masadaki QR menüden seçilebiliyor. Sıcak servis edilince tamamen başka bir tatlıya dönüşüyor; çoğu ziyaretçi bunu bilmediği için soğuk yiyip çıkıyor.</p><p><span class="h">Sokak notu</span>Meent, Rotterdam'ın butik hattı. Turta beklerken vitrinlere bakabilirsin.</p></div></details></div></div>
 
-    <div class="stop key"><time>13:15</time><div class="body"><h3>Bram Ladage — patatje oorlog</h3><p class="addr">Lijnbaan 79D · 11:00–19:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Bram%20Ladage%2C%20Lijnbaan%2079D%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+    <div class="stop"><time>12:50</time><div class="body"><h3>Markthal — son öğle yemeği</h3><p class="addr">Cuma 10:00–21:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Markthal%2C%20Dominee%20Jan%20Scharpstraat%20298%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="lead">Royal Fish standında kibbeling ve çiğ ringa. Ringa sezonu tam kapanıyor, son şans.</p></div></div>
+
+    <div class="stop"><time>13:30</time><div class="body"><h3>Bram Ladage — patatje oorlog (opsiyonel)</h3><p class="addr">Lijnbaan 79D · 11:00–19:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Bram%20Ladage%2C%20Lijnbaan%2079D%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
       <details class="guide"><summary>Rehber</summary><div class="g">
         <p><span class="h">Ne olduğu</span>Rotterdam'ın kendi patates markası; şehirde doğdu ve büyüdü, patatesi gözünün önünde kesip kızartıyorlar. Otelinden 5 dakika.</p>
         <p><span class="h">Nasıl sipariş verilir</span><b>"Patatje oorlog"</b> — kelimesi kelimesine "savaş patatesi": mayonez, Endonezya kökenli fıstık sosu ve doğranmış çiğ soğan bir arada. Tarifi tuhaf duruyor, sonucu muazzam. Yanına <b>frikandel speciaal</b> ekleyebilirsin.</p>
@@ -476,14 +493,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <div class="stop key"><time>14:15</time><div class="body"><h3>Bavulu al, havalimanına</h3><p class="lead">Rotterdam The Hague: Centraal'dan 33 numaralı otobüs, ~20 dakika. Schiphol: trenle ~40 dakika. <b>Kontroller dahil 3 saat bırak.</b></p></div></div>
   </div>
 
-  <div class="extra">
-    <h4>Spido yerine</h4>
-    <ul>
-      <li>Kunsthal · Museumpark, 10:00–17:00 — koleksiyonu yok, sadece değişen sergiler; Rem Koolhaas binası</li>
-      <li>Lijnbaan'da eksik kalan alışveriş — Cuma dükkânlar geç kapanıyor</li>
-      <li>Miniworld · Cuma 12:00–17:00, Perşembe kaçırdıysan buradan telafi</li>
-    </ul>
-  </div>
+  <div class="jump"><button type="button" data-goto="ekstra">Ekstra vakit kalırsa &#8594; alternatifler</button></div>
 
   <div class="flagbox">
     <h4>Peyniri en son al</h4>
@@ -491,11 +501,86 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
   </div>
 </section>
 
+<!-- ============ EKSTRA ============ -->
+<section class="panel" id="ekstra" role="tabpanel">
+  <div class="daytop">
+    <p class="slot">alternatifler</p>
+    <h2>Ekstra vakit kalırsa</h2>
+    <p class="gist">Programda boşluk yok — bunlar ancak bir şey erken biterse, hava bozarsa veya bir maddeyi feda etmeye razı olursan devreye girer. Her birinde ne zaman uyduğunu ve neyden vazgeçmen gerektiğini yazdım.</p>
+  </div>
+
+  <div class="flagbox">
+    <h4>Önce şunu bil</h4>
+    <p>Bu listedeki her madde bir <b>takas</b>. Programı zenginleştirmiyor, yer değiştiriyor. Bir tanesini eklemeye karar verirsen, Notlar sekmesindeki "bir şey silmek gerekirse" sırasına bak.</p>
+  </div>
+
+  <div class="block">
+    <h2>Pazartesi — Kinderdijk / Delfshaven günü</h2>
+    <div class="item"><p class="name">Kinderdijk'te bisiklet</p><p class="where">Ziyaretçi merkezinde kiralama</p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Neden</span>Değirmen hattı set boyunca yaklaşık 5 km uzanıyor ve yürüyerek ancak yarısını görüyorsun. Bisikletle tamamını, hem de değirmenlerin arka tarafındaki polder manzarasıyla geziyorsun. Kinderdijk'i gerçekten görmenin yolu bu.</p><p><span class="h">Ne zaman uyar</span>Sabah tekneden inip bilet aldıktan hemen sonra. 1,5 saatte tüm hattı bitirirsin, yürüyerek aynı süre yarısını verir.</p><p><span class="h">Dikkat</span>Set tamamen rüzgâra açık; dönüş yönü ters rüzgâra denk gelirse zorlu olur. Yağmur varsa vazgeç, siper yok.</p></div></details></div>
+    <div class="item"><p class="name">Dordrecht</p><p class="where">Waterbus'la Kinderdijk'ten ~30 dakika ileri</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Dordrecht%2C%20Netherlands" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Hollanda'nın en eski şehri — 1220'de şehir hakkı aldı. Üç nehrin birleştiği noktada kurulu, bu yüzden yüzyıllarca ülkenin en zengin ticaret kentiydi. Kanalları, tüccar evleri ve Grote Kerk'in tamamlanamamış eğik kulesi duruyor.</p><p><span class="h">Neden mantıklı</span>Aynı Waterbus hattının üzerinde. Kinderdijk'i hızlı bitirirsen ek ulaşım derdi olmadan bir şehir daha görmüş olursun.</p><p><span class="h">Dikkat</span>Bu, Pazartesi'yi ciddi biçimde uzatır — Lijnbaan alışverişinden ve Delfshaven'dan vazgeçmen gerekir. Ayrıca Pazartesi müzeler kapalı, sadece sokakları gezersin.</p></div></details></div>
+    <div class="item"><p class="name">Coolhaven ve eski ambarlar</p><p class="where">Delfshaven'ın batı ucu</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Coolhaven%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Delfshaven'ın turistin gitmediği devamı: eski depo binaları, tersane kalıntıları ve işçi konutları. Mahallenin liman geçmişi burada daha çıplak duruyor.</p><p><span class="h">Ne zaman uyar</span>Delfshaven'da kanal turunu bitirip vaktin kaldıysa 20 dakika daha batıya yürü. Coolhaven metro durağından merkeze dönersin.</p></div></details></div>
+    <div class="item"><p class="name">Bierlokaal Locus Publicus</p><p class="where">Oostzeedijk 364 · her gün 16:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Bierlokaal%20Locus%20Publicus%2C%20Oostzeedijk%20364%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Şehrin bira otoritesi sayılıyor: yüzlerce çeşit ve personel gerçekten biliyor. Ne sevdiğini söyle, doğru olanı önerirler — menüyü kendin kurcalamana gerek yok.</p><p><span class="h">Ne sorulur</span><b>Bokbier</b>. Sonbaharda çıkan koyu, malt yoğun mevsim birası ve sen tam çıkış haftasındasın.</p><p><span class="h">Dikkat</span>Küçük ve hızlı doluyor, erken git. Merkezin biraz doğusunda, otelden metroyla gitmen gerekir — De Witte Aap'tan daha uzak ama bira için daha iyi.</p></div></details></div>
+  </div>
+
+  <div class="block">
+    <h2>Salı — Euromast akşamı</h2>
+    <div class="item"><p class="name">Het Park</p><p class="where">Euromast'ın dibinde</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Het%20Park%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>19. yüzyıldan kalma İngiliz tarzı peyzaj parkı; Maas kıyısına kadar iniyor. İçinde Norveç Denizciler Kilisesi ve göletler var. Euromast tam bu parkın içinde dikili.</p><p><span class="h">Ne zaman uyar</span>Kuleden indikten sonra 20 dakikalık akşam yürüyüşü. Yemeğe kadar vaktin varsa şehrin en sakin köşesi.</p></div></details></div>
+    <div class="item"><p class="name">Depot Boijmans — dış cephe</p><p class="where">Museumpark · bedava</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Depot%20Boijmans%20Van%20Beuningen%2C%20Museumpark%2024%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Neden bilet almıyorsun</span>İçini gezmek istemediğini biliyorum. Ama binanın etkileyici olan kısmı zaten dışı: 2021'de açılan, MVRDV tasarımı, 1600'den fazla aynalı panelle kaplı bir çanak. Şehri ve gökyüzünü eğrilterek yansıtıyor, çatısında huş ağaçları var.</p><p><span class="h">Ne zaman uyar</span>Otelden 8 dakika. Museumpark'tan geçerken durup üç dakika bakman yeterli — bilet, sıra, saat dilimi yok.</p></div></details></div>
+    <div class="item"><p class="name">1983 Coffees & Cocktails</p><p class="where">Nieuwemarkt 49 · her gün 11:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=1983%20Coffees%20and%20Cocktails%2C%20Nieuwemarkt%2049%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Gündüz kahve, akşam kokteyl yapan esnek bir köşe mekânı. Tarihi çeşmeye ve Erasmus binasına bakan terası var.</p><p><span class="h">Ne zaman uyar</span>Jigger'a göre daha erken saatlere de uygun. Toplantı erken biterse 17:30'da da oturulur.</p></div></details></div>
+  </div>
+
+  <div class="block">
+    <h2>Çarşamba — Katendrecht akşamı</h2>
+    <div class="item"><p class="name">SS Rotterdam</p><p class="where">3e Katendrechtse Hoofd 25</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=SS%20Rotterdam%2C%203e%20Katendrechtse%20Hoofd%2025%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Holland-Amerika Lijn'in 1959'da denize indirdiği amiral gemisi — şimdiye kadar yapılmış en büyük Hollanda yolcu gemisi, 228 metre. "La Grande Dame" diye anılırdı. 2008'den beri Katendrecht rıhtımında otel ve müze olarak duruyor.</p><p><span class="h">Neden anlamlı</span>Çarşamba akşamı Hotel New York'a gidiyorsun: göç biletlerinin kesildiği bina. SS Rotterdam da o hikâyenin son gemilerinden biri. İkisini aynı akşamda görmek zinciri tamamlıyor.</p><p><span class="h">Dikkat</span>Sesli rehberli tur zaman alıyor, akşam 19:00'dan sonra tur mümkün olmayabilir. Fenix'e yetişmek istiyorsan ya turu atla ya güverteden bak.</p></div></details></div>
+    <div class="item"><p class="name">Rijnhavenpark</p><p class="where">Katendrecht'e komşu liman kıyısı</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Rijnhavenpark%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Rijnhaven'ın bir bölümü doldurularak yapılan yeni park ve şehir plajı. Rotterdam'ın "limanı halka geri veriyoruz" dönemi buradan okunuyor.</p><p><span class="h">Ne zaman uyar</span>Watertaxi'den inip Fenix'e yürürken yol üstü. 15 dakikalık bir sapma, karşı kıyı silüetine bakıyor.</p></div></details></div>
+    <div class="item"><p class="name">Deliplein ve eski Çin mahallesi</p><p class="where">Katendrecht meydanı</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Deliplein%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Katendrecht, 1910'lardan itibaren Çinli gemicilerin yerleştiği, kıta Avrupası'nın ilk Çin mahallesi olarak bilinir. Uzun süre limanın en kötü şöhretli bölgesiydi; adı "de Kaap"tı. 2010'lardan sonra tamamen değişti.</p><p><span class="h">Ne bakılır</span>Deliplein çevresindeki alçak tuğla sıra evler, Walhalla tiyatrosu ve sokak isimleri. Mahallenin iki katmanı — liman sertliği ve yeni restoranlar — yan yana duruyor.</p><p><span class="h">Ne zaman uyar</span>Fenix'ten çıkıp metroya yürürken 20 dakika. Zaten programın son adımı.</p></div></details></div>
+  </div>
+
+  <div class="block">
+    <h2>Perşembe — Delft / merkez günü</h2>
+    <div class="item"><p class="name">Royal Delft</p><p class="where">Rotterdamseweg 196, Delft</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Royal%20Delft%2C%20Rotterdamseweg%20196%2C%20Delft" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>De Koninklijke Porceleyne Fles — 1653'te kurulan, Delft mavisinin altın döneminden <b>bugüne kalan tek orijinal fabrika</b>. Diğerlerinin hepsi kapandı. El boyama atölyesini çalışırken görüyorsun; bir vazonun kaç saat sürdüğünü anlamak tek başına yeterli sebep.</p><p><span class="h">Ne zaman uyar</span>Delft'te öğleden sonran boşsa. Ama merkezin dışında, Markt'tan 20–25 dakika yürüme veya tramvay.</p><p><span class="h">Dikkat</span>Miniworld'e yetişmen gerekiyor. Royal Delft'e gidersen Delft dönüşün gecikir ve Miniworld 17:00'de kapanır — ikisini aynı güne sıkıştırma.</p></div></details></div>
+    <div class="item"><p class="name">Vermeer Centrum Delft</p><p class="where">Voldersgracht 21, Delft</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Vermeer%20Centrum%20Delft%2C%20Voldersgracht%2021%2C%20Delft" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Vermeer'in eski Aziz Luka loncası binasında kurulu merkez: tüm eserlerinin birebir kopyaları, atölyesinin rekonstrüksiyonu ve ışık-camera obscura teknikleri anlatımı.</p><p><span class="h">Dürüst uyarı</span><span class="warn">Burada tek bir orijinal Vermeer yok</span>, hepsi kopya. Resim tutkunu değilsen atla. Asıl değeri, sabah Oude Kerk'te mezarını gördüğün adamın nasıl çalıştığını anlaman.</p><p><span class="h">Ne zaman uyar</span>Royal Delft'e göre çok daha yakın — Markt'tan 3 dakika. Vaktin kısıtlıysa bunu seç.</p></div></details></div>
+    <div class="item"><p class="name">Nationaal Jenevermuseum</p><p class="where">Lange Haven 74, Schiedam</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Nationaal%20Jenevermuseum%2C%20Lange%20Haven%2074%2C%20Schiedam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Jenever'in dünya başkenti Schiedam'da, çalışan bir damıtımevinin içinde. Üretimi görüyorsun ve tadım odasında oude/jonge farkını yan yana deniyorsun. Şehirde ayrıca dünyanın en yüksek yel değirmenleri var.</p><p><span class="h">Neden tam sana uygun</span>Cin'in atası olan bu içkiyi barda ısmarlamak yerine kaynağında öğrenmek, listedeki en "yerel" deneyim. Rotterdam–Delft treninin yolu üstünde, metroyla da 15 dakika.</p><p><span class="h">Dikkat</span><span class="warn">11:00–17:00, Pazartesi kapalı.</span> Sadece Perşembe mümkün ve Delft dönüşünde inmen gerekir — bu da Miniworld'den vazgeçmek demek. İkisinden birini seç.</p></div></details></div>
+    <div class="item"><p class="name">Huis Sonneveld</p><p class="where">Jongkindstraat 12, Museumpark</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Huis%20Sonneveld%2C%20Jongkindstraat%2012%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>1933'te Brinkman ve Van der Vlugt'un tasarladığı Nieuwe Bouwen üslubunda bir villa — orijinal mobilyaları, renkleri ve teknik donanımıyla ayakta. Dönemin zengin bir fabrikatörünün "modern yaşam" denemesi.</p><p><span class="h">Neden bu, en iyi telafi</span>Van Nelle Fabriek'e randevusuz girilmiyor. Sonneveld <b>aynı mimarların işi</b> ve randevu gerektirmiyor — Hollanda modernizmini göremediğin için üzülmene gerek kalmıyor. Resim değil mimari; tam senin ilgi alanın.</p><p><span class="h">Ne zaman uyar</span>Otelden 8 dakika, Depot'un cephesine bakarken yanında. Perşembe 16:15 civarı sıkıştırılabilir.</p></div></details></div>
+    <div class="item"><p class="name">Van Nelle Fabriek</p><p class="where">Van Nelleweg 1 · sadece randevulu tur</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Van%20Nelle%20Fabriek%2C%20Van%20Nelleweg%201%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>1931, Brinkman ve Van der Vlugt. Cam ve çelikten kurulmuş tütün, kahve ve çay fabrikası; işçiye gün ışığı ve manzara vermek üzere tasarlandı. Le Corbusier bunu çağın en güzel manzarası saydı. 2014'te UNESCO Dünya Mirası oldu.</p><p><span class="h">Dürüst değerlendirme</span>Rotterdam'da kaçırdığın tek büyük şey bu. Mimari ilgin varsa listedeki en değerli madde.</p><p><span class="h">Dikkat</span><span class="warn">Sadece önceden randevulu turla giriliyor</span> ve turlar sınırlı. Şehrin batısında, merkezden uzak. Gitmek istiyorsan bunu <b>şimdi</b> ayarlaman gerekir, orada karar veremezsin.</p></div></details></div>
+    <div class="item"><p class="name">Timmerhuis ve Stadhuis</p><p class="where">Coolsingel</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Timmerhuis%2C%20Halvemaanpassage%2090%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>İki bina yan yana, arada 95 yıl: <b>Stadhuis</b> (1920) bombardımandan kurtulan anıtsal belediye binası, <b>Timmerhuis</b> (2015, OMA/Rem Koolhaas) üstüne kondurulmuş modüler cam bulut.</p><p><span class="h">Neden bakmalı</span>Rotterdam'ın "eskiyi koru, üstüne yenisini kur" tavrı bu iki binanın temas noktasında en net görünüyor. Beş dakikalık bir durak, ama şehri anlatıyor.</p><p><span class="h">Ne zaman uyar</span>Markthal'e yürürken yol üstü, sapma gerektirmiyor.</p></div></details></div>
+    <div class="item"><p class="name">Dakakker</p><p class="where">Schieblock çatısı, Luchtsingel'in yanı</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Dakakker%2C%20Schiekade%20189%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Bir ofis binasının çatısına kurulmuş, Avrupa'nın ilk çatı çiftliklerinden biri: sebze tarhları, arı kovanları ve yağmur suyu deneyleri.</p><p><span class="h">Ne zaman uyar</span>Luchtsingel köprüsünün bittiği yerde. Köprüyü "küçük ve yıpranmış" bulursan, asıl fikri burada görüyorsun — şehirlilerin kullanılmayan alanı kendi eline alması.</p><p><span class="h">Dikkat</span>Açılış saatleri sınırlı ve etkinliğe göre değişiyor; kapalıysa köprüden devam et.</p></div></details></div>
+    <div class="item"><p class="name">OX</p><p class="where">Schiekade 189 · Per–Cmt 18:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=OX%20Rotterdam%2C%20Schiekade%20189%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Gizli girişten bodruma inilen, kokteyl eşleştirmeli menü yapan karakterli bir mekân. Pahalı segment.</p><p><span class="h">Ne zaman uyar</span>Son akşamı yemek + müzik yerine tek bir özel deneyime çevirmek istersen. Waroeng EmJay ve BIRD'ün alternatifi, ekstrası değil.</p><p><span class="h">Dikkat</span><span class="warn">Pazartesi–Çarşamba kapalı</span>, sende sadece Perşembe var. Luchtsingel ve Dakakker ile aynı adreste.</p></div></details></div>
+    <div class="item"><p class="name">Stadsbrouwerij De Pelgrim</p><p class="where">Aelbrechtskolk 12, Delfshaven · Çar–Paz</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Stadsbrouwerij%20De%20Pelgrim%2C%20Aelbrechtskolk%2012%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Delfshaven'ın tarihi binalarından birinde çalışan bira fabrikası. <b>"Mayflower"</b> adlı biraları var: Pilgrim Fathers'ın Amerika'ya tam o mahalleden yola çıkmasına gönderme. Altı ev birası tadım tahtasıyla deneniyor.</p><p><span class="h">Neden burada</span><span class="warn">Pazartesi ve Salı kapalı</span> — yani Delfshaven'a gittiğin gün kapısı kilitli olacak. İçmek istiyorsan Perşembe ayrıca gitmen gerekir.</p><p><span class="h">Dürüst değerlendirme</span>Mekân ve hikâye güzel ama şehrin batısına ikinci bir yolculuk demek. Perşembe zaten dolu; bira için Kaapse (Çarşamba) ve Locus Publicus yeterli geliyorsa atla.</p></div></details></div>
+    <div class="item"><p class="name">Den Haag — Mauritshuis</p><p class="where">Delft'ten 12 dakika tren</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Mauritshuis%2C%20Plein%2029%2C%20Den%20Haag" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Vermeer'in <b>İnci Küpeli Kız</b> tablosunun bulunduğu müze. Küçük ve yoğun bir koleksiyon.</p><p><span class="h">Neden cazip</span>Sabah Oude Kerk'te Vermeer'in mezarını görüp akşamüstü en ünlü tablosunun karşısına geçmek, günü bir hikâyeye çeviriyor.</p><p><span class="h">Dikkat</span><span class="warn">Bunu yaparsan Miniworld'den vazgeçersin</span> ve Miniworld'ün senin haftanda tek uygun günü Perşembe. Resimlerle ilgin olmadığını söylediğin için önermiyorum — ama karar senin.</p></div></details></div>
+  </div>
+
+  <div class="block">
+    <h2>Cuma — uçuş öncesi sabah</h2>
+    <div class="item"><p class="name">Kunsthal Rotterdam</p><p class="where">Westzeedijk 341 · 10:00–17:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Kunsthal%20Rotterdam%2C%20Westzeedijk%20341%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Rem Koolhaas ve OMA'nın 1992'de yaptığı sergi binası. <b>Kalıcı koleksiyonu yok</b> — sadece değişen sergiler; bina bir sirkülasyon deneyi olarak tasarlandı, rampalar sizi kesişen kotlar arasında dolaştırıyor.</p><p><span class="h">Neden senin için işleyebilir</span>Müze koleksiyonu gezmiyorsun, binayı geziyorsun. Koolhaas'ın işini içeriden görmek Depot'un cephesine bakmaktan farklı bir şey.</p><p><span class="h">Ne zaman uyar</span>Spido'yu iptal edersen veya hava çok kötüyse. Otelden 8 dakika, Museumpark içinde.</p></div></details></div>
+    <div class="item"><p class="name">Splashtours</p><p class="where">Amfibi otobüs · Euromast kombosu 44 €</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Splashtours%20Rotterdam%2C%20Parkhaven%209%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Karada şehir turu yapıp sonra doğrudan Maas'a dalan amfibi bir araç. 60 dakika. Suya giriş anı turun bütün olayı.</p><p><span class="h">Ne zaman uyar</span>Spido'ya alternatif. Spido limanı ve ölçeği gösteriyor, Splashtours ise şehir merkezini ve bir gösteriyi. Liman daha öğretici, bu daha eğlenceli.</p><p><span class="h">Dikkat</span>Euromast ile kombine bileti 44 €. Salı Euromast bileti almadan önce bak — ayrı ayrı almaktan ucuz olabilir.</p></div></details></div>
+    <div class="item"><p class="name">Lijnbaan — eksik kalan alışveriş</p><p class="where">Merkez · Cuma dükkânlar geç kapanıyor</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Lijnbaan%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Neden Cuma</span>Hollanda'da Cuma geleneksel "uzun alışveriş akşamı" ve merkez dükkânlar hafta içi 18:00 yerine daha geç kapanıyor. Pazartesi 14:30–16:00 arası yetmediyse telafi günü bu.</p><p><span class="h">Dikkat</span>Uçuşun akşam ama bavul ve havalimanı yolu var. Alışverişi 14:00'ten sonraya bırakma.</p></div></details></div>
+    <div class="item"><p class="name">Miniworld — telafi</p><p class="where">Weena 745 · Cuma 12:00–17:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Miniworld%20Rotterdam%2C%20Weena%20745%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne zaman gerekir</span>Perşembe Delft dönüşü gecikirse veya 17:00'ye yetişemezsen Miniworld'ü kaçırırsın. Cuma günü 12:00'de açılıyor — kurtarma planı bu.</p><p><span class="h">Dikkat</span>Cuma sabahı Spido ile çakışır. İkisini birden yapmak istersen Spido 10:30, Miniworld 12:15 olur; Centraal'a 5 dakika mesafede olduğu için teoride sığar ama bavul ve havalimanı payını yeme.</p></div></details></div>
+    <div class="item"><p class="name">Pannenkoekenboot</p><p class="where">Parkhaven · Euromast'ın dibinde</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Pannenkoekenboot%20Rotterdam%2C%20Parkhaven%209%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Nehirde dolaşırken sınırsız pannenkoek servis edilen bir tekne. Hollanda'ya özgü bir fikir.</p><p><span class="h">Dürüst değerlendirme</span>Ağırlıklı olarak çocuklu aile mekânı; tek başına bir iş gezisinde tuhaf kaçar. <span class="warn">Pazartesi kapalı.</span> Buraya asıl ilgi duyacağın zaman, çocuklarla birlikte geldiğin bir Rotterdam gezisi olur — o yüzden listede duruyor.</p></div></details></div>
+  </div>
+
+  <div class="block">
+    <h2>Yemek — fırsat bulursan</h2>
+    <p class="lede">Ana programda Hollanda mutfağı öncelikli. Bunlar ya başka kültürlerin yemekleri ya da programda yer bulamamış Hollanda klasikleri.</p>
+    <div class="item"><p class="name">Oliva — İtalyan tadım menüsü</p><p class="where">Witte de Withstraat 15A · rezervasyon şart</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Oliva%2C%20Witte%20de%20Withstraat%2015A%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Küçük, gürültülü, sabit dört kap tadım menüsüyle çalışan İtalyan. Otelinden 2 dakika.</p><p><span class="h">Neden ana programdan çıktı</span>Hollanda yemeği önceliğin olduğu için Salı akşamı De Ballentent'e geçti. Ama kalite olarak şehrin iyi masalarından biri.</p><p><span class="h">Ne zaman devreye girer</span>Bir akşam Hollanda mutfağından mola istersen. <span class="warn">Pazar ve Pazartesi kapalı</span>, rezervasyon şart.</p></div></details></div>
+    <div class="item"><p class="name">Eet-en Biercafé Haagse Bluf — hutspot</p><p class="where">Haagseveer 90 · Sal–Per 11:00–24:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Eet-en%20Biercafe%20Haagse%20Bluf%2C%20Haagseveer%2090%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Kanal kenarında gerçek bir Hollanda eetcafé'si. <b>Hutspot</b> (patates-havuç-soğan püresi + sosis), sığır güveç, şnitzel ve ev yapımı elmalı turta. Geniş bira listesi ve kanala bakan terası var.</p><p><span class="h">Neden ana programda değil</span>Hutspot, Pazartesi yiyeceğin stamppot ile aynı aileden — ikisi de patates püresi + rookworst. Aynı hafta ikisini yemek tekrar olur.</p><p><span class="h">Ne zaman devreye girer</span><b>Pazartesi Het Eethuisje kapalı veya doluysa</b> bu senin yedeğin. Ayrıca Perşembe Luchtsingel rotanın tam üstünde — yemeğe girmesen bile kanal terasında bir bira içilir. <span class="warn">Pazartesi ve Pazar kapalı.</span></p></div></details></div>
+    <div class="item"><p class="name">Brasserie Kaat Mossel — mosselen</p><p class="where">Admiraliteitskade 85 · Pazar kapalı</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Brasserie%20Kaat%20Mossel%2C%20Admiraliteitskade%2085%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Hollanda'nın midye kurumu. Zeeland midyesi kovada, bir tencere dolusu, yanında patates ve sos. Su kenarında terası var.</p><p><span class="h">Mevsim tam şimdi</span>Midye sezonu <b>eylülde açılıyor</b> ve nisana kadar sürüyor. Yani sen sezonun ilk haftalarındasın — yılın en iyi zamanı.</p><p><span class="h">Dikkat</span>Merkezin doğusunda, otelden metroyla gidilir. Fiyat segmenti yüksek ve <span class="warn">Pazar kapalı</span>. Programda boş akşam yok; ancak bir yemeği feda ederek gidersin.</p></div></details></div>
+    <div class="item"><p class="name">FEBO — duvar otomatından kroket</p><p class="where">Binnenwegplein 35 · otelden 5 dakika</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=FEBO%2C%20Binnenwegplein%2035%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Hollanda'ya özgü bir kurum: duvara gömülü ısıtmalı vitrinler. Parayı atıyorsun, kapağı kendin açıyorsun, sıcak <b>kroket</b> veya <b>frikandel</b> elinde kalıyor. Kimseyle konuşmuyorsun.</p><p><span class="h">Neden listede</span>Yemek olarak vasat, deneyim olarak şart. Hollandalıların gece yarısı refleksi bu ve 5 dakika sürüyor. Kroket rehberdeki klasikler listesinde var ama başka yerde mekânı yok.</p><p><span class="h">Ne zaman</span>Otelden 5 dakika, dönüş yolunda herhangi bir akşam. Aç değilsen bile tek kroket al.</p></div></details></div>
+    <div class="item"><p class="name">De Matroos en het Meisje</p><p class="where">Delistraat 52 · akşam 18:00–24:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=De%20Matroos%20en%20Het%20Meisje%2C%20Delistraat%2052%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Rotterdam'ın en iyi bilinen ince yemek adreslerinden. Mevsime göre değişen sabit menü, 5 kap, şarap eşleştirmeli; malzeme Hollanda merkezli ama teknik modern.</p><p><span class="h">Ne zaman devreye girer</span>Haftaya tek bir "özel akşam" koymak istersen. Katendrecht'te, Çarşamba rotanın yakınında.</p><p><span class="h">Dikkat</span>Fiyat segmenti en üst; bütün akşamı alır ve rezervasyon gerekir. Geleneksel Hollanda ev yemeği arıyorsan burası o değil — Het Eethuisje o.</p></div></details></div>
+    <div class="item"><p class="name">Waroeng EmJay yerine Warung Mini</p><p class="where">Witte de Withstraat 47 · her gün 12:00–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Warung%20Mini%2C%20Witte%20de%20Withstraat%2047%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Surinam mutfağı: <b>roti</b> (ince dürüm ekmeğiyle köri tavuk, patates, fasulye) ve <b>pom</b> (tavuklu kök sebze fırınlaması).</p><p><span class="h">Neden aynı kategoride</span>Surinam mutfağı da Endonezya gibi Hollanda'ya sömürge yoluyla girip tamamen yerleşmiş bir mutfak. Rotterdam'da özellikle güçlü.</p><p><span class="h">Ne zaman</span>Otelinden 2 dakika. Perşembe rijsttafel yerine ya da öğle yemeği olarak. Porsiyonlar iki kişilik, tek porsiyon söyle.</p></div></details></div>
+  </div>
+
+  <div class="block">
+    <h2>Randevu gerektiren tek madde</h2>
+    <p><b>Van Nelle Fabriek</b> dışında hiçbiri önceden bilet istemiyor; oraya gitmek istiyorsan turu şimdi ayarlaman gerekir. Geri kalan her şeye o gün karar verebilirsin.</p>
+  </div>
+</section>
+
 <!-- ============ YEMEK ============ -->
 <section class="panel" id="yemek" role="tabpanel">
   <div class="block">
     <h2>Yemek</h2>
-    <p class="lede">Rotterdam'ın yemek kimliği liman göçünden geliyor: Surinam, Endonezya, Kâpe Verde, Ortadoğu. Klasik Hollanda mutfağı da yanında duruyor.</p>
+    <p class="lede">Öncelik Hollanda mutfağında: her akşam bir klasik programa bağlandı. Liman göçünün getirdiği mutfaklar (Endonezya, Surinam) ikinci sırada — onlar da Hollanda yemek kültürünün parçası, ama fırsat işi.</p>
 
     <div class="star">
       <p class="name">Kapsalon — bunu atlarsan gelmiş sayılmazsın</p>
@@ -507,11 +592,15 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <div class="item"><p class="name">Kibbeling</p><p class="where">Markthal · Royal Fish standı</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Markthal%2C%20Dominee%20Jan%20Scharpstraat%20298%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Unlanıp kızartılmış morina parçaları, sarımsak veya tartar sosuyla. Balıkçı standı yemeği, restoran yemeği değil — ayakta yenir.</p></div>
     <div class="item"><p class="name">Haring — Hollandse Nieuwe</p><p class="where">Markthal · Cuma öğle</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Markthal%2C%20Dominee%20Jan%20Scharpstraat%20298%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Çiğ ringa, doğranmış soğan ve turşuyla. Yerel usul: kuyruğundan tutup başını yukarı kaldırıp ısırıyorsun; utanmak yok, herkes böyle yiyor. Tuzda az bekletilmiş olduğu için tadı beklediğin kadar ağır değil. <span class="shut">Sezonu yaz sonunda kapanıyor — son şansın bu hafta.</span></p></div>
     <div class="item"><p class="name">Patat</p><p class="where">Bram Ladage · Lijnbaan 79D · Cuma 13:15</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Bram%20Ladage%2C%20Lijnbaan%2079D%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">"Frites" deme, burada adı patat. Bram Ladage şehrin kendi markası. Sipariş: <b>patatje oorlog</b> — mayonez + fıstık sosu + çiğ soğan. Tuhaf duruyor, muazzam.</p></div>
-    <div class="item"><p class="name">Kroket / broodje kroket</p><p class="desc">Bitterballen'in silindir hali, beyaz ekmek arasında hardalla. Öğle yemeği klasiği. Deneyimi tamamlamak için bir <b>FEBO</b> duvar otomatından al — parayı atıp kapağı kendin açıyorsun, Hollanda'ya özgü bir ritüel.</p></div>
+    <div class="item"><p class="name">Kroket / broodje kroket</p><p class="where">FEBO · Ekstra sekmesinde</p><p class="desc">Bitterballen'in silindir hali, beyaz ekmek arasında hardalla. Öğle yemeği klasiği. Deneyimi tamamlamak için bir <b>FEBO</b> duvar otomatından al — parayı atıp kapağı kendin açıyorsun, Hollanda'ya özgü bir ritüel.</p></div>
     <div class="item"><p class="name">Frikandel</p><p class="desc">Baharatlı, kılıfsız sosis kızartması. "Speciaal" istersen üstüne curry sosu, mayonez ve doğranmış soğan gelir. İçeriğini sorgulamamak en iyisi.</p></div>
-    <div class="item"><p class="name">Erwtensoep (snert)</p><p class="where">Fenix / Kaapse Brouwers</p><p class="desc">Kaşığın dik durduğu kadar koyu bezelye çorbası, içinde sosis. Kışlık yemek sayılır; eylül sonu havası için tam zamanı. İyi yapılmışının ölçütü kaşık testidir.</p></div>
+    <div class="item"><p class="name">Erwtensoep (snert)</p><p class="where">Fenix · Çarşamba 19:15</p><p class="desc">Kaşığın dik durduğu kadar koyu bezelye çorbası, içinde sosis. Kışlık yemek sayılır; eylül sonu havası için tam zamanı. İyi yapılmışının ölçütü kaşık testidir.</p></div>
     <div class="item"><p class="name">Oude kaas</p><p class="where">Booij Kaasmakers · Fenix içinde</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Booij%20Kaasmakers%2C%20Nico%20Koomanskade%201025%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">2–3 yıllık Gouda; tuz kristalleri ağızda çatlıyor, tadı neredeyse parmesana yaklaşıyor. Süpermarket peyniriyle alakası yok. Yaş sordurup tadım isteyebilirsin.</p></div>
 
+    <div class="item"><p class="name">Stamppot</p><p class="where">Het Eethuisje van Delfshaven · Pazartesi 19:00</p><p class="desc">Hollanda ev yemeğinin merkezi: patates püresine karalahana (boerenkool) veya hindiba (andijvie) karıştırılıyor, yanında <b>rookworst</b> ve et suyu sosu. Lokantada değil evde yenen türden bir tabak, o yüzden turistik yerlerde bulamıyorsun. Eylül sonu havası için tam mevsimi.</p></div>
+    <div class="item"><p class="name">Gehaktbal</p><p class="where">De Ballentent · Salı 19:30</p><p class="desc">Avuç büyüklüğünde Hollanda köftesi, et suyu sosuyla, yanında ekmek veya patates. Sade göründüğü kadar ciddiye alınan bir yemek; iyi yapılmışının ölçütü sosudur.</p></div>
+    <div class="item"><p class="name">Uitsmijter</p><p class="where">Café Restaurant Floor · alternatif öğle</p><p class="desc">Ekmek dilimlerinin üstüne sahanda yumurta, jambon ve kaşar. Klasik Hollanda öğle yemeği. Adı "dışarı atan" demek — eskiden gece sonunda son yenen yemek olduğu için.</p></div>
+    <div class="item"><p class="name">Hutspot</p><p class="where">Haagse Bluf · Ekstra sekmesinde</p><p class="desc">Stamppot'un kardeşi: patates, havuç ve soğan birlikte ezilip sosisle yeniyor. 1574 Leiden kuşatmasına dayanan bir hikâyesi var. Stamppot'u yediysen bu tekrar olur.</p></div>
     <h3>Liman mutfağı</h3>
     <div class="item"><p class="name">Surinam — roti, pom, moksi meti</p><p class="where">Warung Mini · Witte de Withstraat 47 · her gün 12:00–22:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Warung%20Mini%2C%20Witte%20de%20Withstraat%2047%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Otelinden 2 dakika. <b>Roti</b>: ince dürüm ekmeğiyle köri tavuk, patates ve fasulye. <b>Pom</b>: tavuklu kök sebze fırınlaması, bayram yemeği. Porsiyonlar iki kişiyi doyuruyor, ~17 €.</p></div>
     <div class="item"><p class="name">Endonezya — rijsttafel, ayam penyet</p><p class="where">Waroeng EmJay · Diergaardesingel 96A</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Waroeng%20EmJay%2C%20Diergaardesingel%2096A%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Rijsttafel bir sofraya 15–20 küçük tabak gelmesi demek; tek başına yiyorsan ayam penyet daha mantıklı. <span class="shut">Çarşamba kapalı</span> — Perşembe veya Cuma git. Sambalı hafife alma.</p></div>
@@ -521,10 +610,10 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <h3>Tatlılar</h3>
     <div class="star">
       <p class="name">Appelgebak met slagroom — bir numaralı önerim</p>
-      <p class="desc">Kalın, tarçınlı, hamuru kurabiye gibi elmalı turta; yanında şekeri az, gerçek krem şanti. <b>Dudok · Meent 88 · her gün 09:00–23:00</b> bu işin Rotterdam'daki kurumu, otelden 10 dakika, Perşembe yürüyüşünün üstünde. <b>Kritik: "warm" iste</b> — sıcak servis edilince tamamen başka bir tatlıya dönüşüyor, çoğu kişi bunu bilmediği için soğuk yiyip çıkıyor.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Dudok%2C%20Meent%2088%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
+      <p class="desc">Kalın, tarçınlı, hamuru kurabiye gibi elmalı turta; yanında şekeri az, gerçek krem şanti. <b>Dudok · Meent 88 · Cuma 12:10</b> bu işin Rotterdam'daki kurumu, otelden 10 dakika, Perşembe yürüyüşünün üstünde. <b>Kritik: "warm" iste</b> — sıcak servis edilince tamamen başka bir tatlıya dönüşüyor, çoğu kişi bunu bilmediği için soğuk yiyip çıkıyor.</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Dudok%2C%20Meent%2088%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p>
     </div>
     <div class="item"><p class="name">Stroopwafel — taze ve sıcak olanı</p><p class="where">Didi's Stroopwafels · Oude Binnenweg 95-C · 10:00–18:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Didi%27s%20Stroopwafels%2C%20Oude%20Binnenweg%2095C%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Paketlisini herkes biliyor; asıl olay sipariş üzerine pişip elinde ılık gelen, karameli akan hali. Otelden 5 dakika. İlk seferde sade al, soslu versiyonlar asıl tadı gizliyor. Klasik yerel numara: sıcak kahve bardağının üstüne koyup karameli yumuşatmak.</p></div>
-    <div class="item"><p class="name">Poffertjes</p><p class="desc">Bozuk para büyüklüğünde mini pancake'ler, tereyağı ve pudra şekeriyle. Özel dökme tavada yapılıyor. Didi's'te de var.</p></div>
+    <div class="item"><p class="name">Poffertjes</p><p class="where">Poffertjessalon Seth · Perşembe 16:30</p><p class="desc">Bozuk para büyüklüğünde mini pancake'ler, tereyağı ve pudra şekeriyle. Özel dökme tavada yapılıyor. Didi's'te de var.</p></div>
     <div class="item"><p class="name">Tompouce</p><p class="desc">İki milföy arasında muhallebi, üstü pembe fondan. Ulusal pasta sayılır. Fırından veya süpermarketten al — bu tatlıda pahalı olanı daha iyi değil. Zarif yeme yolu yok, kabul et ve üstünü ez.</p></div>
     <div class="item"><p class="name">Oliebollen</p><p class="desc">Pudra şekerli hamur topları, kızartma tezgâhlarında satılıyor. Sezonu <b>Ekim başında</b> açılıyor — 1–2 Ekim'de ilk tezgâhları yakalayabilirsin. Görürsen kaçırma, sonra yıl sonuna kadar bekler.</p></div>
     <div class="item"><p class="name">Vlaai</p><p class="desc">Limburg usulü meyveli açık turta, kayısılı veya vişneli. Dilim satılıyor.</p></div>
@@ -562,6 +651,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
 
     <h3>Kokteyl</h3>
     <div class="item"><p class="name">Jigger</p><p class="where">Hoogstraat 73A · her gün 15:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Jigger%2C%20Hoogstraat%2073A%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Küçük, bitkilerle dolu, speakeasy havasında mahalle barı. Menü dışı klasikleri de yapıyorlar — <b>jenever'li kokteyl</b> isteyebileceğin nadir yerlerden. Salı akşamı enerjin kalırsa üçüncü mekân olarak buraya git.</p></div>
+    <div class="item"><p class="name">Jigger — jenever'li kokteyl</p><p class="where">Hoogstraat 73A · her gün 15:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=Jigger%2C%20Hoogstraat%2073A%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><details class="guide"><summary>Rehber</summary><div class="g"><p><span class="h">Ne olduğu</span>Küçük, bitkilerle dolu, speakeasy havasında bir kokteyl barı. Menü dışı klasikleri de yapıyorlar.</p><p><span class="h">Neden ana programda değil</span>Jenever'i sade denemek için kokteyl barı yerine brown café daha doğru; Salı akşamı De Riddert'e geçti. Ayrıca Hoogstraat doğuda kalıyor, Veerhaven yürüyüşünün ters yönü.</p><p><span class="h">Ne zaman devreye girer</span>Jenever'i sade tattıktan sonra kokteylde de görmek istersen. Perşembe merkez halkası Hoogstraat'tan geçiyor — o gün yol üstünde kalıyor.</p></div></details></div>
     <div class="item"><p class="name">1983 Coffees &amp; Cocktails</p><p class="where">Nieuwemarkt 49 · her gün 11:00–01:00</p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=1983%20Coffees%20and%20Cocktails%2C%20Nieuwemarkt%2049%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Gündüz kahve, akşam kokteyl. Tarihi çeşmeye ve Erasmus binasına bakan köşe terası var. Esnek: erken de gidilir, geç de.</p></div>
     <div class="item"><p class="name">OX</p><p class="where">Schiekade 189 · <span class="shut">sadece Per–Cmt 18:00–01:00</span></p><p class="loc"><a href="https://www.google.com/maps/search/?api=1&query=OX%20Rotterdam%2C%20Schiekade%20189%2C%20Rotterdam" target="_blank" rel="noopener">Haritada aç &#8599;</a></p><p class="desc">Gizli girişten bodruma inen, karakterli bir yer; kokteyl eşleştirmeli menü yapıyorlar. Pahalı segment — özel bir son akşam istiyorsan.</p></div>
 
@@ -586,12 +676,13 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <h2>Şimdi alınacak biletler</h2>
     <p class="lede">Hepsi online. Depot yok — çatı bileti iptal edildi, aynalı cepheyi Museumpark'tan geçerken bedava görüyorsun.</p>
     <ul class="check">
-      <li><label><input type="checkbox"><span class="txt"><b>Euromast</b>Salı 17:45, Euroscoop dahil. Gişe sırası uzun, online al.</span></label></li>
-      <li><label><input type="checkbox"><span class="txt"><b>Kinderdijk girişi</b>Pazartesi, ~18 € hafta içi tarifesi.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Euromast</b>Salı 17:45. "Complete experience" al (Euroscoop dahil) — online 19 €, gişede 23,50 €. Tarih bir kez ücretsiz değişiyor. <a href="https://euromast.nl/en/tickets/" target="_blank" rel="noopener" style="color:var(--water);font-weight:600">bilet al &#8599;</a></span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>WaterShuttle Combiticket · 32,50 €</b>kinderdijk.com/tickets → 28 Eylül Pazartesi → ulaşımda "WaterShuttle" seçeneğini işaretle. Ayrı ayrı 37,50 € olurdu. <b>İptal edilemiyor</b> — önce sefer gününü teyit et.</span></label></li>
       <li><label><input type="checkbox"><span class="txt"><b>Miniworld</b>Perşembe 14:00. Tek uygun günün bu.</span></label></li>
       <li><label><input type="checkbox"><span class="txt"><b>Oliva rezervasyonu</b>Salı 20:00. Rezervasyon şart.</span></label></li>
       <li><label><input type="checkbox"><span class="txt"><b>Spido</b>Cuma 10:30 — ama önce Perşembe gecesi kararını ver.</span></label></li>
-      <li><label><input type="checkbox"><span class="txt"><b>Waterbus 20 + Driehoeksveer saatleri</b>Pazar akşamı iki tarifeyi yan yana koy. Bağlantı kötüyse 489 otobüsü.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>WaterShuttle Pazartesi çalışıyor mu?</b>Pazar akşamı watershuttle.nl'den teyit et. Çalışmıyorsa yedek: Waterbus 20 + Driehoeksveer, ya da 489 otobüsü.</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Kunstkubus (opsiyonel)</b>Perşembe 16:15 civarı, Kübik Evler'in içi. Yetişkin 4 €, saat dilimli. <a href="https://kunstkubus.i-reserve.net" target="_blank" rel="noopener" style="color:var(--water);font-weight:600">bilet al &#8599;</a></span></label></li>
       <li><label><input type="checkbox"><span class="txt"><b>Otelle WhatsApp</b>Westblaak cephesi yerine arka taraf oda iste — ortada kaykay parkı var.</span></label></li>
     </ul>
   </div>
@@ -615,7 +706,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
   <div class="block">
     <h2>Pazar 27 Eylül — varış</h2>
     <p>Yorgunsan hiçbir şey yapma. Enerjin varsa Erasmusbrug'a 20 dakikalık akşam yürüyüşü.</p>
-    <p>Bu akşam iki şey yap: <b>Waterbus 20 ve Driehoeksveer saatlerini teyit et</b>, <b>Pazartesi hava tahminine bak</b>.</p>
+    <p>Bu akşam iki şey yap: <b>WaterShuttle'ın Pazartesi çalışıp çalışmadığını ve kalkış saatlerini teyit et</b>, <b>Pazartesi hava tahminine bak</b>.</p>
   </div>
 
   <div class="block">
@@ -623,33 +714,40 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <p class="lede">Her durakta ayrıca "Haritada aç" linki var. Bu liste hepsini tek yerde topluyor.</p>
     <h3>Pazartesi</h3>
     <ul class="dmap">
-      <li><span class="d">08:10</span><span>Erasmusbrug iskelesi · Willemskade</span></li>
-      <li><span class="d">09:30</span><span>Kinderdijk · Nederwaard 1, Kinderdijk</span></li>
-      <li><span class="d">14:30</span><span>Lijnbaan · Rotterdam merkez</span></li>
-      <li><span class="d">15:45</span><span>Didi's Stroopwafels · Oude Binnenweg 95-C</span></li>
-      <li><span class="d">16:15</span><span>Delfshaven · Voorhaven / Aelbrechtskolk</span></li>
-      <li><span class="d">17:30</span><span>Shoarma El Aviva · Schiedamseweg 22a</span></li>
-      <li><span class="d">19:30</span><span>De Witte Aap · Witte de Withstraat 78</span></li>
+      <li><span class="d">08:45</span><span>Willemskade iskelesi · WaterShuttle kalkışı</span></li>
+      <li><span class="d">09:40</span><span>Kinderdijk · Nederwaard 1, Kinderdijk</span></li>
+      <li><span class="d">14:20</span><span>The Tosti Club · Oude Binnenweg 127B <b>veya</b> Café Floor · Schouwburgplein 28</span></li>
+      <li><span class="d">15:00</span><span>Didi's Stroopwafels · Oude Binnenweg 95-C</span></li>
+      <li><span class="d">15:15</span><span>Lijnbaan, Koopgoot, HEMA, Hunkemöller Beurstraverse 24</span></li>
+      <li><span class="d">17:00</span><span>Delfshaven · Voorhaven / Aelbrechtskolk</span></li>
+      <li><span class="d">18:00</span><span>Shoarma El Aviva · Schiedamseweg 22a</span></li>
+      <li><span class="d">19:15</span><span>Het Eethuisje · Mathenesserdijk 436</span></li>
+      <li><span class="d">20:45</span><span>De Witte Aap · Witte de Withstraat 78</span></li>
     </ul>
     <h3>Salı</h3>
     <ul class="dmap">
       <li><span class="d">17:45</span><span>Euromast · Parkhaven 20</span></li>
-      <li><span class="d">20:00</span><span>Oliva · Witte de Withstraat 15A</span></li>
+      <li><span class="d">19:30</span><span>De Ballentent · Parkkade 1</span></li>
+      <li><span class="d">20:45</span><span>Veerhaven · Scheepvaartkwartier</span></li>
+      <li><span class="d">21:45</span><span>Proeflokaal De Riddert · Mauritsweg 28</span></li>
       <li><span class="d">ekstra</span><span>Jigger · Hoogstraat 73A</span></li>
     </ul>
     <h3>Çarşamba</h3>
     <ul class="dmap">
       <li><span class="d">17:30</span><span>Watertaxi iskelesi · Willemskade</span></li>
       <li><span class="d">18:00</span><span>Hotel New York · Koninginnenhoofd 1</span></li>
-      <li><span class="d">19:00</span><span>Fenix Food Factory · Nico Koomanskade 1025</span></li>
+      <li><span class="d">18:45</span><span>Wilhelminapier / De Rotterdam · Wilhelminakade 139</span></li>
+      <li><span class="d">19:15</span><span>Fenix Food Factory · Nico Koomanskade 1025</span></li>
     </ul>
     <h3>Perşembe</h3>
     <ul class="dmap">
       <li><span class="d">09:15</span><span>Nieuwe Kerk · Markt 80, Delft</span></li>
       <li><span class="d">10:45</span><span>Oude Kerk · Heilige Geestkerkhof 25, Delft</span></li>
       <li><span class="d">14:00</span><span>Miniworld · Weena 745</span></li>
+      <li><span class="d">16:30</span><span>Poffertjessalon Seth · Hoogstraat 147</span></li>
       <li><span class="d">16:15</span><span>Kübik Evler · Overblaak 70</span></li>
-      <li><span class="d">17:15</span><span>Luchtsingel · Schiekade civarı</span></li>
+      <li><span class="d">17:05</span><span>Laurenskerk · Grotekerkplein 27</span></li>
+      <li><span class="d">17:30</span><span>Luchtsingel · Schiekade civarı</span></li>
       <li><span class="d">17:45</span><span>Man Met Bril · Linker Rottekade 12</span></li>
       <li><span class="d">19:30</span><span>Waroeng EmJay · Diergaardesingel 96A</span></li>
       <li><span class="d">21:30</span><span>BIRD · Raampoortstraat 24</span></li>
@@ -657,13 +755,39 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
     <h3>Cuma</h3>
     <ul class="dmap">
       <li><span class="d">10:30</span><span>Spido · Willemsplein 85</span></li>
-      <li><span class="d">12:30</span><span>Markthal · Dominee Jan Scharpstraat 298</span></li>
-      <li><span class="d">13:15</span><span>Bram Ladage · Lijnbaan 79D</span></li>
+      <li><span class="d">12:10</span><span>Dudok · Meent 88</span></li>
+      <li><span class="d">12:50</span><span>Markthal · Dominee Jan Scharpstraat 298</span></li>
+      <li><span class="d">13:30</span><span>Bram Ladage · Lijnbaan 79D</span></li>
     </ul>
     <h3>Otel</h3>
     <ul class="dmap">
       <li><span class="d">baz</span><span>The Usual · Westblaak 10-14 · <a href="https://www.google.com/maps/search/?api=1&query=The%20Usual%20Rotterdam%2C%20Westblaak%2010%2C%20Rotterdam" target="_blank" rel="noopener" style="color:var(--water);font-weight:600">haritada aç &#8599;</a></span></li>
     </ul>
+  </div>
+
+  <div class="block">
+    <h2>Yeme-içme kültürü</h2>
+    <p class="lede">Hollanda'da yemek ve içki ayrı iki olay. Bunu bilmek akşamlarını doğru kurmanı sağlıyor.</p>
+
+    <h3>Borrel</h3>
+    <p><b>Borrel</b>, iş çıkışı içki demek ve günlük hayatın sabit bir parçası. Yanına <b>borrelplank</b> ya da <b>bittergarnituur</b> geliyor: tahta bir tabla üzerinde bitterballen, <b>kaasstengels</b> (kızarmış kaşar çubukları), mini frikandel, zeytin, hardallı küp yaşlanmış Gouda. Ortada durur, paylaşılır, elle yenir. Süresi 1–2 saat.</p>
+    <p>Cuma öğleden sonra yapılanının özel adı var: <b>vrijdagmiddagborrel</b>. Ofisler 16:00 civarı dağılır, ekip bara gider.</p>
+
+    <h3>Yemek ayrı, içki ayrı</h3>
+    <p><b>Akşam yemeği erken ve kısa.</b> 18:00'de başlar, mutfaklar <span class="warn">21:30'da kapanır</span>. Yemek yenir ve bitirilir. Uzun oturma barda olur, yemek masasında değil.</p>
+    <p><b>Öğle yemeği soğuk.</b> Ekmek, kaşar, jambon; 20 dakikada, çoğu zaman masa başında. Sıcak öğle yemeği kültürü yok — iş yemeği beklentini buna göre kur.</p>
+    <p><b>Merkezdeki değer "gezelligheid"</b> — kabaca "hoş beraberlik". Ama bu kavram yemeğe değil <b>içmeye ve sohbete</b> yapışmış. Yemek yakıt, borrel sosyal olay.</p>
+    <p><b>Bedava hiçbir şey gelmez.</b> Ekmek sepeti yok, ikram yok, su parayla. Kahvenin yanında tek küçük bir bisküvi gelir, o kadar.</p>
+    <p><b>Teras kültürü güçlü.</b> Isıtmalı, üstü kapalı teraslarda insanlar soğukta saatlerce oturur. Eylül sonu için önemli detay: teras kapalı mı diye sor.</p>
+    <p>Grupla içerken <b>rondje</b> geleneği var — sırayla herkes bir tur ısmarlar.</p>
+
+    <h3>Sen bunu nerede yaşarsın</h3>
+    <ul class="dmap">
+      <li><span class="d">Pzt</span><span>De Witte Aap, 20:45 — ısıtmalı terasta <b>borrelplank</b> + bokbier. Stamppot'tan sonra hafif kalır</span></li>
+      <li><span class="d">Çar</span><span>Fenix — bitterballen, tosti, erwtensoep, Booij'den yaşlanmış Gouda. Zaten tabla mantığında bir yer</span></li>
+      <li><span class="d">her</span><span>Barmene <b>"kopstootje"</b> de — jenever bardağı taşacak kadar dolduruluyor, elini kullanmadan öne eğilip ilk yudumu alıyorsun, sonra bira</span></li>
+    </ul>
+    <p><b>Pratik sonuç:</b> Akşamlarını uzun yemek diye kurgulama. Yerel ritim <b>hızlı yemek + uzun içki</b> ve bu senin 17:00 sonrası pencerelerine daha iyi oturuyor.</p>
   </div>
 
   <div class="block">
@@ -676,7 +800,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
   <div class="block">
     <h2>Çanta ve kart</h2>
     <p><b>Kapüşonlu yağmurluk.</b> Rüzgârda şemsiye işe yaramaz, kırılır.</p>
-    <p><b>İki temassız Visa/Mastercard.</b> OVpay Amex kabul etmiyor. Birçok Hollanda mekânı nakit almıyor, bazıları da sadece yerel PIN kartı okuyor — KKTC kartın reddedilirse ikinci kart devreye girsin. Driehoeksveer feribotu da sadece kart.</p>
+    <p><b>İki temassız Visa/Mastercard.</b> OVpay Amex kabul etmiyor. Birçok Hollanda mekânı nakit almıyor, bazıları da sadece yerel PIN kartı okuyor — KKTC kartın reddedilirse ikinci kart devreye girsin. WaterShuttle ve Driehoeksveer feribotu da sadece kart.</p>
     <p><b>OVpay:</b> temassız kartı binişte ve inişte okut, hep aynı kartla. Çıkışta okutmayı unutmak ağır cezalı — refleks haline getir.</p>
     <p><b>Mutfaklar 21:30'da kapanıyor.</b> Akşam yemeği 18:00'de başlıyor; geç kalırsan aç kalırsın, tek çare Hung Kee.</p>
     <p>Öğle yemeği soğuk sandviç kültürü. İş yemeği beklentini buna göre ayarla.</p>
@@ -697,7 +821,7 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
   <div class="block">
     <h2>Yağmur planı</h2>
     <p>Pazartesi'nin tamamı açık hava — haftanın tek gerçek kırılganlığı bu.</p>
-    <p>Pazar akşamı tahmin kötüyse <b>Pazartesi ile Perşembe'yi tamamen takas et</b>: Pazartesi Delft (iki kilise de Pazartesi açık), Perşembe sabah Kinderdijk + öğleden sonra Miniworld. O senaryoda 1 Ekim'de feribotun yaz tarifesi bitmiş olacağı için Kralingse Zoom'dan <b>489 otobüsünü</b> kullan.</p>
+    <p>Pazar akşamı tahmin kötüyse <b>Pazartesi ile Perşembe'yi tamamen takas et</b>: Pazartesi Delft (iki kilise de Pazartesi açık), Perşembe sabah Kinderdijk + öğleden sonra Miniworld. WaterShuttle 25 Ekim'e kadar her gün çalıştığı için bu takas artık sorunsuz — 1 Ekim de aynı tarife.</p>
     <p>Kısa süreli yağmur için otelin 10 dakika içindeki kapalı alanlar: Markthal, Kunsthal, Doğa Tarihi Müzesi, Koopgoot.</p>
   </div>
 
@@ -733,6 +857,14 @@ details.guide summary{display:inline-flex;align-items:center;min-height:2.5rem;p
       if (target) target.classList.add('on');
       window.scrollTo({top:0, behavior:'instant'});
     });
+  });
+  function show(id){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.t===id ? 'true':'false'); });
+    panels.forEach(function(p){ p.classList.toggle('on', p.id===id); });
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  document.querySelectorAll('[data-goto]').forEach(function(btn){
+    btn.addEventListener('click', function(){ show(btn.dataset.goto); });
   });
 })();
 </script>
